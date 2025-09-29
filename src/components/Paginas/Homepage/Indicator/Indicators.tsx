@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 export default function Indicators() {
   return (
-    <div className="Box mt-10">
+    <div className="Box mt-10 pb-5">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
           <h1 className="text-xl font-poppins font-semibold text-left">Indicadores</h1>

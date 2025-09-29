@@ -6,19 +6,25 @@ import NumAbso from './NumAbso/NumAbso';
 import Ranking_Melhor_Desempenho from './Ranking_Melhor_Desempenho/Ranking_Melhor_Desempenho';
 import Ranking_Mais_Dificuldade from './Ranking_Mais_Dificuldade/Ranking_Mais_Dificuldade';
 import DadosGerais from './DadosGerais/DadosGerais';
+import { getCursos } from '../../../utils/mocks';
+
 type CursoType = {
-  id: string;
+  id: number;
+  shortname: string;
   nome: string;
   data: string;
+  value: number;
 };
 
 type CursoProps = {
-  cursos: CursoType[];
   cursoSelecionado: string | null;
 };
 
-export default function Curso({ cursos, cursoSelecionado }: CursoProps) {
-  const curso = cursos.find(c => c.id === cursoSelecionado);
+export default function Curso({ cursoSelecionado }: CursoProps) {
+  const cursos = getCursos();
+
+  const cursoId = cursoSelecionado ? parseInt(cursoSelecionado) : null;
+  const curso = cursos.find(c => c.id === cursoId);
 
   return (
     <div className="flex-1 flex justify-center items-center pl-[240px]">
@@ -31,14 +37,14 @@ export default function Curso({ cursos, cursoSelecionado }: CursoProps) {
                 {curso.nome}
               </p>
             ) : (
-              <p className="text-left">Nenhum curso foi selecionado ainda.</p>
+              <p className="text-left">Nenhuma disciplina foi selecionado ainda.</p>
             )}
           </div>
           <div className="flex flex-col items-end">
             {curso ? (
               <>
                 <p className="text-sm text-right">{curso.data}</p>
-                <p className="text-xl text-right font-poppins font-semibold">{curso.id}</p>
+                <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
               </>
             ) : (
               <p></p>

@@ -1,4 +1,4 @@
-import RenderizaAlunos from './RenderizaAlunos';
+import RenderizaAlunos from '../RenderizaAlunos';
 
 interface Ranking_Mais_DificuldadeProps {
   cursoSelecionado: string | null;
@@ -28,7 +28,7 @@ export default function Ranking_Mais_Dificuldade({ cursoSelecionado }: Ranking_M
       </div>
       <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
       <div className='m-10'>
-        <RenderizaAlunos alunos={alunos} />
+        <RenderizaAlunos alunos={alunos} cursoSelecionado={cursoSelecionado} />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps
                 {curso.nome}
               </p>
             ) : (
-              <p className="text-left">Nenhum curso foi selecionado ainda.</p>
+              <p className="text-left">Nenhuma disciplina foi selecionado ainda.</p>
             )}
           </div>
           <div className="flex flex-col items-end">

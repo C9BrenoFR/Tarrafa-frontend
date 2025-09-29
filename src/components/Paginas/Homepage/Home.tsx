@@ -1,5 +1,5 @@
 import Indicators from './Indicator/Indicators';
-import Ranking_Melhor_Desempenhos from './Ranking_Melhor_Desempenhos/Ranking_Melhor_Desempenhos';
+import Ranking_Melhores_Desempenhos from './Ranking_Melhor_Desempenhos/Ranking_Melhores_Desempenhos';
 import Ranking_Piores_Desempenhos from './Ranking_Piores_Desempenhos/Ranking_Piores_Desempenhos';
 import DadosGerais from './DadosGerais/DadosGerais';
 
@@ -22,7 +22,7 @@ export default function Home() {
             <div className="center-wrapper flex flex-col justify-between">
               <Indicators  />
               <div className="flex flex-row space-x-3">
-                <Ranking_Melhor_Desempenhos  />
+                <Ranking_Melhores_Desempenhos  />
                 <Ranking_Piores_Desempenhos  />
               </div>
                 <DadosGerais />

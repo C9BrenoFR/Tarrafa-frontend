@@ -9,7 +9,7 @@ export default function NumAbso({ cursoSelecionado }: NumAbsoProps) {
         <div className="Box my-10">
             <div className="Boxcursopequeno">
                 <div className="mt-10 ml-10 mb-5">
-                    <h1 className="text-xl font-poppins font-semibold text-left">Números Absolutos</h1>
+                    <h1 className="text-xl font-poppins font-semibold text-left">Status de Aprovação</h1>
                     <p style={{ color: "#9291A5" }}>dos Alunos da Disciplina</p>
                 </div>
             </div>

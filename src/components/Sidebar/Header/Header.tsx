@@ -2,22 +2,30 @@
 
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { getCursos } from '@/utils/mocks';
 
 interface Curso {
-  id: string;
+  id: number;
+  shortname: string;
   nome: string;
-  data: string;
+  data: string; 
 }
 
 interface HeaderProps {
-  cursos: Curso[];
   onCursoChange: (cursoId: string) => void;
   cursoSelecionado: string | null;
 }
 
-export default function Header({ cursos, onCursoChange }: HeaderProps) {
+export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  
+  const cursos = getCursos().map(curso => ({
+    id: curso.id.toString(),
+    shortname: curso.shortname,
+    nome: curso.nome,
+    data: curso.data
+  }));
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
@@ -35,7 +43,6 @@ export default function Header({ cursos, onCursoChange }: HeaderProps) {
       : 'px-4 py-2 rounded text-gray-700 hover:bg-gray-100 transition';
   };
 
-
   return (
     <header className="header">
       <div className="componentsheader space-x-2">
@@ -47,7 +54,7 @@ export default function Header({ cursos, onCursoChange }: HeaderProps) {
           id="curso"
           name="curso"
           className="select-classic"
-          defaultValue={cursos.find((curso) => curso.id === cursoIdFromUrl)?.id || ''}
+          defaultValue={cursoIdFromUrl}
           onChange={handleChange}
           required
         >
@@ -56,7 +63,7 @@ export default function Header({ cursos, onCursoChange }: HeaderProps) {
           </option>
           {cursos.map((curso) => (
             <option key={curso.id} value={curso.id}>
-              {curso.id}-{curso.data}-A
+              {curso.shortname}-{curso.data}-A
             </option>
           ))}
         </select>

@@ -10,7 +10,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 5,
             nPostsForunsAv: 5,
@@ -56,7 +56,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 4,
             nPostsForunsAv: 2,
@@ -102,7 +102,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 3,
             nPostsForunsAv: 4,
@@ -148,7 +148,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 2,
             nPostsForunsAv: 1,
@@ -194,7 +194,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 1,
             nPostsForunsAv: 5,
@@ -240,7 +240,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 3,
             nPostsForunsAv: 6,
@@ -286,7 +286,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 4,
             nPostsForunsAv: 0,
@@ -332,7 +332,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 1,
             nPostsForunsAv: 5,
@@ -378,7 +378,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 3,
             nPostsForunsAv: 6,
@@ -424,7 +424,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 4,
             nPostsForunsAv: 0,
@@ -470,7 +470,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 1,
             nPostsForunsAv: 5,
@@ -516,7 +516,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 3,
             nPostsForunsAv: 6,
@@ -562,7 +562,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 4,
             nPostsForunsAv: 0,
@@ -608,7 +608,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 1,
             nPostsForunsAv: 5,
@@ -654,7 +654,7 @@ export function getAlunos() {
             cidade: "Montes Claros",
             polo: "Montes Claros",
             primeiroAcesso: "14/04/2018 ás 13:33",
-            ultimoAcesso: "24/10/2023 às 12:52", 
+            ultimoAcesso: "24/10/2023 às 12:52",
             // engajamento
             flagEngajamento: 3,
             nPostsForunsAv: 6,
@@ -695,10 +695,20 @@ export function getAlunos() {
     ];
 }
 
-export function getCursos () {
+export function getCursos() {
     return [
-        { id: 'EXT099', nome: 'Análise e Desenvolvimento de Sistemas', data: '2024.3' },
-        { id: 'DCC001', nome: 'Introdução a Sistemas de Informação', data: '2023.1' },
-        { id: 'DCC023', nome: 'Introdução a Ciência da Computação', data: '2025.2' },
+        { id: 1, shortname: 'MAT003', nome: 'Cálculo III', data: '2024.3', value: 100 },
+        { id: 2, shortname: 'MAT050', nome: 'Equações Diferenciais I', data: '2024.3', value: 95 },
+        { id: 3, shortname: 'DCC263', nome: 'Teoria dos Compiladores', data: '2024.3', value: 90 },
+        { id: 4, shortname: 'FIS003', nome: 'Física III', data: '2024.3', value: 85 },
+        { id: 5, shortname: 'FIS001', nome: 'Física I', data: '2024.3', value: 80 },
+        { id: 6, shortname: 'ANA001', nome: 'Anatomia I', data: '2024.3', value: 75 },
+        { id: 7, shortname: 'PED002', nome: 'Pegagogia II', data: '2024.3', value: 70 },
+        { id: 8, shortname: 'ECO001', nome: 'Empreendedorismo', data: '2024.3', value: 65 },
+        { id: 9, shortname: 'EXT009', nome: 'Introdução à Extensão', data: '2024.3', value: 60 },
+        { id: 10, shortname: 'DCC163', nome: 'Teoria da Computação', data: '2024.3', value: 55 },
+        { id: 11, shortname: 'EXT099', nome: 'Análise e Desenvolvimento de Sistemas', data: '2024.3', value: 50 },
+        { id: 12, shortname: 'DCC001', nome: 'Introdução a Sistemas de Informação', data: '2023.1', value: 45 },
+        { id: 13, shortname: 'DCC023', nome: 'Introdução a Ciência da Computação', data: '2025.2', value: 40 },
     ];
 }
