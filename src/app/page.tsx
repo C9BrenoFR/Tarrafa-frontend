@@ -1,0 +1,24 @@
+'use client';
+import { useState } from 'react';
+import Header from '@/components/Sidebar/Header/Header';
+import Sidebar from '@/components/Sidebar/Header/Sidebar';
+import Home from '@/components/Paginas/Homepage/Home';
+import { getCursos } from '@/utils/mocks';
+
+const cursosMock = getCursos();
+
+export default function HomeLayout() {
+  const [cursoSelecionado, setCursoSelecionado] = useState<string | null>(null);
+
+  return (
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1">
+        <Header cursos={cursosMock} onCursoChange={setCursoSelecionado} />
+        <main>
+          <Home />
+        </main>
+      </div>
+    </div>
+  );
+}
