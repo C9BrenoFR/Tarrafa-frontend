@@ -11,13 +11,14 @@ const alunosMock = getAlunos();
 const cursosMock = getCursos();
 
 export default function AlunosPageClient() {
-    const [cursoSelecionado, setCursoSelecionado] = useState<string | null>(null);
+    const [cursoSelecionado, setCursoSelecionado] = useState<number | null>(null);
     const searchParams = useSearchParams();
 
     useEffect(() => {
         const idFromURL = searchParams.get('id');
         if (idFromURL) {
-            setCursoSelecionado(idFromURL);
+            const idNumber = parseInt(idFromURL, 10);
+            setCursoSelecionado(idNumber);
         }
     }, [searchParams]);
 

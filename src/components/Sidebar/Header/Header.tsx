@@ -8,18 +8,18 @@ interface Curso {
   id: number;
   shortname: string;
   nome: string;
-  data: string; 
+  data: string;
 }
 
 interface HeaderProps {
   onCursoChange: (cursoId: string) => void;
-  cursoSelecionado: string | null;
+  cursoSelecionado: number | null;
 }
 
 export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   const cursos = getCursos().map(curso => ({
     id: curso.id.toString(),
     shortname: curso.shortname,
@@ -30,7 +30,12 @@ export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps)
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
     onCursoChange(selectedCursoId);
-    router.push(`?id=${selectedCursoId}`);
+
+    if (pathname === '/') {
+      router.push(`/Curso?id=${selectedCursoId}`);
+    } else {
+      router.push(`?id=${selectedCursoId}`);
+    }
   };
 
   const cursoIdFromUrl = searchParams.get("id") || "";

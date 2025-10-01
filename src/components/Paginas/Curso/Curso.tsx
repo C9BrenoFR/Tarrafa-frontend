@@ -37,7 +37,7 @@ export default function Curso({ cursoSelecionado }: CursoProps) {
                 {curso.nome}
               </p>
             ) : (
-              <p className="text-left">Nenhuma disciplina foi selecionado ainda.</p>
+              <p className="text-left">Nenhuma disciplina foi selecionada ainda.</p>
             )}
           </div>
           <div className="flex flex-col items-end">
@@ -54,7 +54,7 @@ export default function Curso({ cursoSelecionado }: CursoProps) {
         <div>
           {curso ? (
             <div className="center-wrapper flex flex-col justify-between">
-              <DadosGerais />
+              <DadosGerais cursoSelecionado={cursoSelecionado} />
               <Indicators cursoSelecionado={cursoSelecionado} />
               <div className="flex flex-row space-x-5">
                 <Grafico cursoSelecionado={cursoSelecionado} />

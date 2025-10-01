@@ -29,9 +29,9 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
         {/* Chevron esquerdo */}
         <button
           onClick={scrollLeft}
-          className="bg-white rounded-full p-1 shadow-md hover:bg-slate-100 h-6 flex-shrink-0"
+          className="mr-3 rounded-lg border-1 border-gray-300 min-w-7 h-7 flex items-center justify-center hover:cursor-pointer hover:bg-gray-100 transition-colors"
         >
-          <FaChevronLeft className="h-3 w-3 text-slate-600" />
+          <FaChevronLeft className="h-3 w-3 text-gray-500" />
         </button>
 
         {/* Tabs scrolláveis */}
@@ -57,9 +57,9 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
         {/* Chevron direito */}
         <button
           onClick={scrollRight}
-          className="bg-white rounded-full p-1 shadow-md hover:bg-slate-100 h-6 flex-shrink-0"
+          className="mx-3 rounded-lg border-1 border-gray-300 min-w-7 h-7 flex items-center justify-center hover:cursor-pointer hover:bg-gray-50 transition-colors"
         >
-          <FaChevronRight className="h-3 w-3 text-slate-600" />
+          <FaChevronRight className="h-3 w-3 text-gray-500 font-bold" />
         </button>
       </div>
 

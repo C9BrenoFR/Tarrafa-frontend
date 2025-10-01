@@ -5,29 +5,31 @@ import { AlunoType } from "@/types/aluno";
 import { getColumns } from "@/utils/columns";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
 
-interface CursoType {
-  id: string;
+type CursoType = {
+  id: number;
+  shortname: string;
   nome: string;
   data: string;
-}
+  value: number;
+};
 
 interface AlunosProps {
   cursos: CursoType[];
   alunos: AlunoType[];
-  cursoSelecionado: string | null;
+  cursoSelecionado: number | null;
 }
 
-const tabs = ['Índice de Interação Avaliativa',
-  'Índice de Interação Não Avaliativa',
+const tabs = ['Interação Avaliativa',
+  'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
   'Relação Aluno-Professor',
-  'Índice de Desistência'];
+  'Desistência'];
 
 export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps) {
   const curso = cursos.find(c => c.id === cursoSelecionado);
   const [searchTerm, setSearchTerm] = React.useState('');
-  const [activeTab, setActiveTab] = React.useState("Engajamento");
+  const [activeTab, setActiveTab] = React.useState("Interação Avaliativa");
 
   const columns = getColumns(activeTab, cursoSelecionado);
 
@@ -43,14 +45,14 @@ export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps
                 {curso.nome}
               </p>
             ) : (
-              <p className="text-left">Nenhuma disciplina foi selecionado ainda.</p>
+              <p className="text-left">Nenhuma disciplina foi selecionada ainda.</p>
             )}
           </div>
           <div className="flex flex-col items-end">
             {curso ? (
               <>
                 <p className="text-sm text-right">{curso.data}</p>
-                <p className="text-xl text-right font-poppins font-semibold">{curso.id}</p>
+                <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
               </>
             ) : (
               <p></p>
@@ -60,15 +62,17 @@ export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps
         {curso && (
           <div className="flex flex-col gap-4">
             {/* Indicadores */}
-            <div className="flex flex-col gap-4">
-              <div className="flex-1 gap-2 justify-between">
+            <div className="flex flex-row items-center justify-between gap-1">
+              <div className="flex-1 min-w-0 mt-2">
                 <ScrollableTabs
                   tabs={tabs}
                   activeTab={activeTab}
                   onTabClick={setActiveTab}
                 />
               </div>
-
+              <div className="flex-shrink-0">
+                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              </div>
             </div>
 
             {/* Tabela */}

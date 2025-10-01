@@ -50,4 +50,7 @@ export interface AlunoType {
     nAcessos: number;
     frequenciaLogin: string;
     detalhes: React.ReactNode;
+
+    // temporarios
+    value: number; // usado para os rankings de alunos 
 }

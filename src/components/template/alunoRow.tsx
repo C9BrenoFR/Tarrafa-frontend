@@ -21,8 +21,8 @@ const AlunoRow: React.FC<AlunoRowProps> = ({ aluno, activeTab }) => {
     const render = (columnName: string, value: any) => {
         switch (columnName) {
             case 'flagEngajamento':
-            case 'flagDesempenho':
             case 'flagMotivacao':
+            case 'flagDesempenho':
             case 'flagRelAlunoProf':
                 return (
                     <div className={`py-1 px-6 max-w-fit text-center rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(value)}`}>
@@ -49,7 +49,7 @@ const AlunoRow: React.FC<AlunoRowProps> = ({ aluno, activeTab }) => {
 
     const getColumns = () => {
         switch (activeTab) {
-            case "Índice de Interação Avaliativa":
+            case "Interação Avaliativa":
                 return [
                     { label: "Nº de Posts em Fóruns Avaliativos", name: "nPostsForunsAv" },
                     { label: "Percentual de Quizzes Realizados", name: "quizzesRealiz" },
@@ -63,7 +63,7 @@ const AlunoRow: React.FC<AlunoRowProps> = ({ aluno, activeTab }) => {
                     { label: "Nº de Atividades Abaixo da Média", name: "ativAbaixoMedia" },
                 ];
 
-            case "Índice de Interação Não Avaliativa":
+            case "Interação Não Avaliativa":
                 return [
                     { label: "Percentual de Participação em Fóruns Não Obrigatórios", name: "partForunsNaoObrig" },
                     { label: "Nº de Visualizações em Materiais Complementares", name: "nVisuCompl" },
@@ -84,12 +84,12 @@ const AlunoRow: React.FC<AlunoRowProps> = ({ aluno, activeTab }) => {
                     { label: "Frequência de Contato Aluno-Professor", name: "freqContAlunoProf" },
                 ];
 
-            case "Índice de Desistência":
+            case "Desistência":
                 return [
-                    { label: "Nível de Engajamento", name: "flagEngajamento" },
-                    { label: "Nível de Desempenho", name: "flagDesempenho" },
-                    { label: "Nível de Motivação", name: "flagMotivacao" },
-                    { label: "Nível de Relação Aluno-Professor", name: "flagRelAlunoProf" },
+                    { label: "Índice de Interação Avaliativa", name: "flagEngajamento" },
+                    { label: "Índice de Interação Não Avaliativa", name: "flagMotivacao" },
+                    { label: "Índice de Desempenho", name: "flagDesempenho" },
+                    { label: "Índice de Relação Aluno-Professor", name: "flagRelAlunoProf" },
                     { label: "Índice de Desistência", name: "flagDesistencia" },
                 ];
 

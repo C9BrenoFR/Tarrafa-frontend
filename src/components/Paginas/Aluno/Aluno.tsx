@@ -1,19 +1,22 @@
 import * as React from "react";
 import { AlunoType } from "@/types/aluno";
 import Indicators from "./Indicator/Indicators";
-import { GaugeChart } from "./GaugeChart/GaugeChart";
+import GaugeChart from "./GaugeChart/GaugeChart";
+import { getAlunos, getCursos } from '@/utils/mocks';
 import AtividadesChart from "./AtividadesChart/AtividadesChart";
+import DadosPessoais from "./DadosPessoais/DadosPessoais";
 
-
-interface CursoType {
-  id: string;
+type CursoType = {
+  id: number;
+  shortname: string;
   nome: string;
   data: string;
-}
+  value: number;
+};
 
 interface AlunoProps {
   cursos: CursoType[];
-  cursoSelecionado: string | null;
+  cursoSelecionado: number | null;
   alunos: AlunoType[];
   alunoSelecionado: number | null;
 }
@@ -27,81 +30,38 @@ export default function Aluno({ cursos, cursoSelecionado, alunos, alunoSeleciona
       <div className="BoxCurso">
         <div className="flex flex-row justify-between items-start w-full mb-4">
           <div className="flex flex-col items-start">
-            {aluno ? (
-              <h1 className="text-xl font-semibold text-left">
-                {aluno.nome}
-              </h1>
+            {!aluno || !curso ? (
+              <div>
+                <h1 className="text-xl font-poppins font-semibold text-left">Aluno</h1>
+                <p className="text-left">Nenhum aluno foi selecionado ainda.</p>
+              </div>
             ) : (
-              <p className="text-left">Nenhum aluno foi selecionado ainda.</p>
-            )}
-            {curso ? (
-              <p style={{ color: '#374DAA' }} className="text-left text-xl font-semibold">
-                {curso.nome}
-              </p>
-            ) : (
-              <p className="text-left">Nenhum curso válido foi selecionado ainda.</p>
+              <div>
+                <h1 className="text-xl font-semibold text-left">
+                  {aluno.nome}
+                </h1>
+                <p style={{ color: '#374DAA' }} className="text-left text-xl font-semibold">
+                  {curso.nome}
+                </p>
+              </div>
             )}
           </div>
           <div className="flex flex-col items-end">
-            {curso ? (
+            {!aluno || !curso ? (
               <>
-                <p className="text-sm text-right">{curso.data}</p>
-                <p className="text-xl text-right font-semibold">{curso.id}</p>
+                <p></p>
               </>
             ) : (
-              <p></p>
+              <>
+                <p className="text-sm text-right">{curso.data}</p>
+                <p className="text-xl text-right font-semibold">{curso.shortname}</p>
+              </>
             )}
           </div>
         </div>
         {curso && aluno && (
           <div className="flex flex-col justify-between">
-            <div className="Box3 p-6 rounded-lg border border-gray-200 shadow-sm">
-              <h1 className="text-2xl font-semibold text-left mb-6 pb-4 border-b border-gray-200">
-                Dados Pessoais
-              </h1>
-              <div className="grid grid-cols-2 gap-8">
-                <div className="flex flex-col ml-4 mr-4">
-                  <div className="flex items-center mb-4">
-                    <p className="text-sm font-medium w-24">E-mail</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.email}
-                    </p>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    <p className="text-sm font-medium w-24">Curso</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.graduacao}
-                    </p>
-                  </div>
-                  <div className="flex items-center">
-                    <p className="text-sm font-medium w-24">Cidade</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.cidade}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col mr-4">
-                  <div className="flex items-center mb-4">
-                    <p className="text-sm font-medium w-32">Polo</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.polo}
-                    </p>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    <p className="text-sm font-medium w-32">Primeiro Acesso</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.primeiroAcesso}
-                    </p>
-                  </div>
-                  <div className="flex items-center">
-                    <p className="text-sm font-medium w-32">Último Acesso</p>
-                    <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
-                      {aluno.ultimoAcesso}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DadosPessoais aluno={aluno} />
 
             <Indicators aluno={aluno} cursoSelecionado={cursoSelecionado} />
 
@@ -111,15 +71,16 @@ export default function Aluno({ cursos, cursoSelecionado, alunos, alunoSeleciona
                   Nota final
                 </h1>
                 <p className="text-[#9291A5] mb-6 pb-4 border-b border-gray-200">da disciplina</p>
-                <div className="p-2"><GaugeChart /></div>
+                <div className="flex p-2 justify-center"><GaugeChart /></div>
               </div>
 
               <div className="Box4 flex-1 p-6">
                 <h1 className="text-xl font-poppins font-semibold text-left">
                   Notas
                 </h1>
-                <p className="text-[#9291A5] mb-6 pb-4 border-b border-gray-200">da disciplina</p>
-                <div className="p-5">
+                <p className="text-[#9291A5] mb-4 pb-4 border-b border-gray-200">da disciplina</p>
+                <div className="overflow-auto">
+                  <AtividadesChart />
                 </div>
               </div>
             </div>

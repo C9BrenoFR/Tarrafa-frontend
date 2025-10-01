@@ -4,11 +4,11 @@ interface GraficoProps {
     cursoSelecionado: string | null;
 }
 const legenda = [
-    { id: 'página', label: 'Página', value: 27, color: '#DA77C4' },
-    { id: 'fórum', label: 'Fórum', value: 25, color: '#4C6CA8' },
-    { id: 'quiz', label: 'Quiz', value: 18, color: '#7F62A3' },
-    { id: 'tarefa', label: 'Tarefa', value: 15, color: '#91B0D0' },
-    { id: 'outros', label: 'Outros', value: 10, color: '#E3D9EB' },
+    { id: 'Página', label: 'Página', value: 27, color: '#DA77C4' },
+    { id: 'Fórum', label: 'Fórum', value: 25, color: '#4C6CA8' },
+    { id: 'Quiz', label: 'Quiz', value: 18, color: '#7F62A3' },
+    { id: 'Tarefa', label: 'Tarefa', value: 15, color: '#91B0D0' },
+    { id: 'Outros', label: 'Outros', value: 10, color: '#E3D9EB' },
 ];
 
 export default function Grafico({ cursoSelecionado }: GraficoProps) {

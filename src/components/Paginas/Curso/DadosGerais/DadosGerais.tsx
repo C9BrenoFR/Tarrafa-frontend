@@ -1,5 +1,9 @@
 
-  export default function DadosGerais() {
+  interface DadosGeraisProps {
+    cursoSelecionado: string | null;
+  }
+  
+  export default function DadosGerais({ cursoSelecionado } : DadosGeraisProps) {
     return (
       <div className="Box2 mt-5">
         <div className="mb-14">

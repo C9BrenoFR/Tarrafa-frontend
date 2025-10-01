@@ -47,6 +47,8 @@ export function getAlunos() {
             nAcessos: 6,
             frequenciaLogin: "0,86",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 100,
         },
         {
             id: 2,
@@ -93,6 +95,8 @@ export function getAlunos() {
             nAcessos: 10,
             frequenciaLogin: "1,42",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 95,
         },
         {
             id: 3,
@@ -139,6 +143,8 @@ export function getAlunos() {
             nAcessos: 9,
             frequenciaLogin: "1,28",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 90,
         },
         {
             id: 4,
@@ -185,6 +191,8 @@ export function getAlunos() {
             nAcessos: 0,
             frequenciaLogin: "0",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 85,
         },
         {
             id: 5,
@@ -231,6 +239,8 @@ export function getAlunos() {
             nAcessos: 4,
             frequenciaLogin: "0,57",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 80,
         },
         {
             id: 6,
@@ -277,6 +287,8 @@ export function getAlunos() {
             nAcessos: 6,
             frequenciaLogin: "0,86",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 75,
         },
         {
             id: 7,
@@ -323,6 +335,8 @@ export function getAlunos() {
             nAcessos: 1,
             frequenciaLogin: "0,14",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 70,
         },
         {
             id: 8,
@@ -369,6 +383,8 @@ export function getAlunos() {
             nAcessos: 4,
             frequenciaLogin: "0,57",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 65,
         },
         {
             id: 9,
@@ -415,6 +431,8 @@ export function getAlunos() {
             nAcessos: 6,
             frequenciaLogin: "0,86",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 60,
         },
         {
             id: 10,
@@ -461,6 +479,8 @@ export function getAlunos() {
             nAcessos: 1,
             frequenciaLogin: "0,14",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 55,
         },
         {
             id: 11,
@@ -553,6 +573,8 @@ export function getAlunos() {
             nAcessos: 6,
             frequenciaLogin: "0,86",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 50,
         },
         {
             id: 13,
@@ -599,6 +621,8 @@ export function getAlunos() {
             nAcessos: 1,
             frequenciaLogin: "0,14",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 45,
         },
         {
             id: 14,
@@ -645,6 +669,8 @@ export function getAlunos() {
             nAcessos: 4,
             frequenciaLogin: "0,57",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 40,
         },
         {
             id: 15,
@@ -691,6 +717,8 @@ export function getAlunos() {
             nAcessos: 6,
             frequenciaLogin: "0,86",
             detalhes: <FaPlus className='text-2xl text-gray-700' />,
+            //temporarios
+            value: 35
         },
     ];
 }

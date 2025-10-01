@@ -2,40 +2,45 @@ import { AgGauge } from 'ag-charts-react';
 import { AgLinearGaugeOptions } from "ag-charts-enterprise";
 
 const atividades = [
-  { nome: "Apresentação AC 1", nota: 100, cor: "#7B61FF" },
-  { nome: "Fórum 1", nota: 100, cor: "#888888" },
-  { nome: "Fórum 3", nota: 50, cor: "#888888" },
-  { nome: "Avaliação Presencial", nota: 70, cor: "#888888" },
+  { nome: "Apresentação AC 1", nota: 100 },
+  { nome: "Fórum 1", nota: 100 },
+  { nome: "Fórum 3", nota: 50 },
+  { nome: "Avaliação Presencial", nota: 70 },
 ];
 
-const GaugeBar = ({ label, value, color }: { label: string; value: number; color: string }) => {
+const GaugeBar = ({ label, value }: { label: string; value: number; }) => {
   const options: AgLinearGaugeOptions = {
     type: "linear-gauge",
     direction: "horizontal",
-    padding: { left: 0, right: 0 },
+    padding: { left: 5, right: 10, top: 0 },
     value,
+    thickness: 25,
     scale: { min: 0, max: 100 },
-    bar: { fill: color },
+    bar: {
+      fill: "#374DAA", 
+      thickness: 25,
+    },
     cornerRadius: 5,
     cornerMode: "container",
+    height: 75,
   };
 
   return (
     <div>
-      {/* Título e porcentagem lado a lado */}
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          fontSize: 14,
+          fontSize: 12,
+          fontFamily: "Poppins",
+          fontWeight: 500,
         }}
       >
         <span>{label}</span>
         <span>{value}%</span>
       </div>
 
-      {/* Container do gauge */}
-      <div style={{ height: 200, width: "100%" }}>
+      <div style={{ height: 90 }}>
         <AgGauge options={options} />
       </div>
     </div>
@@ -47,15 +52,14 @@ const AtividadesChart = () => {
     <div
       style={{
         background: "#fff",
-        borderRadius: 12,
-        padding: 24,
-        maxWidth: 500,
+        padding: 0,
+        maxWidth: 475,
         width: "100%",
+        maxHeight: 225,
       }}
     >
-      {/* Lista de barras */}
       {atividades.map((a, i) => (
-        <GaugeBar key={i} label={a.nome} value={a.nota} color={a.cor} />
+        <GaugeBar key={i} label={a.nome} value={a.nota} />
       ))}
     </div>
   );

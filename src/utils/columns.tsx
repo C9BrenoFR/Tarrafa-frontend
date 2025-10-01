@@ -38,7 +38,7 @@ export const getDesistencia = (flag: boolean) => flag ? "Sim" : "Não";
 export const getFlagDesistenciaCor = (flag: boolean) =>
 	flag ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700";
 
-export const getColumns = (activeTab: string, cursoSelecionado: string | null) => {
+export const getColumns = (activeTab: string, cursoSelecionado: number | null) => {
 	const detalhesColumn = {
 		label: "Detalhes",
 		name: "detalhes",
@@ -65,7 +65,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -99,7 +99,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -133,7 +133,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -167,7 +167,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -201,7 +201,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -235,7 +235,7 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
-				cellClassName: "font-medium text-left"
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
 			}
 		},
 		{
@@ -256,28 +256,28 @@ export const getColumns = (activeTab: string, cursoSelecionado: string | null) =
 			name: "flagMotivacao"
 		},
 		{
-			label: "Nível de Desempenho",
+			label: "Índice de Desempenho",
 			name: "flagDesempenho"
 		},
 		{
-			label: "Nível de Relação Aluno-Professor",
+			label: "Índice de Relação Aluno-Professor",
 			name: "flagRelAlunoProf"
 		},
 		detalhesColumn
 	];
 
 	switch (activeTab) {
-		case "Índice de Interação Avaliativa":
+		case "Interação Avaliativa":
 			return engajamentoColumns;
 		case "Desempenho":
 			return desempenhoColumns;
-		case "Índice de Interação Não Avaliativa":
+		case "Interação Não Avaliativa":
 			return motivacaoColumns;
 		case "Profundidade Cognitiva":
 			return profCognitivaColumns;
 		case "Relação Aluno-Professor":
 			return relacaoAlunoProfColumns;
-		case "Índice de Desistência":
+		case "Desistência":
 			return desistenciaColumns;
 		default:
 			return engajamentoColumns;

@@ -36,7 +36,7 @@ const Grafico = () => (
       colors="#4C6CA8"
       borderRadius={6}
       enableGridY={true}
-      isInteractive={true} //tooltip
+      isInteractive={false} //tooltip
       axisLeft={{
         tickSize: 0,
         tickPadding: 10,

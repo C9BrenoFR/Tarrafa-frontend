@@ -11,7 +11,7 @@ const alunosMock = getAlunos();
 const cursosMock = getCursos();
 
 export default function AlunoPageClient() {
-    const [cursoSelecionado, setCursoSelecionado] = useState<string | null>(null);
+    const [cursoSelecionado, setCursoSelecionado] = useState<number | null>(null);
     const [alunoSelecionado, setAlunoSelecionado] = useState<number | null>(null);
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -20,15 +20,11 @@ export default function AlunoPageClient() {
         const cursoIdFromURL = searchParams.get('cursoId');
         const alunoIdFromURL = searchParams.get('alunoId');
 
-        if (cursoIdFromURL) {
-            setCursoSelecionado(cursoIdFromURL);
-        }
-
-        if (alunoIdFromURL) {
-            const alunoId = parseInt(alunoIdFromURL, 10);
-            if (!isNaN(alunoId)) {
-                setAlunoSelecionado(alunoId);
-            }
+        if (cursoIdFromURL && alunoIdFromURL) {
+            const cursoIdNumber = parseInt(cursoIdFromURL, 10);
+            const alunoIdNumber = parseInt(alunoIdFromURL, 10);
+            setCursoSelecionado(cursoIdNumber);
+            setAlunoSelecionado(alunoIdNumber);
         }
     }, [searchParams]);
 
@@ -37,7 +33,6 @@ export default function AlunoPageClient() {
             router.push(`/Aluno?cursoId=${cursoSelecionado}&alunoId=${alunoSelecionado}`);
         }
     }, [cursoSelecionado, alunoSelecionado, router]);
-
 
     return (
         <div className="flex">
