@@ -61,7 +61,6 @@ export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps
         </div>
         {curso && (
           <div className="flex flex-col gap-4">
-            {/* Indicadores */}
             <div className="flex flex-row items-center justify-between gap-1">
               <div className="flex-1 min-w-0 mt-2">
                 <ScrollableTabs
@@ -71,11 +70,10 @@ export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps
                 />
               </div>
               <div className="flex-shrink-0">
-                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Aluno" />
               </div>
             </div>
 
-            {/* Tabela */}
             <DataTable
               rowsPerPage={10}
               data={alunos}

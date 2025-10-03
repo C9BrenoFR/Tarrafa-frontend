@@ -13,7 +13,7 @@ export default function Home() {
             <h1 className="text-xl font-poppins font-semibold text-left">Visão Geral</h1>
       
               <p style={{ color: '#374DAA' }} className="text-left text-xl font-semibold">
-              das Disciplinas
+              da Instituição
               </p>
           </div>
  

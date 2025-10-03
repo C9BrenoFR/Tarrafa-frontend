@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AlunoType } from "../types/aluno";
+import { DisciplinaType } from "../types/disciplina";
 
 export const getNivel = (nivel: number) => {
 	switch (nivel) {
@@ -38,7 +39,7 @@ export const getDesistencia = (flag: boolean) => flag ? "Sim" : "Não";
 export const getFlagDesistenciaCor = (flag: boolean) =>
 	flag ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700";
 
-export const getColumns = (activeTab: string, cursoSelecionado: number | null) => {
+export const getColumns = (activeTab: string | null, cursoSelecionado: number | null) => {
 	const detalhesColumn = {
 		label: "Detalhes",
 		name: "detalhes",
@@ -266,6 +267,72 @@ export const getColumns = (activeTab: string, cursoSelecionado: number | null) =
 		detalhesColumn
 	];
 
+	const allSubjectsColumns = [
+		{
+			label: "Disciplina",
+			name: "nome",
+			options: {
+				sticky: true,
+				headerClassName: "min-w-96",
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+			}
+		},
+		{
+			label: "Índice de Interação Avaliativa",
+			name: "flagEngajamento",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento)}`}>
+					{getNivel(row.flagEngajamento)}
+				</div>
+			)
+		},
+		{
+			label: "Índice de Interação Não Avaliativa",
+			name: "flagMotivacao",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao)}`}>
+					{getNivel(row.flagMotivacao)}
+				</div>
+			)
+		},
+		{
+			label: "Desempenho",
+			name: "flagDesempenho",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho)}`}>
+					{getNivel(row.flagDesempenho)}
+				</div>
+			)
+		},
+		{
+			label: "Profundidade Cognitiva",
+			name: "flagProfCog",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagProfCog)}`}>
+					{getNivel(row.flagProfCog)}
+				</div>
+			)
+		},
+		{
+			label: "Relação Aluno-Professor",
+			name: "flagRelAlunoProf",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf)}`}>
+					{getNivel(row.flagRelAlunoProf)}
+				</div>
+			)
+		},
+		{
+			label: "Índice de Desistência",
+			name: "flagDesistencia",
+			cell: (row: DisciplinaType) => (
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagDesistenciaCor(row.flagDesistencia)}`}>
+					{getDesistencia(row.flagDesistencia)}
+				</div>
+			)
+		},
+	];
+
 	switch (activeTab) {
 		case "Interação Avaliativa":
 			return engajamentoColumns;
@@ -279,6 +346,8 @@ export const getColumns = (activeTab: string, cursoSelecionado: number | null) =
 			return relacaoAlunoProfColumns;
 		case "Desistência":
 			return desistenciaColumns;
+		case "allSubjects":
+			return allSubjectsColumns;
 		default:
 			return engajamentoColumns;
 	}
