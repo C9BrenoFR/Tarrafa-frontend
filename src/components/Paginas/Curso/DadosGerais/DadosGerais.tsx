@@ -1,6 +1,6 @@
 
   interface DadosGeraisProps {
-    cursoSelecionado: string | null;
+    cursoSelecionado: number | null;
   }
   
   export default function DadosGerais({ cursoSelecionado } : DadosGeraisProps) {

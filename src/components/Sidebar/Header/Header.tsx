@@ -12,8 +12,9 @@ interface Curso {
 }
 
 interface HeaderProps {
-  onCursoChange: (cursoId: string) => void;
-  cursoSelecionado: number | null;
+  onCursoChange?: (cursoId: number | null) => void;
+  cursoSelecionado?: number | null;
+  cursos: Curso[];
 }
 
 export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
@@ -29,7 +30,11 @@ export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps)
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
-    onCursoChange(selectedCursoId);
+    const cursoId = selectedCursoId ? Number(selectedCursoId) : null;
+
+    if (onCursoChange) {
+      onCursoChange(cursoId);
+    }
 
     if (pathname === '/') {
       router.push(`/Curso?id=${selectedCursoId}`);

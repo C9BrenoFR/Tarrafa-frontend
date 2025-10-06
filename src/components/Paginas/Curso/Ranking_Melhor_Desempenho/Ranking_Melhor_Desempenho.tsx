@@ -2,7 +2,7 @@ import RenderizaAlunos from '../RenderizaAlunos';
 import { getAlunos } from '../../../../utils/mocks';
 
 interface Ranking_Melhor_DesempenhoProps {
-    cursoSelecionado: string | null;
+    cursoSelecionado: number | null;
 }
 
 const Alunos = getAlunos();

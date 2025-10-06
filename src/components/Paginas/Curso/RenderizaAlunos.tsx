@@ -1,21 +1,21 @@
+import { AlunoType } from '@/types/aluno';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';
 
-interface Aluno {
-    id: string;
-    nome: string;
-    value: number;
-}
-
 interface RenderizaAlunosProps {
-    alunos: Aluno[];
-    cursoSelecionado: string | null;
+    alunos: AlunoType[];
+    cursoSelecionado: number | null;
     type: 'best' | 'worst';
 }
 
 export default function RenderizaAlunos({ alunos, cursoSelecionado, type }: RenderizaAlunosProps) {
     const alunosOrdenados = [...alunos]
-        .sort((a, b) => type === 'best' ? b.value - a.value : a.value - b.value)
+        .sort((a, b) => {
+            const valueA = a.value ?? 0;
+            const valueB = b.value ?? 0;
+
+            return type === 'best' ? valueB - valueA : valueA - valueB;
+        })
         .slice(0, 5);
     return (
         <div className="bg-white rounded-lg p-4 space-y-4">

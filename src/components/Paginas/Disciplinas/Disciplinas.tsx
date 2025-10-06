@@ -3,7 +3,7 @@ import DataTable from "@/components/template/dataTable";
 import SearchInput from "@/components/template/searchInput";
 import { getColumns } from "@/utils/columns";
 import { DisciplinaType } from "@/types/disciplina";
-import Filters from "./Filters/filters";
+import Filters from "./Filters/Filters";
 
 interface DisciplinasProps {
   disciplinas: DisciplinaType[];
@@ -42,7 +42,7 @@ export default function Disciplinas({ disciplinas }: DisciplinasProps) {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row items-center justify-between gap-1 mb-1">
-            <Filters /> {/* TODO: arrumar estilização */}
+            <Filters />
             <div className="flex-shrink-0">
               <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Disciplina" />
             </div>

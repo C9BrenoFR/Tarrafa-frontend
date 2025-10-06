@@ -8,7 +8,7 @@ import { getCursos } from '@/utils/mocks';
 const cursosMock = getCursos();
 
 export default function HomeLayout() {
-  const [cursoSelecionado, setCursoSelecionado] = useState<string | null>(null);
+  const [cursoSelecionado, setCursoSelecionado] = useState<number | null>(null);
 
   return (
     <div className="flex">

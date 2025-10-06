@@ -25,7 +25,7 @@ export default function CursoPageClient() {
     <div className="flex">
       <Sidebar />
       <div className="flex-1">
-        <Header cursos={cursosMock} onCursoChange={setCursoSelecionado} />
+        <Header cursos={cursosMock} onCursoChange={setCursoSelecionado} cursoSelecionado={cursoSelecionado} />
         <main>
           <Curso cursos={cursosMock} cursoSelecionado={cursoSelecionado} />
         </main>

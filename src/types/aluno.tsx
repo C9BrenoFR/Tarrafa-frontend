@@ -52,5 +52,5 @@ export interface AlunoType {
     detalhes: React.ReactNode;
 
     // temporarios
-    value: number; // usado para os rankings de alunos 
+    value?: number; // usado para os rankings de alunos 
 }

@@ -2,7 +2,7 @@ import RenderizaAlunos from '../RenderizaAlunos';
 import { getAlunos } from '../../../../utils/mocks';
 
 interface Ranking_Mais_DificuldadeProps {
-  cursoSelecionado: string | null;
+  cursoSelecionado: number | null;
 }
 
 const Alunos = getAlunos();

@@ -1,7 +1,7 @@
 import Grafico from './Grafico';
 
 interface NumAbsoProps {
-    cursoSelecionado: string | null;
+    cursoSelecionado: number | null;
 }
 
 export default function NumAbso({ cursoSelecionado }: NumAbsoProps) {

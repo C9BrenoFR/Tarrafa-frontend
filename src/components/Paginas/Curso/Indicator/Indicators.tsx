@@ -9,7 +9,7 @@ import cognitive_depth from './cognitive_depth.png';
 import Image from 'next/image';
 
 interface IndicatorsProps {
-  cursoSelecionado: string | null;
+  cursoSelecionado: number | null;
 }
 
 export default function Indicators({ cursoSelecionado }: IndicatorsProps) {

@@ -2,7 +2,6 @@ import * as React from "react";
 import { AlunoType } from "@/types/aluno";
 import Indicators from "./Indicator/Indicators";
 import GaugeChart from "./GaugeChart/GaugeChart";
-import { getAlunos, getCursos } from '@/utils/mocks';
 import AtividadesChart from "./AtividadesChart/AtividadesChart";
 import DadosPessoais from "./DadosPessoais/DadosPessoais";
 

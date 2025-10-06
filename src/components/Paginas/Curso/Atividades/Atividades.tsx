@@ -1,7 +1,7 @@
 import GraficoComp from './GraficoComp';
 
 interface GraficoProps {
-    cursoSelecionado: string | null;
+    cursoSelecionado: number | null;
 }
 const legenda = [
     { id: 'Página', label: 'Página', value: 27, color: '#DA77C4' },

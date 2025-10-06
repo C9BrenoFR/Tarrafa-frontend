@@ -7,24 +7,17 @@ import Ranking_Melhor_Desempenho from './Ranking_Melhor_Desempenho/Ranking_Melho
 import Ranking_Mais_Dificuldade from './Ranking_Mais_Dificuldade/Ranking_Mais_Dificuldade';
 import DadosGerais from './DadosGerais/DadosGerais';
 import { getCursos } from '../../../utils/mocks';
-
-type CursoType = {
-  id: number;
-  shortname: string;
-  nome: string;
-  data: string;
-  value: number;
-};
+import { DisciplinaType } from '@/types/disciplina';
 
 type CursoProps = {
-  cursoSelecionado: string | null;
+  cursos: DisciplinaType[];
+  cursoSelecionado: number | null;
 };
 
 export default function Curso({ cursoSelecionado }: CursoProps) {
   const cursos = getCursos();
 
-  const cursoId = cursoSelecionado ? parseInt(cursoSelecionado) : null;
-  const curso = cursos.find(c => c.id === cursoId);
+  const curso = cursos.find(c => c.id === cursoSelecionado);
 
   return (
     <div className="flex-1 flex justify-center items-center pl-[240px]">
