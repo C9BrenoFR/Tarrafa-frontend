@@ -1,54 +1,78 @@
+import Loading from "@/components/ui/loading";
+import { api } from "@/utils/api";
+import { useEffect, useState } from "react";
 
-  interface DadosGeraisProps {
-    cursoSelecionado: number | null;
-  }
-  
-  export default function DadosGerais({ cursoSelecionado } : DadosGeraisProps) {
-    return (
-      <div className="Box2 mt-5">
-        <div className="mb-14">
-          <div className="maincurso">
-            <div className="mt-10 ml-10 mb-5">
-              <h1 className="text-xl font-poppins font-semibold text-left">
-                Dados Gerais
-              </h1>
-              <p style={{ color: "#9291A5" }}>da disciplina</p>
-            </div>
+interface DadosGeraisProps {
+  id: number;
+}
+type GeneralData = {
+  total_enrolled: number
+  taxa_aprovacao: number
+  avg_grade_all: number
+}
+
+export default function DadosGerais({ id }: DadosGeraisProps) {
+  const [data, setData] = useState<GeneralData | null>(null)
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const response = await api.get(`analysis/general-data/${id}`)
+        setData(response.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    };
+    fetch();
+  }, [id]);
+  return (
+    <div className="Box2 mt-5">
+      <div className="mb-14">
+        <div className="maincurso">
+          <div className="mt-10 ml-10 mb-5">
+            <h1 className="text-xl font-poppins font-semibold text-left">
+              Dados Gerais
+            </h1>
+            <p style={{ color: "#9291A5" }}>da disciplina</p>
           </div>
-          <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
         </div>
-  
-        <div className="flex items-center justify-center">
+        <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
+      </div>
+
+      <div className="flex items-center justify-center">
+        {data ? (
           <div className="flex flex-row justify-between items-center space-x-45">
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
                 Total de<br />estudantes <br /> matriculados
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                100
+                {data.total_enrolled}
               </div>
             </div>
-  
+
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
                 Média das<br />notas finais <br />da disciplina
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                81
+                {data.avg_grade_all}
               </div>
             </div>
-  
+
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
                 Taxa de <br />aprovação <br />da disciplina
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
-                75%
+                {data.taxa_aprovacao}%
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <Loading>Buscando dados</Loading>
+        )}
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
