@@ -7,6 +7,7 @@ import alunoIcon1 from './baixados1.png';
 import alunoIcon5 from './evasion.png';
 import cognitive_depth from './cognitive_depth.png';
 import Image from 'next/image';
+import { Tooltip } from "@/components/template/tooltip";
 
 interface IndicatorsProps {
   cursoSelecionado: number | null;
@@ -60,6 +61,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
                 </div>
               </div>
             </div>
+            <div className="h-full top-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
           <div className="quadrado bg-[#C3D8FF]">
@@ -83,6 +87,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
                   <p className={styles.textoPersonalizado}>com bom índice<br />de interação não avaliativa</p>
                 </div>
               </div>
+            </div>
+            <div className="h-full top-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
             </div>
           </div>
 
@@ -108,6 +115,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
                 </div>
               </div>
             </div>
+            <div className="h-full top-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
           <div className="quadrado bg-[#FFD3A6]">
@@ -131,6 +141,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
                   <p className={styles.textoPersonalizado}>com nível 3<br />de profundidade cognitiva</p>
                 </div>
               </div>
+            </div>
+            <div className="h-full top-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
             </div>
           </div>
         </div>
@@ -159,6 +172,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
               </div>
             </div>
           </div>
+          <div className="h-full top-0 pt-3 pr-3 text-md">
+            <Tooltip message="Descrição do indicador" />
+          </div>
         </div>
 
         <div className="quadrado bg-[#FFD8E2]">
@@ -183,6 +199,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
                   índice de desistência</p>
               </div>
             </div>
+          </div>
+          <div className="h-full top-0 pt-3 pr-3 text-md">
+            <Tooltip message="Descrição do indicador" />
           </div>
         </div>
       </div>
