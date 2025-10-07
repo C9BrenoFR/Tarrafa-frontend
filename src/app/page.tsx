@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, Suspense } from 'react';
 import Header from '@/components/Sidebar/Header/Header';
 import Sidebar from '@/components/Sidebar/Header/Sidebar';
 import Home from '@/components/Paginas/Homepage/Home';
@@ -11,6 +12,7 @@ export default function HomeLayout() {
   const [cursoSelecionado, setCursoSelecionado] = useState<number | null>(null);
 
   return (
+    <Suspense fallback={<div>Carregando curso...</div>}>
     <div className="flex">
       <Sidebar />
       <div className="flex-1">
@@ -20,5 +22,6 @@ export default function HomeLayout() {
         </main>
       </div>
     </div>
+    </Suspense>
   );
 }
