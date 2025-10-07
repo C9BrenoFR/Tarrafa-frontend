@@ -1,9 +1,7 @@
 import Indicators from './Indicator/Indicators';
-import Grafico from './Atividades/Atividades';
-import NumAbso from './NumAbso/NumAbso';
-import Ranking_Melhor_Desempenho from './Ranking_Melhor_Desempenho/Ranking_Melhor_Desempenho';
-import Ranking_Mais_Dificuldade from './Ranking_Mais_Dificuldade/Ranking_Mais_Dificuldade';
 import DadosGerais from './DadosGerais/DadosGerais';
+import Graficos from './Graficos/graficos';
+import Rankings from './Rankings/ranking';
 import { Curso as CursoType } from '@/types/curso';
 
 type CursoProps = {
@@ -29,16 +27,10 @@ export default function Curso({ curso }: CursoProps) {
         </div>
         <div>
           <div className="center-wrapper flex flex-col justify-between">
-            <DadosGerais cursoSelecionado={curso.id} />
-            <Indicators cursoSelecionado={curso.id} />
-            <div className="flex flex-row space-x-5">
-              <Grafico cursoSelecionado={curso.id} />
-              <NumAbso cursoSelecionado={curso.id} />
-            </div>
-            <div className="flex flex-row space-x-5">
-              <Ranking_Melhor_Desempenho cursoSelecionado={curso.id} />
-              <Ranking_Mais_Dificuldade cursoSelecionado={curso.id} />
-            </div>
+            <DadosGerais id={curso.id} />
+            <Indicators id={curso.id} />
+            <Graficos id={curso.id} />
+            <Rankings id={curso.id} />
           </div>
         </div>
       </div>
