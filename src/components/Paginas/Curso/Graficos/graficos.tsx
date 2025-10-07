@@ -1,7 +1,7 @@
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
-import Grafico from "../Atividades/Atividades";
-import NumAbso from "../NumAbso/NumAbso";
+import Grafico from "./Atividades/Atividades";
+import NumAbso from "./NumAbso/NumAbso";
 
 interface GraficosProps {
     id: number
