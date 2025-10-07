@@ -1,12 +1,9 @@
-'use client';
-
 import Indicators from './Indicator/Indicators';
 import Grafico from './Atividades/Atividades';
 import NumAbso from './NumAbso/NumAbso';
 import Ranking_Melhor_Desempenho from './Ranking_Melhor_Desempenho/Ranking_Melhor_Desempenho';
 import Ranking_Mais_Dificuldade from './Ranking_Mais_Dificuldade/Ranking_Mais_Dificuldade';
 import DadosGerais from './DadosGerais/DadosGerais';
-import { getCursos } from '../../../utils/mocks';
 import { Curso as CursoType } from '@/types/curso';
 
 type CursoProps = {
@@ -26,10 +23,8 @@ export default function Curso({ curso }: CursoProps) {
             </p>
           </div>
           <div className="flex flex-col items-end">
-            <>
-              <p className="text-sm text-right">{curso.data}</p>
-              <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
-            </>
+            <p className="text-sm text-right">{curso.data}</p>
+            <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
           </div>
         </div>
         <div>
