@@ -25,7 +25,7 @@ export default function Grafico({ data }: GraficoProps) {
         data={data}
         keys={['valor']}
         indexBy="categoria"
-        margin={{ top: 50, right: 30, bottom: 10, left: 50 }}
+        margin={{ top: 50, right: 30, bottom: 50, left: 50 }}
         padding={0.4}
         layout="vertical"
         axisBottom={{

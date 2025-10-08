@@ -23,11 +23,6 @@ export default function NumAbso({ situations }: NumAbsoProps) {
 
             <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
             <Grafico data={legenda} />
-            <div className='flex flex-row text-xs font-semibold font-poppins text-center'>
-                <p className='ml-27'>Aprovados</p>
-                <p className='ml-15'>Reprovados <br /> por nota</p>
-                <p className='ml-12'>Reprovados <br /> por infrequência</p>
-            </div>
         </div>
     );
 }
