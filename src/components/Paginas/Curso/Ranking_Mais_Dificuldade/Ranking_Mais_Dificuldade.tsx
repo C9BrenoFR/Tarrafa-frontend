@@ -1,13 +1,27 @@
 import RenderizaAlunos from '../RenderizaAlunos';
 import { getAlunos } from '../../../../utils/mocks';
 import { RankingContent } from '@/types/ranking';
+import { useEffect, useState } from 'react';
+import { error } from 'console';
+import { api } from '@/utils/api';
 
 interface Ranking_Mais_DificuldadeProps {
-  ranking: RankingContent[]
   id: number
 }
 
-export default function Ranking_Mais_Dificuldade({ ranking, id }: Ranking_Mais_DificuldadeProps) {
+export default function Ranking_Mais_Dificuldade({ id }: Ranking_Mais_DificuldadeProps) {
+  const [ranking, setRanking] = useState<RankingContent[]>([])
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const response = await api.get(`analysis/subject/${id}/rankings?type=at-risk`)
+        setRanking(response.data.data.ranking)
+      } catch (e) {
+        console.error("Erro ao buscar ranking de dificuldade: ", e)
+      }
+    }
+    fetch()
+  }, [id])
   return (
     <div className="Box mb-10">
       <div className="Boxcursopequeno">

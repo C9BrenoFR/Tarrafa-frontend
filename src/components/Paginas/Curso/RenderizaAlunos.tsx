@@ -20,7 +20,7 @@ export default function RenderizaAlunos({ ranking, id }: RenderizaAlunosProps) {
                     <span className="w-6 text-left font-medium text-gray-700">
                         {index + 1}
                     </span>
-                    <span className="flex-1 text-left text-gray-800">{item.name}</span>
+                    <span className="flex-1 text-left text-gray-800">{item.student}</span>
                     <button className="text-gray-700 cursor-pointer hover:text-gray-900">
                         <Link
                             href={{

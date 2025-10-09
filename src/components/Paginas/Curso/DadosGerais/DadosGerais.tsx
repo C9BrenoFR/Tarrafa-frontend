@@ -17,8 +17,8 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
   useEffect(() => {
     async function fetch() {
       try {
-        const response = await api.get(`analysis/general-data/${id}`)
-        setData(response.data.data)
+        const response = await api.get(`analysis/subject/${id}/summary`)
+        setData(response.data.data.metrics)
       } catch (error) {
         console.error(error)
       }

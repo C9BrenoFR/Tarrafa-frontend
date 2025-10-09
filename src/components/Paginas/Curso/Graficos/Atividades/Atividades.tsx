@@ -20,11 +20,11 @@ export default function Grafico({ graph_data }: GraficoProps) {
             id: data.modulo,
             label: data.modulo,
             color: getRandomHexColor(),
-            value: data.pct_modulo_no_curso
+            value: Number(data.pct_modulo_no_curso)
         })
     });
     return (
-        <div className="Box my-10">
+        <div className="Box my-10 p-1.5">
             <div className="Boxcursopequeno">
                 <div className="mt-10 ml-10 mb-5">
                     <h1 className="text-xl font-poppins font-semibold text-left">Atividades</h1>

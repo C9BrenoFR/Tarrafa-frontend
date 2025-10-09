@@ -17,8 +17,8 @@ export default function Graficos({ id }: GraficosProps) {
     useEffect(() => {
         async function fetch() {
             try {
-                const response = await api.get(`analysis/graphs/${id}`)
-                setData(response.data.data)
+                const response = await api.get(`analysis/subject/${id}/info_graphs`)
+                setData(response.data.data.subject)
             } catch (error) {
                 console.error(error)
             }

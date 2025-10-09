@@ -17,12 +17,10 @@ interface IndicatorsProps {
 
 type PercentualInfo = {
   id: number
-  boa_interacao_avaliativa: number
-  boa_interacao_nao_avalativa: number
-  bom_desempenho: number
-  relacao_aluno_professor: number
-  profundidade_cognitiva: number
-  indice_desistencia: number
+  good_percentage_engagement: number
+  good_percentage_motivation: number
+  good_percentage_pedagogical: number
+  good_percentage_performance: number
 }
 
 export default function Indicators({ id }: IndicatorsProps) {
@@ -31,8 +29,8 @@ export default function Indicators({ id }: IndicatorsProps) {
   useEffect(() => {
     async function fetch() {
       try {
-        const response = await api.get(`analysis/percentual/${id}`)
-        setData(response.data.data)
+        const response = await api.get(`analysis/subject/${id}/indicators`)
+        setData(response.data.data.subject)
       } catch (error) {
         console.error(error)
       }
@@ -79,7 +77,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.boa_interacao_avaliativa.toFixed(2)}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
                   </div>
                   <div className="ml-17 flex text-left">
                     <div className="flex flex-col leading-snug">
@@ -102,7 +100,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="ml-2.5 object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.boa_interacao_nao_avalativa.toFixed(2)}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
                   </div>
 
                   <div className="ml-19 flex text-left">
@@ -126,7 +124,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.bom_desempenho.toFixed(2)}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_performance}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
@@ -150,7 +148,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover text-white"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.profundidade_cognitiva.toFixed(2)}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
@@ -177,7 +175,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                       className="mr-0.5 object-cover"
                     />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{data.relacao_aluno_professor.toFixed(2)}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{data.good_percentage_pedagogical}%</p>
                 </div>
 
                 <div className="ml-17 flex text-left">
@@ -201,7 +199,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{data.indice_desistencia.toFixed(2)}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{data.good_percentage_motivation}%</p>
                 </div>
 
                 <div className="ml-17 flex text-left">

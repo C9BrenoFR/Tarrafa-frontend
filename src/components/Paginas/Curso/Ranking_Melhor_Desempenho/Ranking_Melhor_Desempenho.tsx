@@ -1,13 +1,25 @@
+import { useEffect, useState } from 'react';
 import RenderizaAlunos from '../RenderizaAlunos';
-import { getAlunos } from '../../../../utils/mocks';
 import { RankingContent } from '@/types/ranking';
+import { api } from '@/utils/api';
 
 interface Ranking_Melhor_DesempenhoProps {
-    ranking: RankingContent[]
     id: number
 }
 
-export default function Ranking_Melhor_Desempenho({ ranking, id }: Ranking_Melhor_DesempenhoProps) {
+export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_DesempenhoProps) {
+    const [ranking, setRanking] = useState<RankingContent[]>([])
+    useEffect(() => {
+        const fetch = async () => {
+            try {
+                const response = await api.get(`analysis/subject/${id}/rankings?type=best-performance`)
+                setRanking(response.data.data.ranking)
+            } catch (e) {
+                console.error("Erro ao buscar ranking de dificuldade: ", e)
+            }
+        }
+        fetch()
+    }, [id])
     return (
         <div className="Box mb-10">
             <div className="Boxcursopequeno">
