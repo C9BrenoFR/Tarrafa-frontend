@@ -1,13 +1,8 @@
-export type RankingInfo = {
-    id: number
-    ranking_best: RankingContent[]
-    ranking_difficulties: RankingContent[]
-}
-
 export type RankingContent = {
-    name: string
-    final_grade: number
-    percentual: number
-    pos: number
+    grademax: number,
+    nota_final: number,
+    percentual: number,
+    situacao: string,
+    student: string,
     user_id: number
 }

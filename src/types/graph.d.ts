@@ -10,7 +10,7 @@ type Situation = {
 }
 
 type UsageByModule = {
-    course_id: number
+    subject_id: number
     modulo: string,
     pct_modulo_no_curso: number
     qtd: number
