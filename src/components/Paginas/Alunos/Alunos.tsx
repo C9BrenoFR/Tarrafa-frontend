@@ -23,7 +23,7 @@ const tabs = ['Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  'Relação Aluno-Professor',
+  // 'Relação Aluno-Professor',
   'Desistência'];
 
 export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps) {

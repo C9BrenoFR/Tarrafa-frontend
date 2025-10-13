@@ -12,7 +12,7 @@ import {
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface Column {
-    label: string;
+    label: string | React.ReactNode;
     name: string;
     cell?: (row: any) => React.ReactNode;
     options?: {
@@ -80,7 +80,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
     };
 
     return (
-        <div className="overflow-x-auto max-h-[800px]">
+        <div className="overflow-x-auto">
             <Table>
                 <TableHeader>
                     <TableRow className="bg-gray-100">
@@ -88,7 +88,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                             <TableHead
                                 key={idx}
                                 className={`min-w-40 ${column.options?.headerClassName || ''
-                                    } ${column.options?.sticky ? 'sticky left-0 z-40 bg-inherit font-semibold text-left pl-6' : 'text-sm/tight text-center'
+                                    } ${column.options?.sticky ? 'sticky left-0 z-40 bg-inherit font-semibold text-left pl-6' : 'relative text-sm/tight text-center'
                                     }`}
                             >
                                 {column.label}
