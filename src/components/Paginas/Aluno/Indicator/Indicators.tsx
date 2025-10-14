@@ -10,6 +10,7 @@ import { AlunoType } from "@/types/aluno";
 import * as React from "react";
 import AlunoRow from '@/components/template/alunoRow';
 import ScrollableTabs from '@/components/template/indicadoresTabs';
+import { Tooltip } from '@/components/template/tooltip';
 
 interface IndicatorsProps {
   aluno: AlunoType;
@@ -33,7 +34,7 @@ const tabs = ['Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  'Relação Aluno-Professor',
+  // 'Relação Aluno-Professor',
   'Desistência'];
 
 export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps) {
@@ -52,7 +53,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
 
       <div className={styles.BoxCentralizarIndicadores}>
         <div className={styles.EspacarIndicadores}>
-          <div className="quadrado bg-[#DCFCE7]">
+          <div className="relative quadrado bg-[#DCFCE7]">
             <div className="flex flex-col w-full justify-between">
               <div className="flex justify-center items-center space-x-3 mb-3">
                 <div className="bg-[#3CD856] rounded-full flex items-center justify-center min-w-8 h-8 ml-9">
@@ -72,9 +73,12 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#C3D8FF]">
+          <div className="relative quadrado bg-[#C3D8FF]">
             <div className="flex flex-col w-full justify-between">
               <div className="flex justify-center items-center space-x-3 mb-3">
                 <div className="bg-[#3C56D8] rounded-full flex items-center justify-center min-w-8 h-8 ml-7">
@@ -94,9 +98,12 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#FFF5A6]">
+          <div className="relative quadrado bg-[#FFF5A6]">
             <div className="flex flex-col w-full justify-between">
               <div className="flex justify-center items-center space-x-3 mb-4">
                 <div className="bg-[#D8D03C] rounded-full flex items-center justify-center w-8 h-8">
@@ -116,12 +123,15 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#FFD3A6]">
+          <div className="relative quadrado bg-[#FFD3A6]">
             <div className="flex flex-col w-full justify-between">
               <div className="flex justify-center items-center space-x-3 mb-4">
-                <div className="bg-[#D86D3C] rounded-full flex items-center justify-center min-w-8 h-8 ml-5">
+                <div className="bg-[#D86D3C] rounded-full flex items-center justify-center min-w-8 h-8 ml-6">
                   <Image
                     src={cognitive_depth}
                     alt="Ícone motivação"
@@ -130,7 +140,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                     className="mlobject-cover"
                   />
                 </div>
-                <p className="text-xl font-bold text-[#D86D3C]">Profundidade Cognitiva</p>
+                <p className="text-lg font-bold text-[#D86D3C]">Profundidade Cognitiva</p>
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
@@ -138,13 +148,16 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
         </div>
       </div>
 
       <div className={styles.BoxCentralizarIndicadores}>
-        <div className="quadrado bg-[#D0C3FF]">
+        {/* <div className="relative quadrado bg-[#D0C3FF]">
           <div className="flex flex-col w-full justify-between">
             <div className="flex justify-center items-center space-x-3 mb-4">
               <div className="bg-[#5C3CD8] rounded-full flex items-center justify-center min-w-8 h-8 ml-8">
@@ -164,9 +177,12 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
             </div>
           </div>
-        </div>
+          <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+            <Tooltip message="Descrição do indicador" />
+          </div>
+        </div> */}
 
-        <div className="quadrado bg-[#FFD8E2]">
+        <div className="relative quadrado bg-[#FFD8E2]">
           <div className="flex flex-col w-full justify-between">
             <div className="flex justify-center items-center space-x-3 mb-4">
               <div className="bg-[#D83C8C] rounded-full flex items-center justify-center w-8 h-8">
@@ -185,6 +201,9 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
                 <p className="font-semibold text-2xl">{getDesistencia(aluno.flagDesistencia)}</p>
               </div>
             </div>
+          </div>
+          <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+            <Tooltip message="Descrição do indicador" />
           </div>
         </div>
       </div>

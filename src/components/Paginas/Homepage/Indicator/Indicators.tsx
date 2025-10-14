@@ -7,6 +7,7 @@ import alunoIcon1 from './baixados1.png';
 import alunoIcon5 from './evasion.png';
 import cognitive_depth from './cognitive_depth.png';
 import Image from 'next/image';
+import { Tooltip } from "@/components/template/tooltip";
 
 export default function Indicators() {
   return (
@@ -30,7 +31,7 @@ export default function Indicators() {
 
       <div className={styles.BoxCentralizarIndicadores}>
         <div className={styles.EspacarIndicadores}>
-          <div className="quadrado bg-[#DCFCE7]">
+          <div className="relative quadrado bg-[#DCFCE7]">
             <div className="flex flex-col w-full justify-between">
               <div className="ml-5 flex justify-start space-x-3">
                 <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8">
@@ -51,9 +52,12 @@ export default function Indicators() {
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#C3D8FF]">
+          <div className="relative quadrado bg-[#C3D8FF]">
             <div className="flex flex-col w-full justify-between ">
               <div className="ml-8 flex justify-start space-x-3">
                 <div className="bg-[#3C56D8] rounded-full flex items-center justify-center w-8 h-8">
@@ -75,9 +79,12 @@ export default function Indicators() {
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#FFF5A6]">
+          <div className="relative quadrado bg-[#FFF5A6]">
             <div className="flex flex-col w-full justify-between ">
               <div className="ml-5 flex justify-start space-x-3">
                 <div className="bg-[#D8D03C] rounded-full flex items-center justify-center w-8 h-8">
@@ -99,9 +106,12 @@ export default function Indicators() {
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
 
-          <div className="quadrado bg-[#FFD3A6]">
+          <div className="relative quadrado bg-[#FFD3A6]">
             <div className="flex flex-col w-full justify-between ">
               <div className="ml-5 flex justify-start space-x-3">
                 <div className="bg-[#D86D3C] rounded-full flex items-center justify-center w-8 h-8">
@@ -123,12 +133,15 @@ export default function Indicators() {
                 </div>
               </div>
             </div>
+            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
           </div>
         </div>
       </div>
 
       <div className={styles.BoxCentralizarIndicadores}>
-        <div className="quadrado bg-[#D0C3FF]">
+        <div className="relative quadrado bg-[#D0C3FF]">
           <div className="flex flex-col w-full justify-between ">
             <div className="ml-5 flex justify-start space-x-3">
               <div className="bg-[#5C3CD8] rounded-full flex items-center justify-center w-8 h-8">
@@ -149,8 +162,12 @@ export default function Indicators() {
               </div>
             </div>
           </div>
+          <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
         </div>
-        <div className="quadrado bg-[#FFD8E2]">
+
+        <div className="relative quadrado bg-[#FFD8E2]">
           <div className="flex flex-col w-full justify-between">
             <div className="ml-5 flex justify-start space-x-3">
               <div className="bg-[#D83C8C] rounded-full flex items-center justify-center w-8 h-8">
@@ -171,6 +188,9 @@ export default function Indicators() {
               </div>
             </div>
           </div>
+          <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+              <Tooltip message="Descrição do indicador" />
+            </div>
         </div>
       </div>
     </div>

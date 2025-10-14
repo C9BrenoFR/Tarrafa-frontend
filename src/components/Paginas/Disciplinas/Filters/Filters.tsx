@@ -6,7 +6,7 @@ export default function Filters() {
                     <div className="flex-1 border-2 border-gray-300 bg-gray-100 p-2">
                         <span className="text-center align-middle text-gray-700 pt-1">Curso</span>
                     </div>
-                    <select className="flex-1 select-filter cursor-pointer">
+                    <select className="flex-1 select-filter cursor-pointer" defaultValue={""}>
                         <option value="" disabled>
                             Filtrar por Curso
                         </option>
@@ -19,7 +19,7 @@ export default function Filters() {
                     <div className="flex-1 border-2 border-gray-300 bg-gray-100 p-2">
                         <span className="text-center align-middle text-gray-700 pt-1">Indicador</span>
                     </div>
-                    <select className="flex-1 select-filter cursor-pointer">
+                    <select className="flex-1 select-filter cursor-pointer" defaultValue={""}>
                         <option value="" disabled>
                             Filtrar por Indicador
                         </option>
@@ -35,7 +35,7 @@ export default function Filters() {
                     <div className="flex-1 border-2 border-gray-300 bg-gray-100 p-2">
                         <span className="text-center align-middle text-gray-700 pt-1">Magnitude</span>
                     </div>
-                    <select className="flex-1 select-filter cursor-pointer">
+                    <select className="flex-1 select-filter cursor-pointer" defaultValue={""}>
                         <option value="" disabled>
                             Filtrar por Magnitude
                         </option>

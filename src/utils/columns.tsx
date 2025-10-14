@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AlunoType } from "../types/aluno";
 import { DisciplinaType } from "../types/disciplina";
 import { FaPlus } from "react-icons/fa";
+import { Tooltip } from "@/components/template/tooltip";
 
 export const getNivel = (nivel: number) => {
 	switch (nivel) {
@@ -71,7 +72,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Índice de Interação Avaliativa",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Interação Avaliativa</p>
+						</div>
+						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagEngajamento",
 			cell: (row: AlunoType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento ?? 0)}`}>
@@ -105,7 +113,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Desempenho",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Desempenho</p>
+						</div>
+						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagDesempenho",
 			cell: (row: AlunoType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
@@ -114,16 +129,12 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Média Geral das Notas Avaliativas",
+			label: "Nota (%)",
 			name: "mediaNotas"
 		},
 		{
 			label: "Comparação com a Média da Turma",
 			name: "compMedia"
-		},
-		{
-			label: "Nº de Atividades Abaixo da Média",
-			name: "ativAbaixoMedia"
 		},
 		detalhesColumn
 	];
@@ -139,7 +150,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Índice de Interação Não Avaliativa",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Interação <br /> Não Avaliativa</p>
+						</div>
+						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagMotivacao",
 			cell: (row: AlunoType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
@@ -173,7 +191,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Nível Médio de Profundidade Cognitiva",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Nível Médio de Profundidade Cognitiva</p>
+						</div>
+						<div className="absolute inset-y-0 right-1 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagProfCog",
 			cell: (row: AlunoType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
@@ -241,7 +266,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Índice de Desistência",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Desistência</p>
+						</div>
+						<div className="absolute inset-y-0 right-3 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagDesistencia",
 			cell: (row: AlunoType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagDesistenciaCor(row.flagDesistencia ?? false)}`}>
@@ -308,7 +340,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			}
 		},
 		{
-			label: "Índice de Interação Avaliativa",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Interação Avaliativa</p>
+						</div>
+						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagEngajamento",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento ?? 0)}`}>
@@ -317,7 +356,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Índice de Interação Não Avaliativa",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Interação <br /> Não Avaliativa</p>
+						</div>
+						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagMotivacao",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
@@ -326,7 +372,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Desempenho",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Desempenho</p>
+						</div>
+						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagDesempenho",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
@@ -335,7 +388,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Profundidade Cognitiva",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Profundidade Cognitiva</p>
+						</div>
+						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagProfCog",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
@@ -344,7 +404,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Relação Aluno-Professor",
+			label: (<div className="flex flex-row">
+						<div className="w-[90%]">
+							<p>Relação Aluno-Professor</p>
+						</div>
+						<div className="flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagRelAlunoProf",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
@@ -353,7 +420,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			)
 		},
 		{
-			label: "Índice de Desistência",
+			label: (<div className="flex flex-row relative">
+						<div className="w-[90%]">
+							<p>Índice de Desistência</p>
+						</div>
+						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+							<Tooltip message="Descrição do indicador" />
+						</div>
+					</div>),
 			name: "flagDesistencia",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagDesistenciaCor(row.flagDesistencia ?? false)}`}>
@@ -426,8 +500,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			return motivacaoColumns;
 		case "Profundidade Cognitiva":
 			return profCognitivaColumns;
-		case "Relação Aluno-Professor":
-			return relacaoAlunoProfColumns;
+		// case "Relação Aluno-Professor":
+		// 	return relacaoAlunoProfColumns;
 		case "Desistência":
 			return desistenciaColumns;
 		case "allSubjects":
