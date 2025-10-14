@@ -1,49 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { getCursos } from '@/utils/mocks';
-
-interface Curso {
-  id: number;
-  shortname: string;
-  nome: string;
-  data: string;
-}
+import { Curso } from '@/types/curso';
 
 interface HeaderProps {
-  onCursoChange?: (cursoId: number | null) => void;
-  cursoSelecionado?: number | null;
-  cursos: Curso[];
+  id: number
+  cursos?: Curso[] | null
 }
 
-export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
+export default function Header({ id, cursos }: HeaderProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const cursos = getCursos().map(curso => ({
-    id: curso.id.toString(),
-    shortname: curso.shortname,
-    nome: curso.nome,
-    data: curso.data
-  }));
+  if (!cursos)
+    cursos = getCursos()
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
-    const cursoId = selectedCursoId ? Number(selectedCursoId) : null;
-
-    if (onCursoChange) {
-      onCursoChange(cursoId);
-    }
-
-    if (pathname === '/') {
-      router.push(`/Curso?id=${selectedCursoId}`);
-    } else {
-      router.push(`?id=${selectedCursoId}`);
-    }
+    if (selectedCursoId)
+      router.push(`/Curso/${selectedCursoId}`);
   };
-
-  const cursoIdFromUrl = searchParams.get("id") || "";
 
   const pathname = usePathname();
 
@@ -64,11 +41,11 @@ export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps)
           id="curso"
           name="curso"
           className="select-classic"
-          defaultValue={cursoIdFromUrl}
+          defaultValue={id}
           onChange={handleChange}
           required
         >
-          <option value="" disabled hidden>
+          <option value="">
             Escolha a disciplina
           </option>
           {cursos.map((curso) => (
