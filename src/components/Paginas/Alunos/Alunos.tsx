@@ -1,37 +1,28 @@
-import * as React from "react";
 import DataTable from "@/components/template/dataTable";
 import SearchInput from "@/components/template/searchInput";
-import { AlunoType } from "@/types/aluno";
 import { getColumns } from "@/utils/columns";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
-
-type CursoType = {
-  id: number;
-  shortname: string;
-  nome: string;
-  data: string;
-  value: number;
-};
+import { Aluno as AlunoType, Tab } from "@/types/aluno";
+import { Curso as CursoType } from '@/types/curso';
+import { useState } from "react";
 
 interface AlunosProps {
-  cursos: CursoType[];
   alunos: AlunoType[];
-  cursoSelecionado: number | null;
+  curso: CursoType;
 }
 
-const tabs = ['Interação Avaliativa',
+const tabs: Tab[] = ['Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
   // 'Relação Aluno-Professor',
   'Desistência'];
 
-export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps) {
-  const curso = cursos.find(c => c.id === cursoSelecionado);
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [activeTab, setActiveTab] = React.useState("Interação Avaliativa");
+export default function Alunos({ alunos, curso }: AlunosProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState<Tab>("Interação Avaliativa");
 
-  const columns = getColumns(activeTab, cursoSelecionado);
+  const columns = getColumns(activeTab, curso.id);
 
   return (
     <div className="flex-1 flex justify-center items-center pl-[240px]">
