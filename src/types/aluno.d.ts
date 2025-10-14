@@ -1,4 +1,4 @@
-export interface AlunoType {
+export type Aluno = {
     id: number;
     nome: string;
     email: string;
@@ -54,3 +54,5 @@ export interface AlunoType {
     // temporarios
     value?: number; // usado para os rankings de alunos 
 }
+
+export type Tab = 'Interação Avaliativa' | 'Interação Não Avaliativa' | 'Desempenho' | 'Profundidade Cognitiva' | 'Relação Aluno-Professor' | 'Desistência'
