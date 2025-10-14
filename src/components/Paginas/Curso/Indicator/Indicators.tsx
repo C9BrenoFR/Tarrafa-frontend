@@ -21,6 +21,8 @@ type PercentualInfo = {
   good_percentage_motivation: number
   good_percentage_pedagogical: number
   good_percentage_performance: number
+  good_percentage_cognitive: number,
+  percentage_give_up: number
 }
 
 export default function Indicators({ id }: IndicatorsProps) {
@@ -100,7 +102,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="ml-2.5 object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_motivation}%</p>
                   </div>
 
                   <div className="ml-19 flex text-left">
@@ -148,7 +150,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover text-white"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_cognitive}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
@@ -199,7 +201,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{data.good_percentage_motivation}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{data.percentage_give_up}%</p>
                 </div>
 
                 <div className="ml-17 flex text-left">
