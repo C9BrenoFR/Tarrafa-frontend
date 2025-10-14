@@ -3,6 +3,8 @@ import { AlunoType } from "../types/aluno";
 import { DisciplinaType } from "../types/disciplina";
 import { FaPlus } from "react-icons/fa";
 import { Tooltip } from "@/components/template/tooltip";
+import { getIndicatorsInfo } from "./indicatorsInfo";
+import { get } from "http";
 
 export const getNivel = (nivel: number) => {
 	switch (nivel) {
@@ -77,7 +79,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Interação Avaliativa</p>
 						</div>
 						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
 						</div>
 					</div>),
 			name: "flagEngajamento",
@@ -118,7 +120,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Desempenho</p>
 						</div>
 						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
 						</div>
 					</div>),
 			name: "flagDesempenho",
@@ -155,7 +157,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Interação <br /> Não Avaliativa</p>
 						</div>
 						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
 						</div>
 					</div>),
 			name: "flagMotivacao",
@@ -196,7 +198,9 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Nível Médio de Profundidade Cognitiva</p>
 						</div>
 						<div className="absolute inset-y-0 right-1 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
+								<Tooltip message={getIndicatorsInfo.profCogInfo} />
+							</Link>
 						</div>
 					</div>),
 			name: "flagProfCog",
@@ -271,7 +275,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Desistência</p>
 						</div>
 						<div className="absolute inset-y-0 right-3 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
 						</div>
 					</div>),
 			name: "flagDesistencia",
@@ -317,15 +321,15 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 				</div>
 			)
 		},
-		{
-			label: "Índice de Relação Aluno-Professor",
-			name: "flagRelAlunoProf",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
-					{getNivel(row.flagRelAlunoProf ?? 0)}
-				</div>
-			)
-		},
+		// {
+		// 	label: "Índice de Relação Aluno-Professor",
+		// 	name: "flagRelAlunoProf",
+		// 	cell: (row: AlunoType) => (
+		// 		<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
+		// 			{getNivel(row.flagRelAlunoProf ?? 0)}
+		// 		</div>
+		// 	)
+		// },
 		detalhesColumn
 	];
 
@@ -345,7 +349,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Interação Avaliativa</p>
 						</div>
 						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
 						</div>
 					</div>),
 			name: "flagEngajamento",
@@ -361,7 +365,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Interação <br /> Não Avaliativa</p>
 						</div>
 						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
 						</div>
 					</div>),
 			name: "flagMotivacao",
@@ -377,7 +381,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Desempenho</p>
 						</div>
 						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
 						</div>
 					</div>),
 			name: "flagDesempenho",
@@ -393,7 +397,9 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Profundidade Cognitiva</p>
 						</div>
 						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
+								<Tooltip message={getIndicatorsInfo.profCogInfo} />
+							</Link>
 						</div>
 					</div>),
 			name: "flagProfCog",
@@ -409,7 +415,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Relação Aluno-Professor</p>
 						</div>
 						<div className="flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.relacaoAlunoProfInfo} />
 						</div>
 					</div>),
 			name: "flagRelAlunoProf",
@@ -425,7 +431,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 							<p>Índice de Desistência</p>
 						</div>
 						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message="Descrição do indicador" />
+							<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
 						</div>
 					</div>),
 			name: "flagDesistencia",

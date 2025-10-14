@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { AgGauge } from "ag-charts-react";
-import { AgRadialGaugeOptions } from "ag-charts-enterprise";
 import Stack from '@mui/material/Stack';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 

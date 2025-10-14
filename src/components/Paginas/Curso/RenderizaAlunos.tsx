@@ -21,7 +21,7 @@ export default function RenderizaAlunos({ alunos, cursoSelecionado, type }: Rend
         <div className="bg-white rounded-lg p-4 space-y-4">
             {alunosOrdenados.map((aluno, index) => (
                 <div
-                    key={aluno.value}
+                    key={index}
                     className="flex items-center justify-between px-6 py-5 bg-white shadow-sm rounded-md"
                 >
                     <span className="w-6 text-left font-medium text-gray-700">

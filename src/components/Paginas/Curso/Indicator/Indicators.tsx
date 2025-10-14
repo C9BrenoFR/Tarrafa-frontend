@@ -8,6 +8,7 @@ import alunoIcon5 from './evasion.png';
 import cognitive_depth from './cognitive_depth.png';
 import Image from 'next/image';
 import { Tooltip } from "@/components/template/tooltip";
+import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
 
 interface IndicatorsProps {
   cursoSelecionado: number | null;
@@ -62,7 +63,7 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
             </div>
           </div>
 
@@ -89,7 +90,7 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
             </div>
           </div>
 
@@ -116,7 +117,7 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Tooltip message={getIndicatorsInfo.desempenhoInfo} />
             </div>
           </div>
 
@@ -143,7 +144,9 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
+								<Tooltip message={getIndicatorsInfo.profCogInfo} />
+							</Link>
             </div>
           </div>
         </div>
@@ -173,7 +176,7 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
             </div>
           </div>
           <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-            <Tooltip message="Descrição do indicador" />
+            <Tooltip message={getIndicatorsInfo.relacaoAlunoProfInfo} />
           </div>
         </div>
 
@@ -201,7 +204,7 @@ export default function Indicators({ cursoSelecionado }: IndicatorsProps) {
             </div>
           </div>
           <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-            <Tooltip message="Descrição do indicador" />
+            <Tooltip message={getIndicatorsInfo.desistenciaInfo} />
           </div>
         </div>
       </div>
