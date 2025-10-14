@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import RenderizaAlunos from '../RenderizaAlunos';
 import { RankingContent } from '@/types/ranking';
 import { api } from '@/utils/api';
+import Loading from '@/components/ui/loading';
 
 interface Ranking_Melhor_DesempenhoProps {
     id: number
@@ -30,7 +31,11 @@ export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_Desempe
             </div>
             <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
             <div className='m-10'>
-                <RenderizaAlunos id={id} ranking={ranking} />
+                {ranking.length > 0 ? (
+                    <RenderizaAlunos id={id} ranking={ranking} />
+                ) : (
+                    <Loading>Carregando Ranking</Loading>
+                )}
             </div>
         </div>
     );

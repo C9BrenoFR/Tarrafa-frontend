@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
 import Ranking_Mais_Dificuldade from "../Ranking_Mais_Dificuldade/Ranking_Mais_Dificuldade";
 import Ranking_Melhor_Desempenho from "../Ranking_Melhor_Desempenho/Ranking_Melhor_Desempenho";
-import { api } from "@/utils/api";
-import { RankingInfo } from "@/types/ranking";
 
 interface RankingProps {
     id: number
