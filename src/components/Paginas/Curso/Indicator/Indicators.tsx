@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/utils/api";
 import Loading from "@/components/ui/loading";
 import { Tooltip } from "@/components/template/tooltip";
+import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
 
 interface IndicatorsProps {
   id: number | null;
@@ -164,7 +165,7 @@ export default function Indicators({ id }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
             </div>
           </div>
 
@@ -218,7 +219,7 @@ export default function Indicators({ id }: IndicatorsProps) {
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message="Descrição do indicador" />
+              <Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
             </div>
           </div>
         </>
