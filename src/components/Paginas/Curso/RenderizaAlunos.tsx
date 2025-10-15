@@ -1,4 +1,4 @@
-import { AlunoType } from '@/types/aluno';
+import { Aluno as AlunoType } from '@/types/aluno';
 import { RankingContent } from '@/types/ranking';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';

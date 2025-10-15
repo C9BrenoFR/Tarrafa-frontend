@@ -19,7 +19,7 @@ export default function AlunosPageClient({ curso, cursos }: AlunosPageClientProp
             <div className="flex-1">
                 <Header id={curso.id} cursos={cursos} />
                 <main>
-                    <Alunos curso={curso} alunos={getAlunos()} />
+                    <Alunos curso={curso} />
                 </main>
             </div>
         </div>

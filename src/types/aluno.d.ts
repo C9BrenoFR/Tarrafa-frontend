@@ -14,6 +14,7 @@ export type Aluno = {
     frequenciaLogin?: string;
     detalhes?: React.ReactNode;
     full_name?: string
+    user_id?: number
 
     // engajamento & desempenho
     num_posts_required?: number
@@ -31,7 +32,12 @@ export type Aluno = {
     // relacao aluno-professor
 
     // desistencia
-
+    cognitive_label?: string,
+    engagement_label?: string,
+    full_name?: string,
+    give_up?: string,
+    motivation_label?: string,
+    performance_label?: string,
 
     // temporarios
     value?: number; // usado para os rankings de alunos 

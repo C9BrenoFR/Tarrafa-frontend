@@ -6,7 +6,7 @@ interface ScrollableTabsProps {
   tabs: Tab[];
   activeTab: Tab;
   setTab: (tab: Tab) => void;
-  setAlunos: (alunos: Aluno[]) => void;
+  setAlunos?: (alunos: Aluno[]) => void;
 }
 
 const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
@@ -27,7 +27,7 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
 
   const onTabClick = (tab: Tab) => {
     setTab(tab)
-    setAlunos([])
+    setAlunos?.([])
   }
   return (
     <div className="flex justify-between items-center gap-2 mb-2">

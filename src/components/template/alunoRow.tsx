@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { AlunoType } from '@/types/aluno';
+import { Aluno as AlunoType } from '@/types/aluno';
 import { getNivel, getFlagCor, getProfCogCor, getDesistencia, getFlagDesistenciaCor } from '@/utils/columns';
 import {
     Table,

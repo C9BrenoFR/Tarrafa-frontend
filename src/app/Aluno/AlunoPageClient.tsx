@@ -39,9 +39,8 @@ export default function AlunoPageClient() {
             <Sidebar />
             <div className="flex-1">
                 <Header
+                    id={cursoSelecionado ? cursoSelecionado : 1}
                     cursos={cursosMock}
-                    onCursoChange={setCursoSelecionado}
-                    cursoSelecionado={cursoSelecionado}
                 />
                 <main>
                     <Aluno

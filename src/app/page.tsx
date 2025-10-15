@@ -13,15 +13,15 @@ export default function HomeLayout() {
 
   return (
     <Suspense fallback={<div>Carregando curso...</div>}>
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1">
-        <Header cursos={cursosMock} onCursoChange={setCursoSelecionado} />
-        <main>
-          <Home />
-        </main>
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1">
+          <Header id={1} cursos={cursosMock} />
+          <main>
+            <Home />
+          </main>
+        </div>
       </div>
-    </div>
     </Suspense>
   );
 }
