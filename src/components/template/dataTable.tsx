@@ -10,7 +10,6 @@ import {
     TableRow,
 } from '@/components/ui/tabela';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import Loading from '../ui/loading';
 
 interface Column {
     label: string | React.ReactNode;
@@ -35,11 +34,11 @@ const normalizeString = (str: string) => {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 };
 
-const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searchTerm, }) => {
+const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searchTerm }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const filteredData = data.filter(item =>
-        normalizeString(item.full_name).includes(normalizeString(searchTerm))
+        normalizeString(item.nome).includes(normalizeString(searchTerm))
     );
 
     const totalPages = Math.ceil(filteredData.length / rowsPerPage);
@@ -98,7 +97,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {data.length > 0 ? currentData.map((row, rowIndex) => (
+                    {currentData.map((row, rowIndex) => (
                         <TableRow key={rowIndex} className="odd:bg-white even:bg-gray-50">
                             {columns.map((column, colIndex) => (
                                 <TableCell
@@ -115,11 +114,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                                 </TableCell>
                             ))}
                         </TableRow>
-                    )) : (
-                        <TableCell colSpan={columns.length} className='py-7!'>
-                            <Loading>Carregando Alunos...</Loading>
-                        </TableCell>
-                    )}
+                    ))}
                 </TableBody>
             </Table>
             <div className="flex items-center justify-between p-2 text-sm text-zinc-500 font-medium z-50 bg-white">

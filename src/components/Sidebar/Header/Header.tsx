@@ -1,26 +1,49 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { getCursos } from '@/utils/mocks';
-import { Curso } from '@/types/curso';
 
-interface HeaderProps {
-  id: number
-  cursos?: Curso[] | null
+interface Curso {
+  id: number;
+  shortname: string;
+  nome: string;
+  data: string;
 }
 
-export default function Header({ id, cursos }: HeaderProps) {
-  const router = useRouter();
+interface HeaderProps {
+  onCursoChange?: (cursoId: number | null) => void;
+  cursoSelecionado?: number | null;
+  cursos: Curso[];
+}
 
-  if (!cursos)
-    cursos = getCursos()
+export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const cursos = getCursos().map(curso => ({
+    id: curso.id.toString(),
+    shortname: curso.shortname,
+    nome: curso.nome,
+    data: curso.data
+  }));
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
-    if (selectedCursoId)
-      router.push(`/Curso/${selectedCursoId}`);
+    const cursoId = selectedCursoId ? Number(selectedCursoId) : null;
+
+    if (onCursoChange) {
+      onCursoChange(cursoId);
+    }
+
+    if (pathname === '/') {
+      router.push(`/Curso?id=${selectedCursoId}`);
+    } else {
+      router.push(`?id=${selectedCursoId}`);
+    }
   };
+
+  const cursoIdFromUrl = searchParams.get("id") || "";
 
   const pathname = usePathname();
 
@@ -41,11 +64,11 @@ export default function Header({ id, cursos }: HeaderProps) {
           id="curso"
           name="curso"
           className="select-classic"
-          defaultValue={id}
+          defaultValue={cursoIdFromUrl}
           onChange={handleChange}
           required
         >
-          <option value="">
+          <option value="" disabled hidden>
             Escolha a disciplina
           </option>
           {cursos.map((curso) => (

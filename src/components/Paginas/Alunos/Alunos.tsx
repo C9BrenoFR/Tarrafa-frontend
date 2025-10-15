@@ -1,54 +1,37 @@
+import * as React from "react";
 import DataTable from "@/components/template/dataTable";
 import SearchInput from "@/components/template/searchInput";
+import { AlunoType } from "@/types/aluno";
 import { getColumns } from "@/utils/columns";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
-import { Aluno as AlunoType, Tab } from "@/types/aluno";
-import { Curso as CursoType } from '@/types/curso';
-import { useEffect, useState } from "react";
-import { api } from "@/utils/api";
+
+type CursoType = {
+  id: number;
+  shortname: string;
+  nome: string;
+  data: string;
+  value: number;
+};
 
 interface AlunosProps {
-  curso: CursoType;
+  cursos: CursoType[];
+  alunos: AlunoType[];
+  cursoSelecionado: number | null;
 }
 
-const tabs: Tab[] = [
-  'Interação Avaliativa',
+const tabs = ['Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  'Relação Aluno-Professor',
-  'Desistência'
-];
+  // 'Relação Aluno-Professor',
+  'Desistência'];
 
-const tabMapping: Record<Tab, string> = {
-  'Interação Avaliativa': 'engagement',
-  'Interação Não Avaliativa': 'motivation',
-  'Desempenho': 'performance',
-  'Profundidade Cognitiva': 'cognitive',
-  'Relação Aluno-Professor': 'pedagogic',
-  'Desistência': 'give_up'
-};
+export default function Alunos({ cursos, alunos, cursoSelecionado }: AlunosProps) {
+  const curso = cursos.find(c => c.id === cursoSelecionado);
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [activeTab, setActiveTab] = React.useState("Interação Avaliativa");
 
-export default function Alunos({ curso }: AlunosProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [alunos, setAlunos] = useState<AlunoType[]>([]);
-  const [activeTab, setActiveTab] = useState<Tab>("Interação Avaliativa");
-
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        console.log("Iniciando fetch:")
-        const response = await api.get(`analysis/subject/${curso.id}/students/${tabMapping[activeTab]}`)
-        console.log(response.data.data)
-        setAlunos(response.data.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    fetch()
-  }, [curso, activeTab])
-
-  const columns = getColumns(activeTab, curso.id);
+  const columns = getColumns(activeTab, cursoSelecionado);
 
   return (
     <div className="flex-1 flex justify-center items-center pl-[240px]">
@@ -83,8 +66,7 @@ export default function Alunos({ curso }: AlunosProps) {
                 <ScrollableTabs
                   tabs={tabs}
                   activeTab={activeTab}
-                  setTab={setActiveTab}
-                  setAlunos={setAlunos}
+                  onTabClick={setActiveTab}
                 />
               </div>
               <div className="flex-shrink-0">
