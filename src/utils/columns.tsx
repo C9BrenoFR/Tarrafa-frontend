@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { AlunoType } from "../types/aluno";
 import { DisciplinaType } from "../types/disciplina";
 import { FaPlus } from "react-icons/fa";
 import { Tooltip } from "@/components/template/tooltip";
 import { getIndicatorsInfo } from "./indicatorsInfo";
 import { get } from "http";
+import { Aluno as AlunoType } from "@/types/aluno";
 
 export const getNivel = (nivel: number) => {
 	switch (nivel) {
@@ -53,12 +53,12 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					pathname: '/Aluno',
 					query: {
 						cursoId: cursoSelecionado,
-						alunoId: row.id
+						alunoId: 1
 					}
 				}}
 				className="cursor-pointer flex items-center justify-center w-full"
 			>
-				{row.detalhes}
+				<FaPlus className='text-2xl text-gray-700' />
 			</Link>
 		)
 	};
@@ -66,7 +66,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const engajamentoColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -75,31 +75,26 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Interação Avaliativa</p>
-						</div>
-						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
-						</div>
-					</div>),
-			name: "flagEngajamento",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento ?? 0)}`}>
-					{getNivel(row.flagEngajamento ?? 0)}
+				<div className="w-[90%]">
+					<p>Índice de Interação Avaliativa</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
+				</div>
+			</div>),
+			name: "posts_required_label",
 		},
 		{
 			label: "Nº de Posts em Fóruns Avaliativos",
-			name: "nPostsForunsAv"
+			name: "num_posts_required"
 		},
 		{
 			label: "Percentual de Quizzes Realizados",
-			name: "quizzesRealiz"
+			name: "num_posts_required"
 		},
 		{
 			label: "Percentual de Tarefas Enviadas",
-			name: "tarefasEnv"
+			name: "num_posts_required"
 		},
 		detalhesColumn
 	];
@@ -107,7 +102,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const desempenhoColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -116,27 +111,22 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Desempenho</p>
-						</div>
-						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
-							<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
-						</div>
-					</div>),
-			name: "flagDesempenho",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
-					{getNivel(row.flagDesempenho ?? 0)}
+				<div className="w-[90%]">
+					<p>Desempenho</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
+				</div>
+			</div>),
+			name: "performance_label",
 		},
 		{
 			label: "Nota (%)",
-			name: "mediaNotas"
+			name: "media_percentual"
 		},
 		{
 			label: "Comparação com a Média da Turma",
-			name: "compMedia"
+			name: "comparative"
 		},
 		detalhesColumn
 	];
@@ -144,7 +134,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const motivacaoColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -153,31 +143,26 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Interação <br /> Não Avaliativa</p>
-						</div>
-						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
-						</div>
-					</div>),
-			name: "flagMotivacao",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
-					{getNivel(row.flagMotivacao ?? 0)}
+				<div className="w-[90%]">
+					<p>Índice de Interação <br /> Não Avaliativa</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
+				</div>
+			</div>),
+			name: "posts_unrequired_label",
 		},
 		{
 			label: "Percentual de Participação em Fóruns Não Obrigatórios",
-			name: "partForunsNaoObrig"
+			name: "num_posts_unrequired"
 		},
 		{
 			label: "Nº de Visualizações em Materiais Complementares",
-			name: "nVisuCompl"
+			name: "num_posts_unrequired"
 		},
 		{
 			label: "Nº de Interações na Última Semana",
-			name: "nInter"
+			name: "num_posts_unrequired"
 		},
 		detalhesColumn
 	];
@@ -185,7 +170,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const profCognitivaColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -194,33 +179,28 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Nível Médio de Profundidade Cognitiva</p>
-						</div>
-						<div className="absolute inset-y-0 right-1 flex items-center w-[10%] pt-1 pr-1">
-							<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
-								<Tooltip message={getIndicatorsInfo.profCogInfo} />
-							</Link>
-						</div>
-					</div>),
-			name: "flagProfCog",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
-					{row.flagProfCog ?? 0}
+				<div className="w-[90%]">
+					<p>Nível Médio de Profundidade Cognitiva</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-1 flex items-center w-[10%] pt-1 pr-1">
+					<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
+						<Tooltip message={getIndicatorsInfo.profCogInfo} />
+					</Link>
+				</div>
+			</div>),
+			name: "label",
 		},
 		{
 			label: "Nível Médio de Profundidade Cognitiva em Fóruns",
-			name: "profCogForuns"
+			name: "forum_mean_level"
 		},
 		{
 			label: "Nível Médio de Profundidade Cognitiva em Quizzes",
-			name: "profCogQuizzes"
+			name: "quiz_mean_level"
 		},
 		{
 			label: "Nível Médio de Profundidade Cognitiva em Tarefas",
-			name: "profCogTarefas"
+			name: "assign_mean_level"
 		},
 		detalhesColumn
 	];
@@ -228,7 +208,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const relacaoAlunoProfColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -237,24 +217,19 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: "Relação Aluno-Professor",
-			name: "flagRelAlunoProf",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
-					{getNivel(row.flagRelAlunoProf ?? 0)}
-				</div>
-			)
+			name: "full_name",
 		},
 		{
 			label: "Nº de Mensagens Trocadas com o Professor",
-			name: "nMsgsAlunoProf"
+			name: "full_name"
 		},
 		{
 			label: "Percentual de Participação em Fóruns Mediados pelo Docente",
-			name: "partForunsDocente"
+			name: "full_name"
 		},
 		{
 			label: "Frequência de Contato Aluno-Professor",
-			name: "freqContAlunoProf"
+			name: "full_name"
 		},
 		detalhesColumn
 	];
@@ -262,7 +237,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const desistenciaColumns = [
 		{
 			label: "Aluno",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -271,55 +246,30 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Desistência</p>
-						</div>
-						<div className="absolute inset-y-0 right-3 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
-						</div>
-					</div>),
-			name: "flagDesistencia",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagDesistenciaCor(row.flagDesistencia ?? false)}`}>
-					{getDesistencia(row.flagDesistencia ?? false)}
+				<div className="w-[90%]">
+					<p>Índice de Desistência</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-3 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
+				</div>
+			</div>),
+			name: "cognitive_label",
 		},
 		{
 			label: "Índice de Interação Avaliativa",
-			name: "flagEngajamento",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento ?? 0)}`}>
-					{getNivel(row.flagEngajamento ?? 0)}
-				</div>
-			)
+			name: "engagement_label",
 		},
 		{
 			label: "Índice de Interação Não Avaliativa",
-			name: "flagMotivacao",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
-					{getNivel(row.flagMotivacao ?? 0)}
-				</div>
-			)
+			name: "motivation_label",
 		},
 		{
 			label: "Índice de Desempenho",
-			name: "flagDesempenho",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
-					{getNivel(row.flagDesempenho ?? 0)}
-				</div>
-			)
+			name: "performance_label",
 		},
 		{
 			label: "Nível de Profundidade Cognitiva",
-			name: "flagProfCog",
-			cell: (row: AlunoType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
-					{row.flagProfCog ?? 0}
-				</div>
-			)
+			name: "cognitive_label",
 		},
 		// {
 		// 	label: "Índice de Relação Aluno-Professor",
@@ -336,7 +286,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const allSubjectsColumns = [
 		{
 			label: "Disciplina",
-			name: "nome",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -345,29 +295,24 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Interação Avaliativa</p>
-						</div>
-						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
-						</div>
-					</div>),
-			name: "flagEngajamento",
-			cell: (row: DisciplinaType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagEngajamento ?? 0)}`}>
-					{getNivel(row.flagEngajamento ?? 0)}
+				<div className="w-[90%]">
+					<p>Índice de Interação Avaliativa</p>
 				</div>
-			)
+				<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
+				</div>
+			</div>),
+			name: "full_name",
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Interação <br /> Não Avaliativa</p>
-						</div>
-						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
-						</div>
-					</div>),
+				<div className="w-[90%]">
+					<p>Índice de Interação <br /> Não Avaliativa</p>
+				</div>
+				<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
+				</div>
+			</div>),
 			name: "flagMotivacao",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
@@ -377,13 +322,13 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Desempenho</p>
-						</div>
-						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
-							<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
-						</div>
-					</div>),
+				<div className="w-[90%]">
+					<p>Desempenho</p>
+				</div>
+				<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.desempenhoInfo} />
+				</div>
+			</div>),
 			name: "flagDesempenho",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
@@ -393,15 +338,15 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Profundidade Cognitiva</p>
-						</div>
-						<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pt-1 pr-1">
-							<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
-								<Tooltip message={getIndicatorsInfo.profCogInfo} />
-							</Link>
-						</div>
-					</div>),
+				<div className="w-[90%]">
+					<p>Profundidade Cognitiva</p>
+				</div>
+				<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pt-1 pr-1">
+					<Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
+						<Tooltip message={getIndicatorsInfo.profCogInfo} />
+					</Link>
+				</div>
+			</div>),
 			name: "flagProfCog",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
@@ -411,13 +356,13 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row">
-						<div className="w-[90%]">
-							<p>Relação Aluno-Professor</p>
-						</div>
-						<div className="flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.relacaoAlunoProfInfo} />
-						</div>
-					</div>),
+				<div className="w-[90%]">
+					<p>Relação Aluno-Professor</p>
+				</div>
+				<div className="flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.relacaoAlunoProfInfo} />
+				</div>
+			</div>),
 			name: "flagRelAlunoProf",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
@@ -427,13 +372,13 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: (<div className="flex flex-row relative">
-						<div className="w-[90%]">
-							<p>Índice de Desistência</p>
-						</div>
-						<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
-							<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
-						</div>
-					</div>),
+				<div className="w-[90%]">
+					<p>Índice de Desistência</p>
+				</div>
+				<div className="absolute inset-y-0 right-4 flex items-center w-[10%] pt-1 pr-1">
+					<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
+				</div>
+			</div>),
 			name: "flagDesistencia",
 			cell: (row: DisciplinaType) => (
 				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagDesistenciaCor(row.flagDesistencia ?? false)}`}>
