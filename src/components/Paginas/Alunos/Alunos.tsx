@@ -4,23 +4,49 @@ import { getColumns } from "@/utils/columns";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
 import { Aluno as AlunoType, Tab } from "@/types/aluno";
 import { Curso as CursoType } from '@/types/curso';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "@/utils/api";
 
 interface AlunosProps {
-  alunos: AlunoType[];
   curso: CursoType;
 }
 
-const tabs: Tab[] = ['Interação Avaliativa',
+const tabs: Tab[] = [
+  'Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  // 'Relação Aluno-Professor',
-  'Desistência'];
+  'Relação Aluno-Professor',
+  'Desistência'
+];
 
-export default function Alunos({ alunos, curso }: AlunosProps) {
+const tabMapping: Record<Tab, string> = {
+  'Interação Avaliativa': 'engagement',
+  'Interação Não Avaliativa': 'motivation',
+  'Desempenho': 'performance',
+  'Profundidade Cognitiva': 'cognitive',
+  'Relação Aluno-Professor': 'pedagogic',
+  'Desistência': 'give_up'
+};
+
+export default function Alunos({ curso }: AlunosProps) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [alunos, setAlunos] = useState<AlunoType[]>([]);
   const [activeTab, setActiveTab] = useState<Tab>("Interação Avaliativa");
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        console.log("Iniciando fetch:")
+        const response = await api.get(`analysis/subject/${curso.id}/students/${tabMapping[activeTab]}`)
+        console.log(response.data.data)
+        setAlunos(response.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetch()
+  }, [curso, activeTab])
 
   const columns = getColumns(activeTab, curso.id);
 
@@ -57,7 +83,8 @@ export default function Alunos({ alunos, curso }: AlunosProps) {
                 <ScrollableTabs
                   tabs={tabs}
                   activeTab={activeTab}
-                  onTabClick={setActiveTab}
+                  setTab={setActiveTab}
+                  setAlunos={setAlunos}
                 />
               </div>
               <div className="flex-shrink-0">
