@@ -1,55 +1,37 @@
 export type Aluno = {
-    id: number;
-    nome: string;
-    email: string;
-    graduacao: string;
-    cidade: string;
-    polo: string;
-    ultimoAcesso: string;
-    primeiroAcesso: string;
-
-    // engajamento
-    flagEngajamento: number;
-    nPostsForunsAv: number;
-    quizzesRealiz: string;
-    tarefasEnv: string;
-    tempoMedio: number;
-
-    // desempenho
-    flagDesempenho: number;
-    mediaNotas: string;
-    compMedia: number;
-    ativAbaixoMedia: number;
-
-    // motivacao
-    flagMotivacao: number;
-    partForunsNaoObrig: string;
-    nVisuCompl: number;
-    nInter: number;
-
-    // profundidade cognitiva
-    flagProfCog: number;
-    profCogForuns: number;
-    profCogQuizzes: number;
-    profCogTarefas: number;
-
-    // relacao aluno-professor
-    flagRelAlunoProf: number;
-    nMsgsAlunoProf: number;
-    nMsgsPriv: number;
-    partForunsDocente: string;
-    sentMsgsPriv: string;
-    freqContAlunoProf: string;
-
-    // desistencia
-    flagDesistencia: boolean;
-    nNotasAbaixoMedia: number;
+    id?: number;
+    nome?: string;
+    email?: string;
+    graduacao?: string;
+    cidade?: string;
+    polo?: string;
+    ultimoAcesso?: string;
+    primeiroAcesso?: string;
 
     // reutilizaveis
-    sentMsgs: string;
-    nAcessos: number;
-    frequenciaLogin: string;
-    detalhes: React.ReactNode;
+    sentMsgs?: string;
+    nAcessos?: number;
+    frequenciaLogin?: string;
+    detalhes?: React.ReactNode;
+    full_name?: string
+
+    // engajamento & desempenho
+    num_posts_required?: number
+    posts_required_label?: string
+
+    // motivacao
+    comparative?: number
+    media_percentual?: number
+    performance_label?: string
+    subject_id?: number
+    user_id?: number
+
+    // profundidade cognitiva
+
+    // relacao aluno-professor
+
+    // desistencia
+
 
     // temporarios
     value?: number; // usado para os rankings de alunos 
