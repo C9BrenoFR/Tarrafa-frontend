@@ -1,25 +1,18 @@
 import { AlunoType } from '@/types/aluno';
+import { RankingContent } from '@/types/ranking';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';
 
 interface RenderizaAlunosProps {
-    alunos: AlunoType[];
-    cursoSelecionado: number | null;
-    type: 'best' | 'worst';
+    ranking: RankingContent[]
+    id: number
 }
 
-export default function RenderizaAlunos({ alunos, cursoSelecionado, type }: RenderizaAlunosProps) {
-    const alunosOrdenados = [...alunos]
-        .sort((a, b) => {
-            const valueA = a.value ?? 0;
-            const valueB = b.value ?? 0;
+export default function RenderizaAlunos({ ranking, id }: RenderizaAlunosProps) {
 
-            return type === 'best' ? valueB - valueA : valueA - valueB;
-        })
-        .slice(0, 5);
     return (
         <div className="bg-white rounded-lg p-4 space-y-4">
-            {alunosOrdenados.map((aluno, index) => (
+            {ranking.map((item, index) => (
                 <div
                     key={index}
                     className="flex items-center justify-between px-6 py-5 bg-white shadow-sm rounded-md"
@@ -27,14 +20,14 @@ export default function RenderizaAlunos({ alunos, cursoSelecionado, type }: Rend
                     <span className="w-6 text-left font-medium text-gray-700">
                         {index + 1}
                     </span>
-                    <span className="flex-1 text-left text-gray-800">{aluno.nome}</span>
+                    <span className="flex-1 text-left text-gray-800">{item.student}</span>
                     <button className="text-gray-700 cursor-pointer hover:text-gray-900">
                         <Link
                             href={{
                                 pathname: '/Aluno',
                                 query: {
-                                    cursoId: cursoSelecionado,
-                                    alunoId: aluno.id,
+                                    cursoId: id,
+                                    alunoId: item.user_id,
                                 }
                             }}
                         >
