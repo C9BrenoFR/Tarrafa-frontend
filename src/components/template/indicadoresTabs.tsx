@@ -1,17 +1,19 @@
-import { Tab } from '@/types/aluno';
+import { Aluno, Tab } from '@/types/aluno';
 import React, { useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface ScrollableTabsProps {
   tabs: Tab[];
   activeTab: Tab;
-  onTabClick: (tab: Tab) => void;
+  setTab: (tab: Tab) => void;
+  setAlunos: (alunos: Aluno[]) => void;
 }
 
 const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   tabs,
   activeTab,
-  onTabClick,
+  setTab,
+  setAlunos
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +25,10 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
     scrollRef.current?.scrollBy({ left: 200, behavior: 'smooth' });
   };
 
+  const onTabClick = (tab: Tab) => {
+    setTab(tab)
+    setAlunos([])
+  }
   return (
     <div className="flex justify-between items-center gap-2 mb-2">
       <div className="flex items-center gap-1 max-w-full overflow-hidden">
@@ -41,8 +47,8 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
               key={index}
               onClick={() => onTabClick(tab)}
               className={`flex-shrink-0 rounded-lg px-4 py-2 border-2 transition-colors cursor-pointer ${activeTab === tab
-                  ? 'text-white bg-[#374DAA] border-[#374DAA]'
-                  : 'text-gray-800 bg-white border-gray-300 hover:bg-gray-100'
+                ? 'text-white bg-[#374DAA] border-[#374DAA]'
+                : 'text-gray-800 bg-white border-gray-300 hover:bg-gray-100'
                 }`}
             >
               {tab}
