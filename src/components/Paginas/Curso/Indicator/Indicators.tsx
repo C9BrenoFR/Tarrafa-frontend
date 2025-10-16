@@ -50,12 +50,7 @@ export default function Indicators({ id }: IndicatorsProps) {
         </div>
         <div className="m-10">
           <Link
-            href={{
-              pathname: '/Alunos',
-              query: {
-                id: id
-              }
-            }}
+            href={`/Alunos/${id}`}
             className="px-4 py-2 rounded bg-[#5a6acf] text-white hover:bg-[#374DAA] transition"
           >
             Saiba mais
