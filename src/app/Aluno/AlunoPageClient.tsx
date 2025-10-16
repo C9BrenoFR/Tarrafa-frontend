@@ -5,10 +5,9 @@ import Header from '@/components/Sidebar/Header/Header';
 import Sidebar from '@/components/Sidebar/Header/Sidebar';
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { getAlunos, getCursos } from '@/utils/mocks';
+import { getAlunos } from '@/utils/mocks';
 
 const alunosMock = getAlunos();
-const cursosMock = getCursos();
 
 export default function AlunoPageClient() {
     const [cursoSelecionado, setCursoSelecionado] = useState<number | null>(null);
@@ -40,11 +39,10 @@ export default function AlunoPageClient() {
             <div className="flex-1">
                 <Header
                     id={cursoSelecionado ? cursoSelecionado : 1}
-                    cursos={cursosMock}
                 />
                 <main>
                     <Aluno
-                        cursos={cursosMock}
+                        cursos={[]}
                         cursoSelecionado={cursoSelecionado}
                         alunos={alunosMock}
                         alunoSelecionado={alunoSelecionado} />
