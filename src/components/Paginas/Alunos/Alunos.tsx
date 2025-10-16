@@ -59,7 +59,7 @@ export default function Alunos({ curso }: AlunosProps) {
             <h1 className="text-xl font-poppins font-semibold text-left">Alunos</h1>
             {curso ? (
               <p style={{ color: '#374DAA' }} className="text-left text-xl font-semibold">
-                {curso.nome}
+                {curso.fullname}
               </p>
             ) : (
               <p className="text-left">Nenhuma disciplina foi selecionada ainda.</p>
@@ -68,7 +68,7 @@ export default function Alunos({ curso }: AlunosProps) {
           <div className="flex flex-col items-end">
             {curso ? (
               <>
-                <p className="text-sm text-right">{curso.data}</p>
+                <p className="text-sm text-right">{curso.period}</p>
                 <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
               </>
             ) : (

@@ -1,6 +1,6 @@
 import CursoPageClient from '@/components/Paginas/Curso/CursoPageClient';
 import NotFound from '@/components/Paginas/global/not-found';
-import { getCursos } from '@/utils/mocks';
+import { getCourses } from '@/utils/api';
 
 interface PageProps {
   params: Promise<{
@@ -10,7 +10,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const page_param = await params
-  const cursos = getCursos()
+  const cursos = await getCourses()
   const curso = cursos.filter(curso => curso.id == Number(page_param.id))[0]
 
   if (!curso) {

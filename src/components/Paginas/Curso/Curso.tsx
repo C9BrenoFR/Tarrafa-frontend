@@ -17,11 +17,11 @@ export default function Curso({ curso }: CursoProps) {
           <div className="flex flex-col items-start">
             <h1 className="text-xl font-poppins font-semibold text-left">Disciplina</h1>
             <p style={{ color: '#374DAA' }} className="text-left text-xl font-semibold">
-              {curso.nome}
+              {curso.fullname}
             </p>
           </div>
           <div className="flex flex-col items-end">
-            <p className="text-sm text-right">{curso.data}</p>
+            <p className="text-sm text-right">{curso.period}</p>
             <p className="text-xl text-right font-poppins font-semibold">{curso.shortname}</p>
           </div>
         </div>

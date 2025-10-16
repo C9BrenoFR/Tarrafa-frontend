@@ -1,3 +1,4 @@
+import { Curso } from "@/types/curso";
 import axios from "axios";
 
 export const api = axios.create({
@@ -7,3 +8,11 @@ export const api = axios.create({
         "Content-Type": "application/json"
     }
 })
+
+
+export async function getCourses(): Promise<Curso[]> {
+    const response = await api.get('/subjects')
+    if (response.status != 200)
+        return []
+    return response.data.data.subjects
+}
