@@ -30,9 +30,12 @@ export default function Sidebar() {
               />
               <li>Painel das Disciplinas</li>
             </div>
-            <LogoutButton />
+
           </ul>
         </ul>
+        <div className="flex justify-end p-2">
+          <LogoutButton />
+        </div>
       </aside>
     </div>
   );

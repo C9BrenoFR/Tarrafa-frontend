@@ -23,7 +23,7 @@ export default function LogoutButton({ className = "", children = "Sair" }: Logo
     return (
         <button
             onClick={handleLogout}
-            className={`text-red-600 hover:text-red-800 transition-colors ${className}`}
+            className={`border border-red-600 rounded p-1 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105 transition-all ${className}`}
         >
             {children}
         </button>
