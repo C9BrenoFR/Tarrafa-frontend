@@ -1,5 +1,6 @@
 'use client';
 
+import LogoutButton from '@/components/LogoutButton';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -29,6 +30,7 @@ export default function Sidebar() {
               />
               <li>Painel das Disciplinas</li>
             </div>
+            <LogoutButton />
           </ul>
         </ul>
       </aside>
