@@ -36,7 +36,7 @@ export default function Ranking_Mais_Dificuldade({ id }: Ranking_Mais_Dificuldad
         {ranking.length > 0 ? (
           <RenderizaAlunos id={id} ranking={ranking} />
         ) : (
-          <Loading>Carregando Ranking</Loading>
+          <Loading>Carregando ranking</Loading>
         )}
       </div>
     </div>

@@ -205,34 +205,34 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		detalhesColumn
 	];
 
-	const relacaoAlunoProfColumns = [
-		{
-			label: "Aluno",
-			name: "full_name",
-			options: {
-				sticky: true,
-				headerClassName: "min-w-96",
-				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
-			}
-		},
-		{
-			label: "Relação Aluno-Professor",
-			name: "full_name",
-		},
-		{
-			label: "Nº de Mensagens Trocadas com o Professor",
-			name: "full_name"
-		},
-		{
-			label: "Percentual de Participação em Fóruns Mediados pelo Docente",
-			name: "full_name"
-		},
-		{
-			label: "Frequência de Contato Aluno-Professor",
-			name: "full_name"
-		},
-		detalhesColumn
-	];
+	// const relacaoAlunoProfColumns = [
+	// 	{
+	// 		label: "Aluno",
+	// 		name: "full_name",
+	// 		options: {
+	// 			sticky: true,
+	// 			headerClassName: "min-w-96",
+	// 			cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+	// 		}
+	// 	},
+	// 	{
+	// 		label: "Relação Aluno-Professor",
+	// 		name: "full_name",
+	// 	},
+	// 	{
+	// 		label: "Nº de Mensagens Trocadas com o Professor",
+	// 		name: "full_name"
+	// 	},
+	// 	{
+	// 		label: "Percentual de Participação em Fóruns Mediados pelo Docente",
+	// 		name: "full_name"
+	// 	},
+	// 	{
+	// 		label: "Frequência de Contato Aluno-Professor",
+	// 		name: "full_name"
+	// 	},
+	// 	detalhesColumn
+	// ];
 
 	const desistenciaColumns = [
 		{

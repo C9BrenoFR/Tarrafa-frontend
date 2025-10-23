@@ -42,12 +42,13 @@ export default function Indicators({ id }: IndicatorsProps) {
     fetch();
   }, [id]);
   return (
-    <div className="Box mt-10 pb-5">
+    <div className="Box mt-10 pb-5 h-60">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
           <h1 className="text-xl font-poppins font-semibold text-left">Indicadores</h1>
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
+        {data ? (
         <div className="m-10">
           <Link
             href={`/Alunos/${id}`}
@@ -56,6 +57,7 @@ export default function Indicators({ id }: IndicatorsProps) {
             Saiba mais
           </Link>
         </div>
+        ) : (<div></div>)}
       </div>
 
       <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
@@ -219,7 +221,9 @@ export default function Indicators({ id }: IndicatorsProps) {
           </div>
         </>
       ) : (
-        <Loading>Buscando Dados</Loading>
+        <div className="m-13">
+          <Loading>Buscando dados</Loading>
+        </div>
       )}
     </div>
   );

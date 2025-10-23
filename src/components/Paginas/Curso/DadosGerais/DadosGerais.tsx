@@ -70,7 +70,9 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
             </div>
           </div>
         ) : (
-          <Loading>Buscando dados</Loading>
+          <div className="m-5">
+            <Loading>Buscando dados</Loading>
+          </div>
         )}
       </div>
     </div>

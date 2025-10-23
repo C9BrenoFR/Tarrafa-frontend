@@ -32,7 +32,7 @@ export default function Graficos({ id }: GraficosProps) {
     }
     return (
         <div className="w-full mt-5 mb-5 h-24 Box flex items-center justify-center">
-            <Loading>Carregando Graficos</Loading>
+            <Loading>Carregando gráficos</Loading>
         </div>
     )
 

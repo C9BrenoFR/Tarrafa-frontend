@@ -1,11 +1,13 @@
 import { Curso } from "@/types/curso";
 import CourseCard from "./course-card";
+import SearchInput from "@/components/template/searchInput";
+import { useState } from "react";
 
 interface CoursesDisplayProps {
     path: string
     courses: Curso[]
     searchTerm: string
-    setSearchTerm: (term: string) => void
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function CoursesDisplay({ path, courses, searchTerm, setSearchTerm }: CoursesDisplayProps) {
@@ -22,13 +24,7 @@ export default function CoursesDisplay({ path, courses, searchTerm, setSearchTer
                         </p>
                     </div>
                     <div className="flex flex-col items-end">
-                        <input
-                            type="text"
-                            placeholder="Buscar disciplina..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#374DAA] focus:border-transparent"
-                        />
+                        <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Buscar disciplina" />
                     </div>
                 </div>
                 <div>

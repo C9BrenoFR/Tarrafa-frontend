@@ -116,7 +116,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                             ))}
                         </TableRow>
                     )) : (
-                        <TableCell colSpan={columns.length} className='py-7!'>
+                        <TableCell colSpan={columns.length} className='py-7'>
                             <Loading>Carregando Alunos...</Loading>
                         </TableCell>
                     )}
@@ -162,8 +162,14 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                     )}
                 </div>
                 <span>
-                    Mostrando {(currentPage - 1) * rowsPerPage + 1} –{' '}
-                    {Math.min(currentPage * rowsPerPage, filteredData.length)} de {filteredData.length} entradas
+                    Mostrando{' '}
+                    {filteredData.length === 0
+                        ? '0 – 0'
+                        : `${(currentPage - 1) * rowsPerPage + 1} – ${Math.min(
+                            currentPage * rowsPerPage,
+                            filteredData.length
+                        )}`
+                    } de {filteredData.length} entradas
                 </span>
             </div>
         </div>

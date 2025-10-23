@@ -34,7 +34,7 @@ export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_Desempe
                 {ranking.length > 0 ? (
                     <RenderizaAlunos id={id} ranking={ranking} />
                 ) : (
-                    <Loading>Carregando Ranking</Loading>
+                    <Loading>Carregando ranking</Loading>
                 )}
             </div>
         </div>

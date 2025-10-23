@@ -24,7 +24,7 @@ export default function Sidebar() {
               <Image
                 className="ml-4"
                 src="/sidebarpainelcurso.png"
-                alt="Painel dos Cursos"
+                alt="Painel das Disciplinas"
                 width={20}
                 height={20}
               />

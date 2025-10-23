@@ -15,6 +15,7 @@ export default function SelectCourse({ path, courses }: SelectCourseProps) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredCourses = courses.filter(course =>
+        course.fullname.toLowerCase().includes(searchTerm.toLowerCase()) ||
         course.shortname.toLowerCase().includes(searchTerm.toLowerCase()) ||
         course.period.toLowerCase().includes(searchTerm.toLowerCase())
     );

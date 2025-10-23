@@ -37,7 +37,7 @@ const tabs: Tab[] = [
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  'Relação Aluno-Professor',
+  // 'Relação Aluno-Professor',
   'Desistência'
 ];
 
