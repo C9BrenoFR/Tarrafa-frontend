@@ -1,6 +1,6 @@
 'use client';
 
-import LogoutButton from '@/components/LogoutButton';
+import LogoutButton from '@/components/auth/LogoutButton';
 import Image from 'next/image';
 import Link from 'next/link';
 
