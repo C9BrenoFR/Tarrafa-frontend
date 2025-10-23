@@ -13,7 +13,7 @@ export default function DisciplinasPageClient() {
     <div className="flex">
       <Sidebar />
       <div className="flex-1">
-        <Header cursos={cursosMock} />
+        <Header id={1} cursos={[]} />
         <main>
           <Disciplinas disciplinas={cursosMock} />
         </main>

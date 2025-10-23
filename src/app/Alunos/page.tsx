@@ -1,10 +1,8 @@
-import { Suspense } from 'react';
-import AlunosPageClient from './AlunosPageClient';
+import SelectCourse from '@/components/Paginas/SelectCourses/select-course';
+import { getCourses } from '@/utils/api';
 
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Carregando alunos do curso...</div>}>
-      <AlunosPageClient />
-    </Suspense>
-  );
+export default async function Page() {
+  const cursos = await getCourses()
+
+  return <SelectCourse path='/Alunos/' courses={cursos} />;
 }

@@ -6,7 +6,7 @@ import alunoIcon1 from './baixados1.png';
 import alunoIcon5 from './evasion.png';
 import cognitive_depth from './cognitive_depth.png';
 import Image from 'next/image';
-import { AlunoType } from "@/types/aluno";
+import { Aluno as AlunoType, Tab } from "@/types/aluno";
 import * as React from "react";
 import AlunoRow from '@/components/template/alunoRow';
 import ScrollableTabs from '@/components/template/indicadoresTabs';
@@ -32,15 +32,17 @@ export const getNivel = (nivel: number) => {
 
 export const getDesistencia = (flag: boolean) => flag ? "Sim" : "Não";
 
-const tabs = ['Interação Avaliativa',
+const tabs: Tab[] = [
+  'Interação Avaliativa',
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  // 'Relação Aluno-Professor',
-  'Desistência'];
+  'Relação Aluno-Professor',
+  'Desistência'
+];
 
 export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps) {
-  const [activeTab, setActiveTab] = React.useState("Interação Avaliativa");
+  const [activeTab, setActiveTab] = React.useState<Tab>("Interação Avaliativa");
 
   return (
     <div className="Box my-6">
@@ -71,7 +73,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{getNivel(aluno.flagEngajamento)}</p>
+                  <p className="font-semibold text-2xl">{aluno.engagement_label}</p>
                 </div>
               </div>
             </div>
@@ -96,7 +98,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{getNivel(aluno.flagMotivacao)}</p>
+                  <p className="font-semibold text-2xl">{aluno.motivation_label}</p>
                 </div>
               </div>
             </div>
@@ -121,7 +123,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{getNivel(aluno.flagDesempenho)}</p>
+                  <p className="font-semibold text-2xl">{aluno.performance_label}</p>
                 </div>
               </div>
             </div>
@@ -146,14 +148,14 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{getNivel(aluno.flagProfCog)}</p>
+                  <p className="font-semibold text-2xl">{aluno.cognitive_label}</p>
                 </div>
               </div>
             </div>
             <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
               <Link href="https://docs.moodle.org/501/en/Learning_analytics_indicators#Cognitive_depth">
-								<Tooltip message={getIndicatorsInfo.profCogInfo} />
-							</Link>
+                <Tooltip message={getIndicatorsInfo.profCogInfo} />
+              </Link>
             </div>
           </div>
 
@@ -202,7 +204,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
             </div>
             <div className="flex w-full justify-center">
               <div className="flex flex-col leading-snug">
-                <p className="font-semibold text-2xl">{getDesistencia(aluno.flagDesistencia)}</p>
+                <p className="font-semibold text-2xl">{aluno.give_up}</p>
               </div>
             </div>
           </div>
@@ -217,7 +219,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
           <ScrollableTabs
             tabs={tabs}
             activeTab={activeTab}
-            onTabClick={setActiveTab}
+            setTab={setActiveTab}
           />
         </div>
       </div>

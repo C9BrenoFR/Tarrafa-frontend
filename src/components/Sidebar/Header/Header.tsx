@@ -1,54 +1,41 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { getCursos } from '@/utils/mocks';
-
-interface Curso {
-  id: number;
-  shortname: string;
-  nome: string;
-  data: string;
-}
+import { usePathname, useRouter } from 'next/navigation';
+import { Curso } from '@/types/curso';
+import { getCourses } from '@/utils/api';
+import { useEffect } from 'react';
 
 interface HeaderProps {
-  onCursoChange?: (cursoId: number | null) => void;
-  cursoSelecionado?: number | null;
-  cursos: Curso[];
+  id: number
+  cursos?: Curso[] | null
 }
 
-export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps) {
+export default function Header({ id, cursos }: HeaderProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const currentBasePath = '/' + pathname.split('/')[1];
 
-  const cursos = getCursos().map(curso => ({
-    id: curso.id.toString(),
-    shortname: curso.shortname,
-    nome: curso.nome,
-    data: curso.data
-  }));
+  useEffect(() => {
+    const checkCourses = async () => {
+      if (!cursos)
+        cursos = await getCourses()
+    }
+    checkCourses()
+  }, [cursos])
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCursoId = e.target.value;
-    const cursoId = selectedCursoId ? Number(selectedCursoId) : null;
-
-    if (onCursoChange) {
-      onCursoChange(cursoId);
-    }
-
-    if (pathname === '/') {
-      router.push(`/Curso?id=${selectedCursoId}`);
-    } else {
-      router.push(`?id=${selectedCursoId}`);
+    if (selectedCursoId) {
+      if (currentBasePath === '/')
+        router.push(`/Curso/${selectedCursoId}`);
+      router.push(`${currentBasePath}/${selectedCursoId}`)
     }
   };
 
-  const cursoIdFromUrl = searchParams.get("id") || "";
-
-  const pathname = usePathname();
 
   const getLinkClass = (path: string) => {
-    return pathname === path
+    return currentBasePath === path
       ? 'px-4 py-2 rounded bg-[#707FDD] text-white hover:bg-[#374DAA] transition'
       : 'px-4 py-2 rounded text-gray-700 hover:bg-gray-100 transition';
   };
@@ -60,23 +47,27 @@ export default function Header({ onCursoChange, cursoSelecionado }: HeaderProps)
         <Link href="/Curso" className={getLinkClass('/Curso')}>Disciplina</Link>
         <Link href="/Alunos" className={getLinkClass('/Alunos')}>Alunos</Link>
 
-        <select
-          id="curso"
-          name="curso"
-          className="select-classic"
-          defaultValue={cursoIdFromUrl}
-          onChange={handleChange}
-          required
-        >
-          <option value="" disabled hidden>
-            Escolha a disciplina
-          </option>
-          {cursos.map((curso) => (
-            <option key={curso.id} value={curso.id}>
-              {curso.shortname}-{curso.data}-A
+        {cursos ? (
+          <select
+            id="curso"
+            name="curso"
+            className="select-classic"
+            defaultValue={id}
+            onChange={handleChange}
+            required
+          >
+            <option value="">
+              Escolha a disciplina
             </option>
-          ))}
-        </select>
+            {cursos.map((curso) => (
+              <option key={curso.id} value={curso.id}>
+                {curso.shortname}-{curso.period}-A
+              </option>
+            ))}
+          </select>
+        ) : (
+          null
+        )}
       </div>
     </header>
   );

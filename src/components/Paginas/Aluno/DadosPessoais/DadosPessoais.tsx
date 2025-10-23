@@ -1,4 +1,4 @@
-import { AlunoType } from "@/types/aluno";
+import { Aluno as AlunoType } from "@/types/aluno";
 
 interface DadosPessoaisProps {
     aluno: AlunoType;

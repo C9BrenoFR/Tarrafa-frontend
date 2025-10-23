@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AlunoType } from "@/types/aluno";
+import { Aluno as AlunoType } from "@/types/aluno";
 import Indicators from "./Indicator/Indicators";
 import GaugeChart from "./GaugeChart/GaugeChart";
 import AtividadesChart from "./AtividadesChart/AtividadesChart";
