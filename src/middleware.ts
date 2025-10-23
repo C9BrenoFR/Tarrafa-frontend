@@ -6,7 +6,7 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-    const user = await getUser()
+    const { user } = await getUser()
 
     //Tratamento do usuário deslogado
     if (!user) {
