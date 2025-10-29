@@ -1,4 +1,5 @@
 import Loading from "@/components/ui/loading";
+import { useError } from "@/hooks/useError";
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
 
@@ -13,18 +14,21 @@ type GeneralData = {
 
 export default function DadosGerais({ id }: DadosGeraisProps) {
   const [data, setData] = useState<GeneralData | null>(null)
+  const error = useError()
 
   useEffect(() => {
-    async function fetch() {
+    async function fetchData() {
       try {
+        error.clear()
         const response = await api.get(`analysis/subject/${id}/summary`)
         setData(response.data.data.metrics)
-      } catch (error) {
-        console.error(error)
+      } catch (err) {
+        error.setError("Erro ao buscar dados gerais")
+        console.error("Erro ao buscar dados gerais: ", err)
       }
     };
-    fetch();
-  }, [id]);
+    fetchData();
+  }, [id, error.clear, error.setError]);
   return (
     <div className="Box2 mt-5">
       <div className="mb-14">
@@ -40,7 +44,9 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
       </div>
 
       <div className="flex items-center justify-center">
-        {data ? (
+        {error.hasError ? (
+          error.renderError()
+        ) : data ? (
           <div className="flex flex-row justify-between items-center space-x-45">
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
