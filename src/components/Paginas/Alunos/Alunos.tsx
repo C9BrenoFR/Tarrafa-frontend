@@ -6,6 +6,7 @@ import { Aluno as AlunoType, Tab } from "@/types/aluno";
 import { Curso as CursoType } from '@/types/curso';
 import { useEffect, useState } from "react";
 import { api } from "@/utils/api";
+import { useError } from "@/hooks/useError";
 
 interface AlunosProps {
   curso: CursoType;
@@ -33,20 +34,23 @@ export default function Alunos({ curso }: AlunosProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [alunos, setAlunos] = useState<AlunoType[]>([]);
   const [activeTab, setActiveTab] = useState<Tab>("Interação Avaliativa");
+  const error = useError()
 
   useEffect(() => {
     const fetch = async () => {
       try {
+        error.clear()
         console.log("Iniciando fetch:")
         const response = await api.get(`analysis/subject/${curso.id}/students/${tabMapping[activeTab]}`)
         console.log(response.data.data)
         setAlunos(response.data.data)
-      } catch (error) {
-        console.error(error)
+      } catch (err) {
+        error.setError("Erro ao buscar dados dos alunos")
+        console.error("Erro ao buscar dados dos alunos: ", err)
       }
     }
     fetch()
-  }, [curso, activeTab])
+  }, [curso, activeTab, error.clear, error.setError])
 
   const columns = getColumns(activeTab, curso.id);
 
@@ -92,12 +96,18 @@ export default function Alunos({ curso }: AlunosProps) {
               </div>
             </div>
 
-            <DataTable
-              rowsPerPage={10}
-              data={alunos}
-              columns={columns}
-              searchTerm={searchTerm}
-            />
+            {error.hasError ? (
+              <div className="flex justify-center items-center p-8">
+                {error.renderError()}
+              </div>
+            ) : (
+              <DataTable
+                rowsPerPage={10}
+                data={alunos}
+                columns={columns}
+                searchTerm={searchTerm}
+              />
+            )}
           </div>
         )}
       </div>
