@@ -53,7 +53,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					pathname: '/Aluno',
 					query: {
 						cursoId: cursoSelecionado,
-						alunoId: 1
+						alunoId: row.user_id
 					}
 				}}
 				className="cursor-pointer flex items-center justify-center w-full"
@@ -86,14 +86,6 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: "Nº de Posts em Fóruns Avaliativos",
-			name: "num_posts_required"
-		},
-		{
-			label: "Percentual de Quizzes Realizados",
-			name: "num_posts_required"
-		},
-		{
-			label: "Percentual de Tarefas Enviadas",
 			name: "num_posts_required"
 		},
 		detalhesColumn
@@ -153,15 +145,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			name: "posts_unrequired_label",
 		},
 		{
-			label: "Percentual de Participação em Fóruns Não Obrigatórios",
-			name: "num_posts_unrequired"
-		},
-		{
-			label: "Nº de Visualizações em Materiais Complementares",
-			name: "num_posts_unrequired"
-		},
-		{
-			label: "Nº de Interações na Última Semana",
+			label: "Nº de Participações em Fóruns Não Obrigatórios",
 			name: "num_posts_unrequired"
 		},
 		detalhesColumn
