@@ -17,7 +17,6 @@ const tabs: Tab[] = [
   'Interação Não Avaliativa',
   'Desempenho',
   'Profundidade Cognitiva',
-  // 'Relação Aluno-Professor',
   'Desistência'
 ];
 
@@ -26,7 +25,6 @@ const tabMapping: Record<Tab, string> = {
   'Interação Não Avaliativa': 'motivation',
   'Desempenho': 'performance',
   'Profundidade Cognitiva': 'cognitive',
-  'Relação Aluno-Professor': 'pedagogic',
   'Desistência': 'give_up'
 };
 

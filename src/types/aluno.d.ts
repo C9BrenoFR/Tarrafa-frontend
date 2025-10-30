@@ -43,4 +43,4 @@ export type Aluno = {
     value?: number; // usado para os rankings de alunos 
 }
 
-export type Tab = 'Interação Avaliativa' | 'Interação Não Avaliativa' | 'Desempenho' | 'Profundidade Cognitiva' | 'Relação Aluno-Professor' | 'Desistência'
+export type Tab = 'Interação Avaliativa' | 'Interação Não Avaliativa' | 'Desempenho' | 'Profundidade Cognitiva' | 'Desistência'
