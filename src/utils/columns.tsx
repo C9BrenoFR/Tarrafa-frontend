@@ -6,39 +6,39 @@ import { getIndicatorsInfo } from "./indicatorsInfo";
 import { get } from "http";
 import { Aluno as AlunoType } from "@/types/aluno";
 
-export const getNivel = (nivel: number) => {
-	switch (nivel) {
-		case 1: return "Muito Baixo";
-		case 2: return "Baixo";
-		case 3: return "Médio";
-		case 4: return "Alto";
-		case 5: return "Muito Alto";
+export const getNivel = (flag: string) => {
+	switch (flag) {
+		case "muito_baixo": return "Muito Baixo";
+		case "baixo": return "Baixo";
+		case "medio": return "Médio";
+		case "alto": return "Alto";
+		case "muito_alto": return "Muito Alto";
 		default: return "Não definido";
 	}
 };
 
-export const getFlagCor = (nivel: number) => {
-	switch (nivel) {
-		case 1: return "bg-red-100 text-red-700";
-		case 2: return "bg-orange-100 text-orange-700";
-		case 3: return "bg-yellow-100 text-yellow-700";
-		case 4: return "bg-indigo-100 text-indigo-700";
-		case 5: return "bg-emerald-100 text-emerald-700";
+export const getFlagCor = (flag: string) => {
+	switch (flag) {
+		case "muito_baixo": return "bg-red-100 text-red-700";
+		case "baixo": return "bg-orange-100 text-orange-700";
+		case "medio": return "bg-yellow-100 text-yellow-700";
+		case "alto": return "bg-indigo-100 text-indigo-700";
+		case "muito_alto": return "bg-emerald-100 text-emerald-700";
 		default: return "bg-gray-100 text-gray-600";
 	}
 };
 
-export const getProfCogCor = (nivel: number) => {
-	switch (nivel) {
-		case 0: return "bg-red-100 text-red-700";
-		case 1: return "bg-orange-100 text-orange-700";
-		case 2: return "bg-indigo-100 text-indigo-700";
-		case 3: return "bg-emerald-100 text-emerald-700";
-		default: return "bg-gray-100 text-gray-600";
-	}
-};
+// export const getProfCogCor = (nivel: number) => {
+// 	switch (nivel) {
+// 		case 0: return "bg-red-100 text-red-700";
+// 		case 1: return "bg-orange-100 text-orange-700";
+// 		case 2: return "bg-indigo-100 text-indigo-700";
+// 		case 3: return "bg-emerald-100 text-emerald-700";
+// 		default: return "bg-gray-100 text-gray-600";
+// 	}
+// };
 
-export const getDesistencia = (flag: boolean) => flag ? "Sim" : "Não";
+export const getDesistencia = (flag: boolean) => flag ? "Positiva" : "Negativa";
 
 export const getFlagDesistenciaCor = (flag: boolean) =>
 	flag ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700";
@@ -83,6 +83,11 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 				</div>
 			</div>),
 			name: "posts_required_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.posts_required_label ?? "Não definido")}`}>
+					{getNivel(row.posts_required_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Nº de Posts em Fóruns Avaliativos",
@@ -111,9 +116,14 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 				</div>
 			</div>),
 			name: "performance_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.performance_label ?? "Não definido")}`}>
+					{getNivel(row.performance_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
-			label: "Nota (%)",
+			label: "Nota",
 			name: "media_percentual"
 		},
 		{
@@ -143,6 +153,11 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 				</div>
 			</div>),
 			name: "posts_unrequired_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.posts_unrequired_label ?? "Não definido")}`}>
+					{getNivel(row.posts_unrequired_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Nº de Participações em Fóruns Não Obrigatórios",
@@ -173,6 +188,11 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 				</div>
 			</div>),
 			name: "label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label ?? "Não definido")}`}>
+					{getNivel(row.label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Nível Médio de Profundidade Cognitiva em Fóruns",
@@ -237,23 +257,48 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<Tooltip message={getIndicatorsInfo.desistenciaInfo} />
 				</div>
 			</div>),
-			name: "cognitive_label",
+			name: "give_up",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagDesistenciaCor(row.give_up ?? false)}`}>
+					{getDesistencia(row.give_up ?? false)}
+				</div>
+			)
 		},
 		{
 			label: "Índice de Interação Avaliativa",
-			name: "engagement_label",
+			name: "engament_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.engagement_label ?? "Não definido")}`}>
+					{getNivel(row.engagement_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Índice de Interação Não Avaliativa",
 			name: "motivation_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.motivation_label ?? "Não definido")}`}>
+					{getNivel(row.motivation_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Índice de Desempenho",
 			name: "performance_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.performance_label ?? "Não definido")}`}>
+					{getNivel(row.performance_label ?? "Não definido")}
+				</div>
+			)
 		},
 		{
 			label: "Nível de Profundidade Cognitiva",
 			name: "cognitive_label",
+			cell: (row: AlunoType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.cognitive_label ?? "Não definido")}`}>
+					{getNivel(row.cognitive_label ?? "Não definido")}
+				</div>
+			)
 		},
 		// {
 		// 	label: "Índice de Relação Aluno-Professor",
@@ -299,8 +344,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</div>),
 			name: "flagMotivacao",
 			cell: (row: DisciplinaType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? 0)}`}>
-					{getNivel(row.flagMotivacao ?? 0)}
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagMotivacao ?? "Não definido")}`}>
+					{getNivel(row.flagMotivacao ?? "Não definido")}
 				</div>
 			)
 		},
@@ -315,8 +360,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</div>),
 			name: "flagDesempenho",
 			cell: (row: DisciplinaType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? 0)}`}>
-					{getNivel(row.flagDesempenho ?? 0)}
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagDesempenho ?? "Não definido")}`}>
+					{getNivel(row.flagDesempenho ?? "Não definido")}
 				</div>
 			)
 		},
@@ -333,8 +378,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</div>),
 			name: "flagProfCog",
 			cell: (row: DisciplinaType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(row.flagProfCog ?? 0)}`}>
-					{row.flagProfCog ?? 0}
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagProfCog ?? "Não definido")}`}>
+					{getNivel(row.flagProfCog ?? "Não definido")}
 				</div>
 			)
 		},
@@ -349,8 +394,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</div>),
 			name: "flagRelAlunoProf",
 			cell: (row: DisciplinaType) => (
-				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? 0)}`}>
-					{getNivel(row.flagRelAlunoProf ?? 0)}
+				<div className={`py-1 rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(row.flagRelAlunoProf ?? "Não definido")}`}>
+					{getNivel(row.flagRelAlunoProf ?? "Não definido")}
 				</div>
 			)
 		},

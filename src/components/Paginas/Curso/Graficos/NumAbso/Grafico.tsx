@@ -33,7 +33,6 @@ export default function Grafico({ data }: GraficoProps) {
           tickPadding: 10,
           legendPosition: 'middle',
           legendOffset: 40,
-          tickRotation: 20,
         }}
 
         valueScale={{ type: 'linear' }}
@@ -41,7 +40,7 @@ export default function Grafico({ data }: GraficoProps) {
         colors="#4C6CA8"
         borderRadius={6}
         enableGridY={true}
-        isInteractive={false} //tooltip
+        isInteractive={true} //tooltip
         axisLeft={{
           tickSize: 0,
           tickPadding: 10,

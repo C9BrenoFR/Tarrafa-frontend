@@ -27,7 +27,7 @@ const GraficoComp: React.FC<GraficoNivoProps> = ({ legenda }) => {
       {legenda.length > 0 ? (
         <ResponsivePie
         data={legenda}
-        margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
+        margin={{ top: 30, right: 80, bottom: 10, left: 80 }}
         padAngle={0}
         cornerRadius={0}
         enableArcLabels={true}

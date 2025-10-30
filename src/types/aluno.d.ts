@@ -21,6 +21,7 @@ export type Aluno = {
     posts_required_label?: string
 
     // motivacao
+    posts_unrequired_label?: string
     comparative?: number
     media_percentual?: number
     performance_label?: string
@@ -33,9 +34,10 @@ export type Aluno = {
 
     // desistencia
     cognitive_label?: string,
+    label?: string,
     engagement_label?: string,
     full_name?: string,
-    give_up?: string,
+    give_up?: boolean,
     motivation_label?: string,
     performance_label?: string,
 

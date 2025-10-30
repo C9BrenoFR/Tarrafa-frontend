@@ -73,7 +73,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{aluno.engagement_label}</p>
+                  <p className="font-semibold text-2xl">{aluno.posts_unrequired_label}</p>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function Indicators({ aluno, cursoSelecionado }: IndicatorsProps)
               </div>
               <div className="flex w-full justify-center">
                 <div className="flex flex-col leading-snug">
-                  <p className="font-semibold text-2xl">{aluno.motivation_label}</p>
+                  <p className="font-semibold text-2xl">{aluno.posts_unrequired_label}</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,4 @@
-import { getRandomHexColor } from '@/utils/getRandomColor';
-import GraficoComp from './GraficoComp';
-
+import GraficoComp from './GraficoComp'
 interface GraficoProps {
     graph_data: UsageByModule[]
 }
@@ -12,14 +10,22 @@ type ItemLegenda = {
     value: number
 }
 
+function generateColor(index: number, total: number) {
+    const baseHue = 212;
+    const saturation = 45;
+    const lightnessStart = 30;
+    const lightnessEnd = 70;
+    const lightness = lightnessStart + ((lightnessEnd - lightnessStart) * index) / (total - 1);
+    return `hsl(${baseHue}, ${saturation}%, ${lightness}%)`;
+}
 
 export default function Grafico({ graph_data }: GraficoProps) {
     const legenda: ItemLegenda[] = []
-    graph_data.forEach(data => {
+    graph_data.forEach((data, index) => {
         legenda.push({
             id: data.modulo,
             label: data.modulo,
-            color: getRandomHexColor(),
+            color: generateColor(index, graph_data.length),
             value: Number(data.pct_modulo_no_curso)
         })
     });
@@ -35,7 +41,7 @@ export default function Grafico({ graph_data }: GraficoProps) {
 
             <GraficoComp legenda={legenda} />
 
-            <div className="flex justify-center flex-wrap gap-4 mb-8">
+            <div className="flex justify-center flex-wrap gap-4 mb-4 px-10">
                 <p
                     style={{
                         display: 'flex',

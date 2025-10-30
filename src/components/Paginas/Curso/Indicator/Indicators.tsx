@@ -46,7 +46,7 @@ export default function Indicators({ id }: IndicatorsProps) {
     fetch();
   }, [id, error.clear, error.setError]);
   return (
-    <div className="Box mt-10 pb-5 h-60">
+    <div className="Box mt-10 pb-5">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
           <h1 className="text-xl font-poppins font-semibold text-left">Indicadores</h1>
@@ -70,7 +70,7 @@ export default function Indicators({ id }: IndicatorsProps) {
         <>
           <div className={styles.BoxCentralizarIndicadores}>
             <div className={styles.EspacarIndicadores}>
-              <div className="quadrado bg-[#DCFCE7]">
+              <div className="relative quadrado bg-[#DCFCE7]">
                 <div className="flex flex-col w-full justify-between">
                   <div className="ml-5 flex justify-start space-x-3">
                     <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8">
@@ -91,9 +91,12 @@ export default function Indicators({ id }: IndicatorsProps) {
                     </div>
                   </div>
                 </div>
+                <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                  <Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
+                </div>
               </div>
 
-              <div className="quadrado bg-[#C3D8FF]">
+              <div className="relative quadrado bg-[#C3D8FF]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-8 flex justify-start space-x-3">
                     <div className="bg-[#3C56D8] rounded-full flex items-center justify-center w-8 h-8">
@@ -115,9 +118,12 @@ export default function Indicators({ id }: IndicatorsProps) {
                     </div>
                   </div>
                 </div>
+                <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                  <Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
+                </div>
               </div>
 
-              <div className="quadrado bg-[#FFF5A6]">
+              <div className="relative quadrado bg-[#FFF5A6]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-5 flex justify-start space-x-3">
                     <div className="bg-[#D8D03C] rounded-full flex items-center justify-center w-8 h-8">
@@ -139,9 +145,12 @@ export default function Indicators({ id }: IndicatorsProps) {
                     </div>
                   </div>
                 </div>
+                <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                  <Tooltip message={getIndicatorsInfo.desempenhoInfo} />
+                </div>
               </div>
 
-              <div className="quadrado bg-[#FFD3A6]">
+              <div className="relative quadrado bg-[#FFD3A6]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-5 flex justify-start space-x-3">
                     <div className="bg-[#D86D3C] rounded-full flex items-center justify-center w-8 h-8">
@@ -163,15 +172,15 @@ export default function Indicators({ id }: IndicatorsProps) {
                     </div>
                   </div>
                 </div>
+                <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                  <Tooltip message={getIndicatorsInfo.profCogInfo} />
+                </div>
               </div>
-            </div>
-            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message={getIndicatorsInfo.interacaoAvaliativaInfo} />
             </div>
           </div>
 
           <div className={styles.BoxCentralizarIndicadores}>
-            <div className="quadrado bg-[#D0C3FF]">
+            <div className="relative quadrado bg-[#D0C3FF]">
               <div className="flex flex-col w-full justify-between ">
                 <div className="ml-5 flex justify-start space-x-3">
                   <div className="bg-[#5C3CD8] rounded-full flex items-center justify-center w-8 h-8">
@@ -193,9 +202,12 @@ export default function Indicators({ id }: IndicatorsProps) {
                   </div>
                 </div>
               </div>
+              <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                <Tooltip message={getIndicatorsInfo.relacaoAlunoProfInfo} />
+              </div>
             </div>
 
-            <div className="quadrado bg-[#FFD8E2]">
+            <div className="relative quadrado bg-[#FFD8E2]">
               <div className="flex flex-col w-full justify-between">
                 <div className="ml-5 flex justify-start space-x-3">
                   <div className="bg-[#D83C8C] rounded-full flex items-center justify-center w-8 h-8">
@@ -218,9 +230,9 @@ export default function Indicators({ id }: IndicatorsProps) {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-              <Tooltip message={getIndicatorsInfo.interacaoNaoAvaliativaInfo} />
+              <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
+                <Tooltip message={getIndicatorsInfo.desistenciaInfo} />
+              </div>
             </div>
           </div>
         </>

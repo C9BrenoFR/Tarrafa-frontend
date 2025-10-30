@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Aluno as AlunoType } from '@/types/aluno';
-import { getNivel, getFlagCor, getProfCogCor, getDesistencia, getFlagDesistenciaCor } from '@/utils/columns';
+import { getNivel, getFlagCor, getDesistencia, getFlagDesistenciaCor } from '@/utils/columns';
 import {
     Table,
     TableBody,
@@ -32,7 +32,7 @@ const AlunoRow: React.FC<AlunoRowProps> = ({ aluno, activeTab }) => {
 
             case 'flagProfCog':
                 return (
-                    <div className={`py-1 px-6 max-w-fit rounded-md text-xs font-medium border-[1.5px] ${getProfCogCor(value)}`}></div>
+                    <div className={`py-1 px-6 max-w-fit rounded-md text-xs font-medium border-[1.5px] ${getFlagCor(value)}`}></div>
                 );
 
             case 'flagDesistencia':
