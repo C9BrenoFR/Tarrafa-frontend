@@ -19,7 +19,10 @@ export default function Ranking_Mais_Dificuldade({ id }: Ranking_Mais_Dificuldad
       try {
         error.clear()
         const response = await api.get(`analysis/subject/${id}/rankings?type=at-risk`)
-        setRanking(response.data.data.ranking)
+        const ranking_vector = response.data.data.ranking
+        setRanking(ranking_vector)
+        if (ranking_vector.length < 1)
+          error.setError("A turma não possui alunos o suficiente para criar um ranking")
       } catch (err) {
         error.setError("Erro ao buscar ranking de dificuldade")
         console.error("Erro ao buscar ranking de dificuldade: ", err)
