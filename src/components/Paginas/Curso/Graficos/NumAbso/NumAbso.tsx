@@ -1,3 +1,5 @@
+import { useError } from '@/hooks/useError';
+import { useEffect, useMemo } from 'react';
 import Grafico, { ItemLegenda } from './Grafico';
 
 interface NumAbsoProps {
@@ -5,13 +7,27 @@ interface NumAbsoProps {
 }
 
 export default function NumAbso({ situations }: NumAbsoProps) {
-    let legenda: ItemLegenda[] = []
-    situations.forEach(data => {
-        legenda.push({
+    const error = useError()
+
+    const legenda: ItemLegenda[] = useMemo(() => {
+        return situations.map(data => ({
             categoria: data.situacao,
             valor: data.qtd
-        })
-    })
+        }))
+    }, [situations])
+
+    const is_valid = useMemo(() => {
+        return situations.some(data => data.qtd > 0) && situations.length > 0
+    }, [situations])
+
+    useEffect(() => {
+        if (!is_valid) {
+            error.setError("Sem valores encontrados")
+        } else {
+            error.clear()
+        }
+    }, [is_valid, error.setError, error.clear])
+
     return (
         <div className="Box my-10">
             <div className="Boxcursopequeno">
@@ -22,7 +38,13 @@ export default function NumAbso({ situations }: NumAbsoProps) {
             </div>
 
             <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
-            <Grafico data={legenda} />
+            {error.hasError ? (
+                <div className="flex w-full h-full items-center justify-center">
+                    {error.renderError()}
+                </div>
+            ) : (
+                <Grafico data={legenda} />
+            )}
         </div>
     );
 }

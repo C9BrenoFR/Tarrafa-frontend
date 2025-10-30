@@ -18,7 +18,10 @@ export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_Desempe
             try {
                 error.clear()
                 const response = await api.get(`analysis/subject/${id}/rankings?type=best-performance`)
-                setRanking(response.data.data.ranking)
+                const ranking_vector = response.data.data.ranking
+                setRanking(ranking_vector)
+                if (ranking_vector.length < 1)
+                    error.setError("A turma não possui alunos o suficiente para criar um ranking")
             } catch (err) {
                 error.setError("Erro ao buscar ranking de melhor desempenho")
                 console.error("Erro ao buscar ranking de melhor desempenho: ", err)
