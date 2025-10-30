@@ -12,6 +12,7 @@ import { api } from "@/utils/api";
 import Loading from "@/components/ui/loading";
 import { Tooltip } from "@/components/template/tooltip";
 import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
+import { useError } from "@/hooks/useError";
 
 interface IndicatorsProps {
   id: number | null;
@@ -29,18 +30,21 @@ type PercentualInfo = {
 
 export default function Indicators({ id }: IndicatorsProps) {
   const [data, setData] = useState<PercentualInfo | null>(null)
+  const error = useError()
 
   useEffect(() => {
     async function fetch() {
       try {
+        error.clear()
         const response = await api.get(`analysis/subject/${id}/indicators`)
         setData(response.data.data.subject)
-      } catch (error) {
-        console.error(error)
+      } catch (err) {
+        error.setError("Erro ao buscar indicadores")
+        console.error("Erro ao buscar indicadores: ", err)
       }
     };
     fetch();
-  }, [id]);
+  }, [id, error.clear, error.setError]);
   return (
     <div className="Box mt-10 pb-5 h-60">
       <div className="maincurso">
@@ -49,14 +53,14 @@ export default function Indicators({ id }: IndicatorsProps) {
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
         {data ? (
-        <div className="m-10">
-          <Link
-            href={`/Alunos/${id}`}
-            className="px-4 py-2 rounded bg-[#5a6acf] text-white hover:bg-[#374DAA] transition"
-          >
-            Saiba mais
-          </Link>
-        </div>
+          <div className="m-10">
+            <Link
+              href={`/Alunos/${id}`}
+              className="px-4 py-2 rounded bg-[#5a6acf] text-white hover:bg-[#374DAA] transition"
+            >
+              Saiba mais
+            </Link>
+          </div>
         ) : (<div></div>)}
       </div>
 
@@ -220,6 +224,10 @@ export default function Indicators({ id }: IndicatorsProps) {
             </div>
           </div>
         </>
+      ) : error.hasError ? (
+        <div className="m-13">
+          {error.renderError()}
+        </div>
       ) : (
         <div className="m-13">
           <Loading>Buscando dados</Loading>

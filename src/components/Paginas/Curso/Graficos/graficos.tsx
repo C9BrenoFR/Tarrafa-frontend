@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Grafico from "./Atividades/Atividades";
 import NumAbso from "./NumAbso/NumAbso";
 import Loading from "@/components/ui/loading";
+import { useError } from "@/hooks/useError";
 
 interface GraficosProps {
     id: number
@@ -10,18 +11,29 @@ interface GraficosProps {
 
 export default function Graficos({ id }: GraficosProps) {
     const [data, setData] = useState<GraphInfo | null>(null)
+    const error = useError()
 
     useEffect(() => {
         async function fetch() {
             try {
+                error.clear()
                 const response = await api.get(`analysis/subject/${id}/info_graphs`)
                 setData(response.data.data.subject)
-            } catch (error) {
-                console.error(error)
+            } catch (err) {
+                error.setError("Erro ao buscar dados dos gráficos")
+                console.error("Erro ao buscar dados dos gráficos: ", err)
             }
         };
         fetch();
-    }, [id]);
+    }, [id, error.clear, error.setError]);
+    if (error.hasError) {
+        return (
+            <div className="w-full mt-5 mb-5 h-24 Box flex items-center justify-center">
+                {error.renderError()}
+            </div>
+        );
+    }
+
     if (data) {
         return (
             <div className="flex flex-row space-x-5">
@@ -30,6 +42,7 @@ export default function Graficos({ id }: GraficosProps) {
             </div>
         );
     }
+
     return (
         <div className="w-full mt-5 mb-5 h-24 Box flex items-center justify-center">
             <Loading>Carregando gráficos</Loading>
