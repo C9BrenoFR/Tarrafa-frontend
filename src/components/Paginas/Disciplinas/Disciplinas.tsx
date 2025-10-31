@@ -15,7 +15,7 @@ export default function Disciplinas({ disciplinas }: DisciplinasProps) {
 
   const columns = getColumns(activeTab, null);
 
-  if (!disciplinas) {
+  if (!disciplinas || disciplinas.length < 1) {
     return (
       <div className="flex-1 flex justify-center items-center pl-[240px]">
         <div className="BoxCurso">

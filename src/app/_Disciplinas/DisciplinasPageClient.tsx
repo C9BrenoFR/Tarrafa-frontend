@@ -15,7 +15,7 @@ export default function DisciplinasPageClient() {
       <div className="flex-1">
         <Header id={1} cursos={[]} />
         <main>
-          <Disciplinas disciplinas={cursosMock} />
+          <Disciplinas disciplinas={[]} />
         </main>
       </div>
     </div>
