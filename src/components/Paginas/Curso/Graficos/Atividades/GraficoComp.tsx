@@ -23,7 +23,7 @@ const GraficoComp: React.FC<GraficoNivoProps> = ({ legenda }) => {
   const total = legenda.reduce((acc, cur) => acc + cur.value, 0);
 
   return (
-    <div style={{ height: 400 }}>
+    <div style={{ height: 300 }}>
       {legenda.length > 0 ? (
         <ResponsivePie
         data={legenda}
@@ -32,14 +32,13 @@ const GraficoComp: React.FC<GraficoNivoProps> = ({ legenda }) => {
         cornerRadius={0}
         enableArcLabels={true}
         sortByValue={true}
-        arcLabelsSkipAngle={10}
+        arcLabelsSkipAngle={18}
         arcLabelsTextColor="#ffffff"
         arcLabel={(d) => `${((d.value / total) * 100).toFixed(0)}%`}
         colors={legenda.map(item => item.color)}
         borderWidth={1}
         borderColor={{ from: 'color', modifiers: [['darker', 0]] }}
         enableArcLinkLabels={false}
-        
         theme={{
           labels: {
             text: {

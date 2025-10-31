@@ -21,13 +21,15 @@ export default function Sidebar() {
           <ul className="sidebaralign space-y-4">
             <li className="">MENU</li>
             <div className="sidebarpainel space-x-3">
-              <Image
-                className="ml-4"
-                src="/sidebarpainelcurso.png"
-                alt="Painel das Disciplinas"
-                width={20}
-                height={20}
-              />
+              <div>
+                <Image
+                  className="ml-4"
+                  src="/sidebarpainelcurso.png"
+                  alt="Painel das Disciplinas"
+                  width={20}
+                  height={20}
+                />
+              </div>
               <li>Painel das Disciplinas</li>
             </div>
 

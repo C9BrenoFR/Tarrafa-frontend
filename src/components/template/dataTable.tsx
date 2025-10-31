@@ -38,12 +38,9 @@ const normalizeString = (str: string) => {
 const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searchTerm, }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
-    const filteredData = data
-        .filter(item =>
-            normalizeString(item.full_name).includes(normalizeString(searchTerm))
-        )
-        .filter(item => normalizeString(item.full_name) !== "usuario de teste");
-
+    const filteredData = data.filter(item =>
+        normalizeString(item.nome).includes(normalizeString(searchTerm))
+    );
 
     const totalPages = Math.ceil(filteredData.length / rowsPerPage);
     const currentData = filteredData.slice(
