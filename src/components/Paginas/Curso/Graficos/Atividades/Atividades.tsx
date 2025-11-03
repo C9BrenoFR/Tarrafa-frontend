@@ -10,25 +10,37 @@ type ItemLegenda = {
     value: number
 }
 
-function generateColor(index: number, total: number) {
-    const baseHue = 212;
-    const saturation = 45;
-    const lightnessStart = 30;
-    const lightnessEnd = 70;
-    const lightness = lightnessStart + ((lightnessEnd - lightnessStart) * index) / (total - 1);
-    return `hsl(${baseHue}, ${saturation}%, ${lightness}%)`;
+const palette = [
+    "#2277b0",
+    "#fe7f0e",
+    "#2c9f2c",
+    "#d52726",
+    "#9466c0",
+    "#8e544d",
+    "#e576c2",
+    "#7f7f7f",
+    "#bcbd22",
+    "#17bece",
+];
+
+function generateExtraColor(index: number) {
+  const hue = (index * 137.508) % 360
+  return `hsl(${hue}, 65%, 50%)`
 }
 
 export default function Grafico({ graph_data }: GraficoProps) {
     const legenda: ItemLegenda[] = []
     graph_data.forEach((data, index) => {
-        legenda.push({
-            id: data.modulo,
-            label: data.modulo,
-            color: generateColor(index, graph_data.length),
-            value: Number(data.pct_modulo_no_curso)
-        })
-    });
+    const color =
+      index < palette.length ? palette[index] : generateExtraColor(index)
+
+    legenda.push({
+      id: data.modulo,
+      label: data.modulo,
+      color,
+      value: Number(data.pct_modulo_no_curso),
+    })
+  })
     return (
         <div className="Box my-10 p-1.5">
             <div className="Boxcursopequeno">

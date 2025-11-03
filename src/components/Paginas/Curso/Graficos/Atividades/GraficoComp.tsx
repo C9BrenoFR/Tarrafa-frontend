@@ -32,7 +32,7 @@ const GraficoComp: React.FC<GraficoNivoProps> = ({ legenda }) => {
         cornerRadius={0}
         enableArcLabels={true}
         sortByValue={true}
-        arcLabelsSkipAngle={18}
+        arcLabelsSkipAngle={20}
         arcLabelsTextColor="#ffffff"
         arcLabel={(d) => `${((d.value / total) * 100).toFixed(0)}%`}
         colors={legenda.map(item => item.color)}
