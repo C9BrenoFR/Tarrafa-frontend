@@ -31,7 +31,8 @@ interface DataTableProps {
     searchTerm: string;
 }
 
-const normalizeString = (str: string) => {
+const normalizeString = (str: string | undefined | null) => {
+    if (!str) return '';
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 };
 

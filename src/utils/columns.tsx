@@ -266,9 +266,9 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: "Índice de Interação Avaliativa",
-			name: "engament_label",
+			name: "engagement_label",
 			cell: (row: AlunoType) => (
-				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.engagement_label ?? "Não definido")}`}>
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium text-center mx-auto`}>
 					{getNivel(row.engagement_label ?? "Não definido")}
 				</div>
 			)
@@ -277,7 +277,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Índice de Interação Não Avaliativa",
 			name: "motivation_label",
 			cell: (row: AlunoType) => (
-				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.motivation_label ?? "Não definido")}`}>
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium text-center mx-auto`}>
 					{getNivel(row.motivation_label ?? "Não definido")}
 				</div>
 			)
@@ -286,7 +286,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Índice de Desempenho",
 			name: "performance_label",
 			cell: (row: AlunoType) => (
-				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.performance_label ?? "Não definido")}`}>
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium text-center mx-auto`}>
 					{getNivel(row.performance_label ?? "Não definido")}
 				</div>
 			)
@@ -295,7 +295,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Nível de Profundidade Cognitiva",
 			name: "cognitive_label",
 			cell: (row: AlunoType) => (
-				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.cognitive_label ?? "Não definido")}`}>
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium text-center mx-auto`}>
 					{getNivel(row.cognitive_label ?? "Não definido")}
 				</div>
 			)
