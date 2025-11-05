@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from './Indicators.module.css';
 import alunoIcon from './aluno.png';
 import alunoIcon2 from './baixados2.png';
@@ -13,6 +12,7 @@ import Loading from "@/components/ui/loading";
 import { Tooltip } from "@/components/template/tooltip";
 import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
 import { useError } from "@/hooks/useError";
+import Button from "@/components/ui/button";
 
 interface IndicatorsProps {
   id: number | null;
@@ -53,13 +53,9 @@ export default function Indicators({ id }: IndicatorsProps) {
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
         {data ? (
-          <div className="m-10">
-            <Link
-              href={`/Alunos/${id}`}
-              className="px-4 py-2 rounded bg-[#5a6acf] text-white hover:bg-[#374DAA] transition"
-            >
-              Saiba mais
-            </Link>
+          <div className="m-10 flex gap-2">
+            <Button href='/indicadores' >Detalhes</Button>
+            <Button href={`/Alunos/${id}`}>Ver mais</Button>
           </div>
         ) : (<div></div>)}
       </div>
@@ -82,7 +78,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_engagement.toLocaleString('pt-BR')}%</p>
                   </div>
                   <div className="ml-17 flex text-left">
                     <div className="flex flex-col leading-snug">
@@ -108,7 +104,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="ml-2.5 object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_motivation}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_motivation.toLocaleString('pt-BR')}%</p>
                   </div>
 
                   <div className="ml-19 flex text-left">
@@ -135,7 +131,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_performance}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_performance.toLocaleString('pt-BR')}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
@@ -162,7 +158,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                         className="object-cover text-white"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_cognitive}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_cognitive.toLocaleString('pt-BR')}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
@@ -192,7 +188,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                       className="mr-0.5 object-cover"
                     />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{data.good_percentage_pedagogical}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{data.good_percentage_pedagogical.toLocaleString('pt-BR')}%</p>
                 </div>
 
                 <div className="ml-17 flex text-left">
@@ -219,7 +215,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">{data.percentage_give_up}%</p>
+                  <p className="text-2xl font-bold text-gray-900">{data.percentage_give_up.toLocaleString('pt-BR')}%</p>
                 </div>
 
                 <div className="ml-17 flex text-left">

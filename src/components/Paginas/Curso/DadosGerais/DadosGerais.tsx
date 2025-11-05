@@ -53,7 +53,7 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
                 Total de<br />estudantes <br /> matriculados
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                {data.total_enrolled}
+                {data.total_enrolled ? data.total_enrolled.toLocaleString('pt-BR') : 0}
               </div>
             </div>
 
@@ -62,7 +62,7 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
                 Média das<br />notas finais <br />da disciplina
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                {data.avg_grade_all}
+                {data.avg_grade_all ? data.avg_grade_all.toLocaleString('pt-BR') : 0}
               </div>
             </div>
 
@@ -71,7 +71,7 @@ export default function DadosGerais({ id }: DadosGeraisProps) {
                 Taxa de <br />aprovação <br />da disciplina
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
-                {data.taxa_aprovacao}%
+                {data.taxa_aprovacao ? data.taxa_aprovacao.toLocaleString('pt-BR') : 0}%
               </div>
             </div>
           </div>

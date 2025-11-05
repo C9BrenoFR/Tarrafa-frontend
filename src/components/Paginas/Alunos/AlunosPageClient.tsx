@@ -3,8 +3,8 @@
 import Alunos from '@/components/Paginas/Alunos/Alunos';
 import Header from '@/components/Sidebar/Header/Header';
 import Sidebar from '@/components/Sidebar/Header/Sidebar';
+import { useCookie } from '@/hooks/useCookie';
 import { Curso as CursoType } from '@/types/curso';
-import { getAlunos } from '@/utils/mocks';
 
 interface AlunosPageClientProps {
     cursos: CursoType[]
@@ -12,6 +12,8 @@ interface AlunosPageClientProps {
 }
 
 export default function AlunosPageClient({ curso, cursos }: AlunosPageClientProps) {
+    const [savedCourse, setCourse, deleteCourse, setCourseOnly] = useCookie<CursoType | null>('course', null)
+    setCourseOnly(curso)
 
     return (
         <div className="flex">

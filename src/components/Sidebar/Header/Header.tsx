@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Curso } from '@/types/curso';
 import { getCourses } from '@/utils/api';
 import { useEffect } from 'react';
+import { useCookie } from '@/hooks/useCookie';
 
 interface HeaderProps {
   id: number
@@ -12,6 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ id, cursos }: HeaderProps) {
+  const [savedCourse, setCourse, deleteCourse, setCourseOnly] = useCookie<Curso | null>('course', null)
   const router = useRouter();
   const pathname = usePathname();
   const currentBasePath = '/' + pathname.split('/')[1];
@@ -44,8 +46,8 @@ export default function Header({ id, cursos }: HeaderProps) {
     <header className="header">
       <div className="componentsheader space-x-2">
         <Link href="/" className={getLinkClass('/')}>Home</Link>
-        <Link href="/Curso" className={getLinkClass('/Curso')}>Disciplina</Link>
-        <Link href="/Alunos" className={getLinkClass('/Alunos')}>Alunos</Link>
+        <Link href={currentBasePath == "/Curso" ? currentBasePath : `/Curso${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/Curso')}>Disciplina</Link>
+        <Link href={currentBasePath == "/Alunos" ? currentBasePath : `/Alunos${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/Alunos')}>Alunos</Link>
 
         {cursos ? (
           <select
