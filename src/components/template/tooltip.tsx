@@ -42,13 +42,39 @@ export function Tooltip({ message }: TooltipIndicatorProps) {
     };
   }, [visible]);
 
+  // Função para fechar o popup quando clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        visible &&
+        iconRef.current &&
+        tooltipRef.current &&
+        !iconRef.current.contains(event.target as Node) &&
+        !tooltipRef.current.contains(event.target as Node)
+      ) {
+        setVisible(false);
+      }
+    };
+
+    if (visible) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [visible]);
+
+  const togglePopup = () => {
+    setVisible(!visible);
+  };
+
   return (
     <>
       <button
         ref={iconRef}
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-        className="cursor-pointer text-zinc-500 hover:text-zinc-900 border-none"
+        onClick={togglePopup}
+        className="cursor-pointer text-zinc-500 hover:text-zinc-900 border-none focus:outline-none"
       >
         <FaInfoCircle />
       </button>
