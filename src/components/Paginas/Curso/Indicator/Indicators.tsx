@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from './Indicators.module.css';
 import alunoIcon from './aluno.png';
 import alunoIcon2 from './baixados2.png';
@@ -14,7 +13,6 @@ import { Tooltip } from "@/components/template/tooltip";
 import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
 import { useError } from "@/hooks/useError";
 import Button from "@/components/ui/button";
-import { Search } from "lucide-react";
 
 interface IndicatorsProps {
   id: number | null;
@@ -57,7 +55,7 @@ export default function Indicators({ id }: IndicatorsProps) {
         {data ? (
           <div className="m-10 flex gap-2">
             <Button href='/indicadores' >Detalhes</Button>
-            <Button href={`/Alunos/${id}`}><Search /></Button>
+            <Button href={`/Alunos/${id}`}>Ver mais</Button>
           </div>
         ) : (<div></div>)}
       </div>

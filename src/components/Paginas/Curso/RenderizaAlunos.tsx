@@ -1,7 +1,6 @@
 import { RankingContent } from '@/types/ranking';
-import { Search } from 'lucide-react';
+import { UserRoundSearch } from 'lucide-react';
 import Link from 'next/link';
-import { FaPlus } from 'react-icons/fa';
 
 interface RenderizaAlunosProps {
     ranking: RankingContent[]
@@ -24,7 +23,7 @@ export default function RenderizaAlunos({ ranking, id }: RenderizaAlunosProps) {
                         <Link
                             href={`/Curso/${id}/Aluno/${item.user_id}`}
                         >
-                            <Search className='text-2xl text-gray-700' />
+                            <UserRoundSearch className='text-2xl text-gray-700' />
                         </Link>
                     </button>
                 </div>
