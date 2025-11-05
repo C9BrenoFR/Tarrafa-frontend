@@ -1,4 +1,5 @@
 import { RankingContent } from '@/types/ranking';
+import { Search } from 'lucide-react';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';
 
@@ -21,15 +22,9 @@ export default function RenderizaAlunos({ ranking, id }: RenderizaAlunosProps) {
                     <span className="flex-1 text-left text-gray-800">{item.student}</span>
                     <button className="text-gray-700 cursor-pointer hover:text-gray-900">
                         <Link
-                            href={{
-                                pathname: '/Aluno',
-                                query: {
-                                    cursoId: id,
-                                    alunoId: item.user_id,
-                                }
-                            }}
+                            href={`/Curso/${id}/Aluno/${item.user_id}`}
                         >
-                            <FaPlus className='text-2xl text-gray-700' />
+                            <Search className='text-2xl text-gray-700' />
                         </Link>
                     </button>
                 </div>
