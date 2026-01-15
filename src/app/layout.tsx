@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "./globals.css";
+import Sidebar from "@/components/Sidebar/Header/Sidebar";
 
 
 const poppins = Poppins({
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: "Projeto Tarrafa",
   description: "Aplicação usando Next.js",
   icons: {
-    icon: "/favicon.png", 
+    icon: "/favicon.png",
   },
 };
 
@@ -26,7 +27,14 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body className={`${poppins.variable} antialiased`}>
-        {children}
+        <div className="flex">
+          <Sidebar />
+          <div className="flex-1">
+            <main>
+              {children}
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
