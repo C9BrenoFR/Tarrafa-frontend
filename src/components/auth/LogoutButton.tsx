@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { signOut } from '@/supabase/auth';
+import { FiLogOut } from 'react-icons/fi';
 
 interface LogoutButtonProps {
     className?: string;
@@ -23,9 +24,10 @@ export default function LogoutButton({ className = "", children = "Sair" }: Logo
     return (
         <button
             onClick={handleLogout}
-            className={`border border-red-600 rounded p-1 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105 transition-all ${className}`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-[#5A6ACF] bg-transparent hover:bg-red-50 hover:text-red-600 transition-all duration-200 ${className}`}
         >
-            {children}
+            <FiLogOut className="w-5 h-5" />
+            <span>{children}</span>
         </button>
     );
 }
