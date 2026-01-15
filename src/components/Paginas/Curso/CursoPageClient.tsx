@@ -15,15 +15,5 @@ export default function CursoPageClient({ cursos, curso }: CursoPageClientProps)
   const [savedCourse, setCourse, deleteCourse, setCourseOnly] = useCookie<CursoType | null>('course', null)
   setCourseOnly(curso)
 
-  return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1">
-        <Header id={curso.id} cursos={cursos} />
-        <main>
-          <Curso curso={curso} />
-        </main>
-      </div>
-    </div>
-  );
+  return (<Curso curso={curso} />);
 }

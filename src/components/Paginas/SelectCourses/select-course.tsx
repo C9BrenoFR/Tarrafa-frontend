@@ -37,23 +37,15 @@ export default function SelectCourse({ path, courses }: SelectCourseProps) {
     };
 
     return (
-        <div className="flex">
-            <Sidebar />
-            <div className="flex-1">
-                <Header id={0} cursos={courses} />
-                <main>
-                    <CoursesDisplay
-                        path={path}
-                        courses={paginatedCourses}
-                        searchTerm={searchTerm}
-                        setSearchTerm={handleSearchChange}
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={handlePageChange}
-                        totalItems={filteredCourses.length}
-                    />
-                </main>
-            </div>
-        </div>
+        <CoursesDisplay
+            path={path}
+            courses={paginatedCourses}
+            searchTerm={searchTerm}
+            setSearchTerm={handleSearchChange}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            totalItems={filteredCourses.length}
+        />
     );
 };

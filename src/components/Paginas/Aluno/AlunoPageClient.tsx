@@ -34,20 +34,11 @@ export default function AlunoPageClient() {
     }, [cursoSelecionado, alunoSelecionado, router]);
 
     return (
-        <div className="flex">
-            <Sidebar />
-            <div className="flex-1">
-                <Header
-                    id={cursoSelecionado ? cursoSelecionado : 1}
-                />
-                <main>
-                    <Aluno
-                        cursos={[]}
-                        cursoSelecionado={cursoSelecionado}
-                        alunos={alunosMock}
-                        alunoSelecionado={alunoSelecionado} />
-                </main>
-            </div>
-        </div>
+        <Aluno
+            cursos={[]}
+            cursoSelecionado={cursoSelecionado}
+            alunos={alunosMock}
+            alunoSelecionado={alunoSelecionado}
+        />
     );
 }
