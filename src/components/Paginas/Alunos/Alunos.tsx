@@ -1,3 +1,5 @@
+'use client';
+
 import DataTable from "@/components/template/dataTable";
 import SearchInput from "@/components/template/searchInput";
 import { getColumns } from "@/utils/columns";
