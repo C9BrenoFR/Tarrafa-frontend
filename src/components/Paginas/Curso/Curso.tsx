@@ -1,3 +1,5 @@
+'use client';
+
 import Indicators from './Indicator/Indicators';
 import DadosGerais from './DadosGerais/DadosGerais';
 import Graficos from './Graficos/graficos';
