@@ -1,6 +1,6 @@
 import { getCourses } from '@/utils/api';
 import AlunosPageClient from '../../../components/Paginas/Alunos/AlunosPageClient';
-import NotFound from '@/components/Paginas/global/not-found';
+import NotFound from '@/components/ui/not-found';
 interface PageProps {
   params: Promise<{
     id: string

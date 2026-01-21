@@ -1,3 +1,5 @@
+'use client';
+
 import DifficultyRanking from "./difficulty-ranking";
 import PerformanceRanking from "./performance-ranking";
 

@@ -1,3 +1,5 @@
+'use client';
+
 import Loading from "@/components/ui/loading";
 import { useError } from "@/hooks/useError";
 import { api } from "@/utils/api";

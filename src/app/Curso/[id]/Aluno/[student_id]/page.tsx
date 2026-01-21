@@ -1,5 +1,5 @@
 import AlunoPageClient from '@/components/Paginas/Aluno/AlunoPageClient';
-import NotFound from '@/components/Paginas/global/not-found';
+import NotFound from '@/components/ui/not-found';
 import { getCourses } from '@/utils/api';
 
 interface PageProps {

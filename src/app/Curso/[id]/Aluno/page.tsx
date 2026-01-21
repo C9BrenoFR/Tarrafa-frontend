@@ -1,5 +1,5 @@
 import { getCourses } from '@/utils/api';
-import NotFound from '@/components/Paginas/global/not-found';
+import NotFound from '@/components/ui/not-found';
 import Alunos from '@/components/Paginas/Alunos/Alunos';
 
 interface PageProps {

@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './Indicators.module.css';
 import alunoIcon from './aluno.png';
 import alunoIcon2 from './baixados2.png';
