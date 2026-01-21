@@ -1,5 +1,4 @@
 import AlunoPageClient from '@/components/Paginas/Aluno/AlunoPageClient';
-import CursoPageClient from '@/components/Paginas/Curso/CursoPageClient';
 import NotFound from '@/components/Paginas/global/not-found';
 import { getCourses } from '@/utils/api';
 
