@@ -3,7 +3,7 @@
 import Indicators from './Indicator/Indicators';
 import DadosGerais from './DadosGerais/DadosGerais';
 import Graficos from './Graficos/graficos';
-import Rankings from './Rankings/ranking';
+import Rankings from './rankings/ranking';
 import { Curso as CursoType } from '@/types/curso';
 
 type CursoProps = {

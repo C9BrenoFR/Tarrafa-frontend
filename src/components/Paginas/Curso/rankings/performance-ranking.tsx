@@ -7,11 +7,11 @@ import BoxTemplate from '@/components/ui/box-template';
 import RankingItem from '@/components/ui/rank-item';
 import { UserRoundSearch } from 'lucide-react';
 
-interface Ranking_Melhor_DesempenhoProps {
+interface PerformanceRankingProps {
     id: number
 }
 
-export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_DesempenhoProps) {
+export default function PerformanceRanking({ id }: PerformanceRankingProps) {
     const [ranking, setRanking] = useState<RankingContent[]>([])
     const error = useError()
 

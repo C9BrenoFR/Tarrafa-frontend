@@ -7,11 +7,11 @@ import BoxTemplate from '@/components/ui/box-template';
 import RankingItem from '@/components/ui/rank-item';
 import { UserRoundSearch } from 'lucide-react';
 
-interface Ranking_Mais_DificuldadeProps {
+interface DifficultyRankingProps {
   id: number
 }
 
-export default function Ranking_Mais_Dificuldade({ id }: Ranking_Mais_DificuldadeProps) {
+export default function DifficultyRanking({ id }: DifficultyRankingProps) {
   const [ranking, setRanking] = useState<RankingContent[]>([])
   const error = useError()
 
