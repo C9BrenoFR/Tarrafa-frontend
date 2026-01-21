@@ -6,11 +6,11 @@ import Graficos from './Graficos/graficos';
 import Rankings from './rankings/ranking';
 import { Curso as CursoType } from '@/types/curso';
 
-type CursoProps = {
+type CursoPageProps = {
   curso: CursoType
 };
 
-export default function Curso({ curso }: CursoProps) {
+export default function CursoPage({ curso }: CursoPageProps) {
 
   return (
     <div className="flex-1 flex justify-center items-center pl-[240px]">

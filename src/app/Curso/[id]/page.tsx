@@ -1,4 +1,4 @@
-import Curso from '@/components/Paginas/Curso/Curso';
+import CursoPage from '@/components/Paginas/Curso/curso-page';
 import NotFound from '@/components/Paginas/global/not-found';
 import { getCourses } from '@/utils/api';
 
@@ -23,5 +23,5 @@ export default async function Page({ params }: PageProps) {
     )
   }
 
-  return <Curso curso={curso} />;
+  return <CursoPage curso={curso} />;
 }
