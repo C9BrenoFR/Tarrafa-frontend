@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import RenderizaAlunos from '../RenderizaAlunos';
 import { RankingContent } from '@/types/ranking';
 import { api } from '@/utils/api';
 import Loading from '@/components/ui/loading';
 import { useError } from '@/hooks/useError';
+import BoxTemplate from '@/components/ui/box-template';
+import RankingItem from '@/components/ui/rank-item';
+import { UserRoundSearch } from 'lucide-react';
 
 interface Ranking_Melhor_DesempenhoProps {
     id: number
@@ -29,24 +31,25 @@ export default function Ranking_Melhor_Desempenho({ id }: Ranking_Melhor_Desempe
         }
         fetch()
     }, [id, error.clear, error.setError])
+
     return (
-        <div className="Box mb-10">
-            <div className="Boxcursopequeno">
-                <div className="mt-10 ml-10 mb-5">
-                    <h1 className="text-xl font-poppins font-semibold text-left">Ranking</h1>
-                    <p style={{ color: "#9291A5" }}>Alunos com Melhor Desempenho</p>
-                </div>
-            </div>
-            <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
-            <div className='m-10'>
-                {error.hasError ? (
-                    error.renderError()
-                ) : ranking.length > 0 ? (
-                    <RenderizaAlunos id={id} ranking={ranking} />
-                ) : (
-                    <Loading>Carregando ranking</Loading>
-                )}
-            </div>
-        </div>
+        <BoxTemplate
+            title='Ranking'
+            sub_title="Alunos com Melhor Desempenho"
+        >
+            {error.hasError ? (
+                error.renderError()
+            ) : ranking.length <= 0 && (
+                <Loading>Carregando ranking</Loading>
+            )}
+            {ranking.map((item, index) => (
+                <RankingItem
+                    position={index + 1}
+                    content={item.student}
+                    link={`/Curso/${id}/Aluno/${item.user_id}`}
+                    icon={UserRoundSearch}
+                />
+            ))}
+        </BoxTemplate>
     );
 }
