@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "./globals.css";
+import Sidebar from "@/components/ui/sidebar";
 
 
 const poppins = Poppins({
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: "Projeto Tarrafa",
   description: "Aplicação usando Next.js",
   icons: {
-    icon: "/favicon.png", 
+    icon: "/favicon.png",
   },
 };
 

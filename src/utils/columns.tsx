@@ -49,13 +49,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		name: "detalhes",
 		cell: (row: AlunoType) => (
 			<Link
-				href={{
-					pathname: '/Aluno',
-					query: {
-						cursoId: cursoSelecionado,
-						alunoId: row.user_id
-					}
-				}}
+				href={`/cursos/${cursoSelecionado}/alunos/${row.user_id}`}
 				className="cursor-pointer flex items-center justify-center w-full"
 			>
 				<FaPlus className='text-2xl text-gray-700' />
@@ -458,7 +452,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			cell: (row: DisciplinaType) => (
 				<Link
 					href={{
-						pathname: '/Curso',
+						pathname: '/cursos',
 						query: {
 							id: row.id,
 						}

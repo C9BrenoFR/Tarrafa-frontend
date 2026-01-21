@@ -12,8 +12,7 @@ export const api = axios.create({
         password: password
     },
     headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Accept": "application/json"
     }
 })
 
