@@ -1,8 +1,8 @@
 'use client';
 
-import Aluno from '@/components/Paginas/Aluno/Aluno';
-import Header from '@/components/Sidebar/Header/Header';
-import Sidebar from '@/components/Sidebar/Header/Sidebar';
+import Aluno from '@/components/pages/Aluno/Aluno';
+import Header from '@/components/sidebar/Header/Header';
+import Sidebar from '@/components/ui/sidebar';
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getAlunos } from '@/utils/mocks';

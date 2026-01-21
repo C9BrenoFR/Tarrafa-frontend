@@ -1,6 +1,6 @@
 import { getCourses } from '@/utils/api';
 import NotFound from '@/components/ui/not-found';
-import Alunos from '@/components/Paginas/Alunos/Alunos';
+import Alunos from '@/components/pages/Alunos/Alunos';
 
 interface PageProps {
   params: Promise<{

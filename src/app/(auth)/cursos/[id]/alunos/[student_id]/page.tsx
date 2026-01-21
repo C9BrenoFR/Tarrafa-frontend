@@ -1,4 +1,4 @@
-import AlunoPageClient from '@/components/Paginas/Aluno/AlunoPageClient';
+import AlunoPageClient from '@/components/pages/Aluno/AlunoPageClient';
 import NotFound from '@/components/ui/not-found';
 import { getCourses } from '@/utils/api';
 

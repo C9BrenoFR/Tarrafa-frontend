@@ -1,5 +1,5 @@
-import Header from "@/components/Sidebar/Header/Header";
-import Sidebar from "@/components/Sidebar/Header/Sidebar";
+import Header from "@/components/sidebar/Header/Header";
+import Sidebar from "@/components/ui/sidebar";
 import { Curso } from "@/types/curso";
 
 interface NotFoundProps {

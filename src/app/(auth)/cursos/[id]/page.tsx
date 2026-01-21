@@ -1,7 +1,7 @@
-import DadosGerais from '@/components/Paginas/Curso/DadosGerais/DadosGerais';
-import Graficos from '@/components/Paginas/Curso/Graficos/graficos';
-import Indicators from '@/components/Paginas/Curso/Indicator/Indicators';
-import Rankings from '@/components/Paginas/Curso/rankings/ranking';
+import DadosGerais from '@/components/pages/Curso/DadosGerais/DadosGerais';
+import Graficos from '@/components/pages/Curso/Graficos/graficos';
+import Indicators from '@/components/pages/Curso/Indicator/Indicators';
+import Rankings from '@/components/pages/Curso/rankings/ranking';
 import NotFound from '@/components/ui/not-found';
 import { getCourses } from '@/utils/api';
 

@@ -1,8 +1,8 @@
 'use client';
 
-import Disciplinas from '@/components/Paginas/Disciplinas/Disciplinas';
-import Header from '@/components/Sidebar/Header/Header';
-import Sidebar from '@/components/Sidebar/Header/Sidebar';
+import Disciplinas from '@/components/pages/Disciplinas/Disciplinas';
+import Header from '@/components/sidebar/Header/Header';
+import Sidebar from '@/components/ui/sidebar';
 import { getCursos } from '@/utils/mocks';
 
 const cursosMock = getCursos();

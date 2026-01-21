@@ -1,8 +1,8 @@
 'use client';
 
-import Alunos from '@/components/Paginas/Alunos/Alunos';
-import Header from '@/components/Sidebar/Header/Header';
-import Sidebar from '@/components/Sidebar/Header/Sidebar';
+import Alunos from '@/components/pages/Alunos/Alunos';
+import Header from '@/components/sidebar/Header/Header';
+import Sidebar from '@/components/ui/sidebar';
 import { useCookie } from '@/hooks/useCookie';
 import { Curso as CursoType } from '@/types/curso';
 
