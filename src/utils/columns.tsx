@@ -50,7 +50,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		cell: (row: AlunoType) => (
 			<Link
 				href={{
-					pathname: '/Aluno',
+					pathname: '/alunos',
 					query: {
 						cursoId: cursoSelecionado,
 						alunoId: row.user_id
@@ -458,7 +458,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			cell: (row: DisciplinaType) => (
 				<Link
 					href={{
-						pathname: '/Curso',
+						pathname: '/cursos',
 						query: {
 							id: row.id,
 						}

@@ -30,7 +30,7 @@ export default function Header({ id, cursos }: HeaderProps) {
     const selectedCursoId = e.target.value;
     if (selectedCursoId) {
       if (currentBasePath === '/')
-        router.push(`/Curso/${selectedCursoId}`);
+        router.push(`/cursos/${selectedCursoId}`);
       router.push(`${currentBasePath}/${selectedCursoId}`)
     }
   };
@@ -46,8 +46,8 @@ export default function Header({ id, cursos }: HeaderProps) {
     <header className="header">
       <div className="componentsheader space-x-2">
         <Link href="/" className={getLinkClass('/')}>Home</Link>
-        <Link href={currentBasePath == "/Curso" ? currentBasePath : `/Curso${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/Curso')}>Disciplina</Link>
-        <Link href={currentBasePath == "/Alunos" ? currentBasePath : `/Alunos${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/Alunos')}>Alunos</Link>
+        <Link href={currentBasePath == "/cursos" ? currentBasePath : `/cursos${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/cursos')}>Disciplina</Link>
+        <Link href={currentBasePath == "/alunoss" ? currentBasePath : `/alunoss${savedCourse ? `/${savedCourse.id}` : ''}`} className={getLinkClass('/alunoss')}>Alunos</Link>
 
         {cursos ? (
           <select

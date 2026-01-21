@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
   },
   {
     title: 'Painel das Disciplinas',
-    href: '/Curso',
+    href: '/cursos',
     icon: FaGraduationCap,
   },
   {

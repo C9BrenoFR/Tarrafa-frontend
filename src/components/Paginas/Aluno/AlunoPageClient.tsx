@@ -29,7 +29,7 @@ export default function AlunoPageClient() {
 
     useEffect(() => {
         if (cursoSelecionado && alunoSelecionado) {
-            router.push(`/Aluno?cursoId=${cursoSelecionado}&alunoId=${alunoSelecionado}`);
+            router.push(`/alunos?cursoId=${cursoSelecionado}&alunoId=${alunoSelecionado}`);
         }
     }, [cursoSelecionado, alunoSelecionado, router]);
 

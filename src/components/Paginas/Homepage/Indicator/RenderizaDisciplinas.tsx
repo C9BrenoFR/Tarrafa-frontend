@@ -38,7 +38,7 @@ export default function RenderizaDisciplinas({ disciplinas, type }: RenderizaDis
                     <button className="text-gray-700 cursor-pointer hover:text-gray-900">
                         <Link
                             href={{
-                                pathname: '/Curso',
+                                pathname: '/cursos',
                                 query: {
                                     id: disciplina.id
                                 }

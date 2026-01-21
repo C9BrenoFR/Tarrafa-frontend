@@ -46,7 +46,7 @@ export default function PerformanceRanking({ id }: PerformanceRankingProps) {
                 <RankingItem
                     position={index + 1}
                     content={item.student}
-                    link={`/Curso/${id}/Aluno/${item.user_id}`}
+                    link={`/cursos/${id}/alunos/${item.user_id}`}
                     icon={UserRoundSearch}
                 />
             ))}
