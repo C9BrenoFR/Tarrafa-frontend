@@ -12,6 +12,7 @@ import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
 import { useEffect, useState } from "react";
 import { useError } from "@/hooks/useError";
 import { api } from "@/utils/api";
+import Loading from "@/components/ui/loading";
 
 type PercentualInfo = {
   cognitive: {
@@ -73,7 +74,7 @@ export default function Indicators() {
         </div>
         <div className="m-10">
           <Link
-            href="/Disciplinas"
+            href="/cursos"
             className="px-4 py-2 rounded bg-[#5a6acf] text-white hover:bg-[#374DAA] transition"
           >
             Saiba mais
@@ -83,7 +84,7 @@ export default function Indicators() {
 
       <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
 
-      {data && (
+      {data ? (
         <>
           <div className={styles.BoxCentralizarIndicadores}>
             <div className={styles.EspacarIndicadores}>
@@ -252,6 +253,8 @@ export default function Indicators() {
             </div>
           </div>
         </>
+      ) : (
+        <Loading>Carregando Dados</Loading>
       )}
     </div>
   );
