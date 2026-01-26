@@ -1,4 +1,5 @@
 import DadosGeraisTutores from "@/components/pages/Tutores/DadosGerais/DadosGeraisTutores";
+import Indicators from "@/components/pages/Tutores/Indicador/indicator-tutor";
 import NotFound from "@/components/ui/not-found";
 import { getCourses } from "@/utils/api";
 
@@ -41,6 +42,7 @@ export default async function Page({params}: PageProps) {
             <div>
               <div className="center-wrapper flex flex-col justify-between">
                 <DadosGeraisTutores id= {curso.id}/>
+                <Indicators id={curso.id} />
               </div>
             </div>
           </div>

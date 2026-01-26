@@ -23,7 +23,7 @@ export default function DadosGeraisTutores({id}: DadosGeraisTutores) {
         async function fetchData() {
           try {
             error.clear()
-            const response = await api.get(`analysis/tutores/subject/${id}/summary`) 
+            const response = await api.get(`analysis/tutors/subject/${id}/summary`) 
             setData(response.data.data.metrics)
           } catch (err) {
             error.setError("Erro ao buscar dados gerais")
