@@ -17,7 +17,7 @@ type TutorRankingContent = {
     tutor_id: number,
 }
 
-export default function PerformanceRanking({ id }: PerformanceRankingProps) {
+export default function BadPerformanceRanking({ id }: PerformanceRankingProps) {
     const [ranking, setRanking] = useState<TutorRankingContent[]>([]);
     const error = useError()
 
@@ -25,7 +25,7 @@ export default function PerformanceRanking({ id }: PerformanceRankingProps) {
         const fetch = async () => {
             try {
                 error.clear()
-                const response = await api.get(`analysis/tutors/subject/${id}/rankings?type=best-performance`)
+                const response = await api.get(`analysis/tutors/subject/${id}/rankings?type=at-risk`)
                 const ranking_vector = response.data.data
                 setRanking(ranking_vector)
                 if (ranking_vector.length < 1)
@@ -41,7 +41,7 @@ export default function PerformanceRanking({ id }: PerformanceRankingProps) {
     return (
         <BoxTemplate
             title='Ranking'
-            sub_title="Tutores mais ativos"
+            sub_title="Tutores menos ativos"
         >
             {error.hasError ? (
                 error.renderError()
