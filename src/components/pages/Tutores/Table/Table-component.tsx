@@ -41,7 +41,7 @@ export default function TableComponent({ id }: Props) {
     let new_data: BaseEntity[] = [];
     data.forEach((value) => {
       const new_value: BaseEntity = {
-        id: Number(value.forum_id), 
+        id: Number(value.forum_id),
         forum_name: value.forum_name,
         mensagens_alunos: value.mensagens_alunos,
         mensagens_total: value.mensagens_total,
@@ -55,7 +55,7 @@ export default function TableComponent({ id }: Props) {
   const new_data = new_data_base_entity(data?.channels ?? []);
 
   return (
-    <div className="Box2 mt-5">
+    <div className="Box2 mt-5 min-h-125">
       <div className="mb-5">
         <div className="maincurso">
           <div className="mt-5 ml-5">
@@ -67,16 +67,24 @@ export default function TableComponent({ id }: Props) {
         </div>
       </div>
       <Table
-      title={""}
-      data={new_data}
-      data_keys={{
-        keys: ['forum_name', 'mensagens_alunos', 'mensagens_tutores', 'mensagens_total'],
-        headers: ['Canal de Interação', 'Mensagens de alunos', 'Mensagens de tutores', 'mensagens totais'],
-      }}
-      actions={[]}
-    />
+        title={""}
+        data={new_data}
+        data_keys={{
+          keys: [
+            "forum_name",
+            "mensagens_alunos",
+            "mensagens_tutores",
+            "mensagens_total",
+          ],
+          headers: [
+            "Canal de Interação",
+            "Mensagens de alunos",
+            "Mensagens de tutores",
+            "mensagens totais",
+          ],
+        }}
+        actions={[]}
+      />
     </div>
   );
 }
-
-

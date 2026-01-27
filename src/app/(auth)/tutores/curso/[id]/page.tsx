@@ -1,3 +1,4 @@
+import Rankings from "@/components/pages/Tutores/Rankings/ranking";
 import DadosGeraisTutores from "@/components/pages/Tutores/DadosGerais/DadosGeraisTutores";
 import Indicators from "@/components/pages/Tutores/Indicador/indicator-tutor";
 import Table from "@/components/pages/Tutores/Table/table";
@@ -56,6 +57,7 @@ export default async function Page({ params }: PageProps) {
             <DadosGeraisTutores id={curso.id} />
             <Indicators id={curso.id} />
             <TableComponent id={curso.id} />
+            <Rankings id={curso.id} />
           </div>
         </div>
       </div>
