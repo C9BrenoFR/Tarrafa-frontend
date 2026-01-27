@@ -101,7 +101,7 @@ export default function Indicators({id}: IndicatorsProps) {
                         className="object-cover text-white"
                       />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_feedback.toLocaleString('pt-BR')}%</p>
+                    <p className="text-2xl font-bold text-gray-900">{data.good_percentage_access.toLocaleString('pt-BR')}%</p>
                   </div>
 
                   <div className="ml-17 flex text-left">
