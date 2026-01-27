@@ -12,7 +12,7 @@ interface Props {
 }
 
 interface DataTable {
-  channels: [string];
+  channels: Record<string, string>[];
   id: number;
   message: string;
 }
@@ -37,23 +37,46 @@ export default function TableComponent({ id }: Props) {
     fetch();
   }, [id, error.clear, error.setError]);
 
-  const new_data = (data: string[]) => {
+  const new_data_base_entity = (data: Record<string, string>[]) => {
     let new_data: BaseEntity[] = [];
-    data.forEach((value, index) => {
-      new_data.push({} as BaseEntity);
+    data.forEach((value) => {
+      const new_value: BaseEntity = {
+        id: Number(value.forum_id), 
+        forum_name: value.forum_name,
+        mensagens_alunos: value.mensagens_alunos,
+        mensagens_total: value.mensagens_total,
+        mensagens_tutores: value.mensagens_tutores,
+      };
+      new_data.push(new_value);
     });
     return new_data;
   };
 
+  const new_data = new_data_base_entity(data?.channels ?? []);
+
   return (
-    <Table
-      title={"Canais de Interação"}
-      data={new_data(data?.channels ?? [])}
+    <div className="Box2 mt-5">
+      <div className="mb-5">
+        <div className="maincurso">
+          <div className="mt-5 ml-5">
+            <h1 className="text-xl font-poppins font-semibold text-left">
+              Canais de Interação
+            </h1>
+            <p style={{ color: "#9291A5" }}>da disciplina</p>
+          </div>
+        </div>
+      </div>
+      <Table
+      title={""}
+      data={new_data}
       data_keys={{
-        keys: [],
-        headers: [],
+        keys: ['forum_name', 'mensagens_alunos', 'mensagens_tutores', 'mensagens_total'],
+        headers: ['Canal de Interação', 'Mensagens de alunos', 'Mensagens de tutores', 'mensagens totais'],
       }}
       actions={[]}
     />
+    </div>
   );
 }
+
+
