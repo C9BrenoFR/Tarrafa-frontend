@@ -6,7 +6,7 @@ interface BoxTemplateProps {
 
 export default function BoxTemplate({ title, sub_title, children }: BoxTemplateProps) {
     return (
-        <div className="Box mb-10">
+        <div className="Box">
             <div className="Boxcursopequeno">
                 <div className="mt-10 ml-10 mb-5">
                     <h1 className="text-xl font-poppins font-semibold text-left">{title}</h1>
