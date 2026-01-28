@@ -57,7 +57,7 @@ export default async function Page({ params }: PageProps) {
         )
     }
 
-    if (data == 1) {
+    if (data == 1 || !data) {
         return (
             <NotFound>
                 <div className="flex-1 flex justify-center items-center pt-4 pl-[240px]">
