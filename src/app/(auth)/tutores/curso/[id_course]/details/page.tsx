@@ -1,3 +1,4 @@
+import Tutores from "@/components/pages/Tutores/tutores";
 import NotFound from "@/components/ui/not-found";
 import { getCourses } from "@/utils/api";
 
@@ -25,5 +26,20 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
-  return <div>jello.arxv</div>;
+  return (
+    <div>
+      <Tutores curso={{
+        id: 0,
+        shortname: "",
+        fullname: "",
+        period: "",
+        flagEngajamento: undefined,
+        flagMotivacao: undefined,
+        flagDesempenho: undefined,
+        flagRelAlunoProf: undefined,
+        flagProfCog: undefined,
+        flagDesistencia: undefined
+      }} />
+    </div>
+  );
 }

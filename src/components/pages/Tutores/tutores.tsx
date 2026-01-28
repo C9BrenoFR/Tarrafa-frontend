@@ -1,8 +1,11 @@
+'use client';
+
 import DataTable from "@/components/template/dataTable";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
 import SearchInput from "@/components/template/searchInput";
 import { useError } from "@/hooks/useError";
-import { Tutor as AlunoType, Tab } from "@/types/tutor";
+import { Tutor as AlunoType } from "@/types/tutor";
+import type { Tab } from "@/types/tutor";
 import { api } from "@/utils/api";
 import { getColumns } from "@/utils/columns";
 import { Curso as CursoType } from '@/types/curso';
@@ -14,16 +17,20 @@ interface TutoresProps {
 
 const tabs: Tab[] = [
   'Respostas em Fóruns',
+  'Acesso à Disciplina',
+  'Feedback',
 ];
 
 const tabMapping: Record<Tab, string> = {
-  'Respostas em Fóruns': 'respostas',
+  'Respostas em Fóruns': 'response_forums',
+  'Acesso à Disciplina': 'access',
+  'Feedback': 'Feedback',
 };
 
-export default function Alunos({ curso }: TutoresProps) {
+export default function Tutores({ curso }: TutoresProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [alunos, setAlunos] = useState<AlunoType[]>([]);
-  const [activeTab, setActiveTab] = useState<Tab>("Respostas em Fóruns");
+  const [activeTab, setActiveTab] = useState<Tab>('Feedback');
   const error = useError()
 
   useEffect(() => {
@@ -31,7 +38,7 @@ export default function Alunos({ curso }: TutoresProps) {
       try {
         error.clear()
         console.log("Iniciando fetch:")
-        const response = await api.get(`analysis/subject/${curso.id}/students/${tabMapping[activeTab]}`)
+        const response = await api.get(`analysis/tutors/subject/${curso.id}/${tabMapping[activeTab]}`)
         console.log(response.data.data)
         setAlunos(response.data.data)
       } catch (err) {
@@ -74,15 +81,15 @@ export default function Alunos({ curso }: TutoresProps) {
           <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between gap-1">
               <div className="flex-1 min-w-0 mt-2">
-                <ScrollableTabs
+                {/* <ScrollableTabs
                   tabs={tabs}
                   activeTab={activeTab}
                   setTab={setActiveTab}
                   setAlunos={setAlunos}
-                />
+                /> */}
               </div>
               <div className="flex-shrink-0">
-                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Aluno" />
+                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Tutor" />
               </div>
             </div>
 

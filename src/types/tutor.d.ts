@@ -3,4 +3,4 @@ export type Tutor = {
     nome?: string;
 }
 
-export type Tab = 'Respostas em Fóruns'
+export type Tab = 'Respostas em Fóruns' | 'Acesso à Disciplina' | 'Feedback';
