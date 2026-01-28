@@ -70,9 +70,16 @@ export default async function Page({ params }: PageProps) {
         <PageTemplate
             title="Tutor(a)"
             subTitle={data.name}
+            courseInfo={{
+                period: curso.period,
+                shortName: curso.shortname
+            }}
         >
             <GeneralData tutor={data} />
-            {/* <Indicators /> */}
+            <Indicators
+                id_course={curso.id}
+                id_tutor={data.id}
+            />
         </PageTemplate>
     );
 };
