@@ -4,7 +4,6 @@ import Loading from "@/components/ui/loading";
 import { useError } from "@/hooks/useError";
 import { api } from "@/utils/api";
 import { getIndicatorsInfo } from "@/utils/indicatorsInfo";
-import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
 import { Tooltip } from "@/components/template/tooltip";
@@ -12,6 +11,7 @@ import styles from "@/components/pages/Curso/Indicator/Indicators.module.css";
 import access from "./access.png";
 import answer from "./answer.png";
 import feedback from "./feedback.png";
+import Button from "@/components/ui/button";
 
 interface IndicatorsProps {
   id: number | null;
@@ -41,7 +41,7 @@ export default function Indicators({ id }: IndicatorsProps) {
     fetch();
   }, [id, error.clear, error.setError]);
   return (
-    <div className="Box mt-10 pb-5">
+    <div className="Box pb-5">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
           <h1 className="text-xl font-poppins font-semibold text-left">Indicadores</h1>

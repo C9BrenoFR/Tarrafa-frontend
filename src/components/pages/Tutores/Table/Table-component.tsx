@@ -55,8 +55,8 @@ export default function TableComponent({ id }: Props) {
   const new_data = new_data_base_entity(data?.channels ?? []);
 
   return (
-    <div className="Box2 mt-5 min-h-125">
-      <div className="mb-5">
+    <div className="Box2 overflow-hidden flex flex-col">
+      <div className="mb-5 flex-shrink-0">
         <div className="maincurso">
           <div className="mt-5 ml-5">
             <h1 className="text-xl font-poppins font-semibold text-left">
@@ -66,25 +66,27 @@ export default function TableComponent({ id }: Props) {
           </div>
         </div>
       </div>
-      <Table
-        title={""}
-        data={new_data}
-        data_keys={{
-          keys: [
-            "forum_name",
-            "mensagens_alunos",
-            "mensagens_tutores",
-            "mensagens_total",
-          ],
-          headers: [
-            "Canal de Interação",
-            "Mensagens de alunos",
-            "Mensagens de tutores",
-            "mensagens totais",
-          ],
-        }}
-        actions={[]}
-      />
+      <div className="flex-1 min-h-0 px-5 pb-5">
+        <Table
+          title={""}
+          data={new_data}
+          data_keys={{
+            keys: [
+              "forum_name",
+              "mensagens_alunos",
+              "mensagens_tutores",
+              "mensagens_total",
+            ],
+            headers: [
+              "Canal de Interação",
+              "Mensagens de alunos",
+              "Mensagens de tutores",
+              "mensagens totais",
+            ],
+          }}
+          actions={[]}
+        />
+      </div>
     </div>
   );
 }

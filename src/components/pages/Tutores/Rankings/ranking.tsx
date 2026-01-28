@@ -10,9 +10,9 @@ interface RankingProps {
 
 export default function Ranking({ id }: RankingProps) {
     return (
-        <div className="flex flex-row space-x-5 block">
-            <PerformanceRanking id={id}/>
-            <BadPerformanceRanking id={id}/>
+        <div className="flex flex-row space-x-5">
+            <PerformanceRanking id={id} />
+            <BadPerformanceRanking id={id} />
         </div>
     );
 }
