@@ -67,7 +67,7 @@ export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
           <div className="relative quadrado bg-[#DCFCE7]">
             <div className="flex flex-col w-full justify-between">
               <div className="ml-5 flex justify-start space-x-3">
-                <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8">
+                <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8 min-w-8">
                   <Image
                     src={responseIcon}
                     alt="Ícone aluno-professor"
@@ -76,12 +76,11 @@ export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{indicatorsData.indicators.response_foruns}</p>
+                <p className="text-xl font-bold text-[#3CD856]">Respostas em Fóruns</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de disciplinas</p>
-                  <p className={styles.textoPersonalizado}>com ótimo índice de<br /> resposta em fóruns</p>
+                  <p className="text-xl font-bold text-gray-900">{indicatorsData.indicators.response_foruns}</p>
                 </div>
               </div>
             </div>
@@ -102,12 +101,11 @@ export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
                     className="mr-0.5 object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{indicatorsData.indicators.access}</p>
+                <p className="text-xl font-bold text-[#5C3CD8]">Acessos à disciplina</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de disciplinas</p>
-                  <p className={styles.textoPersonalizado}>com bom índice de<br />acesso a plataforma</p>
+                  <p className="text-xl font-bold text-gray-900">{indicatorsData.indicators.access}</p>
                 </div>
               </div>
             </div>
@@ -128,12 +126,11 @@ export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{indicatorsData.indicators.feedback}</p>
+                <p className="text-xl font-bold text-[#D83C8C]">Feednack</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de tutores</p>
-                  <p className={styles.textoPersonalizado}>com bom índice de<br />feedback</p>
+                  <p className="text-2xl font-bold text-gray-900">{indicatorsData.indicators.feedback}</p>
                 </div>
               </div>
             </div>
