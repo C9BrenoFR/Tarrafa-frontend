@@ -17,6 +17,6 @@ export interface TableProps<T extends BaseEntity> {
     title: string
     data: T[]
     data_keys: DataKeys<T>
-    actions: ActionButton[]
+    actions?: ActionButton[]
     empty_message?: React.ReactNode
 }

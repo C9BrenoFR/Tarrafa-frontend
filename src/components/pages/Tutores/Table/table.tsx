@@ -9,7 +9,7 @@ export default function Table<T extends BaseEntity>({
   title,
   data,
   data_keys,
-  actions,
+  actions = [],
   empty_message = (
     <span className="flex gap-2">
       <Info />
@@ -19,18 +19,20 @@ export default function Table<T extends BaseEntity>({
 }: TableProps<T>) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-black border-y border-[#dfe0e2]">
+      <table className="w-full text-black border-y border-[#dfe0e2] table-fixed">
         <thead>
           <tr>
             {data_keys.headers.map((header, index) => (
               <TableHeader key={index}>{header.toUpperCase()}</TableHeader>
             ))}
-            <TableHeader>{title}</TableHeader>
+            {actions.length > 0 && (
+              <TableHeader>Ações</TableHeader>
+            )}
           </tr>
         </thead>
       </table>
       <div className="max-h-89 overflow-y-auto border-b border-[#dfe0e2]">
-        <table className="w-full text-black">
+        <table className="w-full text-black table-fixed">
           <tbody>
             {data.length > 0 ? (
               data.map((data, index) => (
@@ -38,11 +40,13 @@ export default function Table<T extends BaseEntity>({
                   {data_keys.keys.map((key, i) => (
                     <TableCell key={i}>
                       <div
+                        className="flex items-center justify-center"
                         dangerouslySetInnerHTML={{ __html: String(data[key]) }}
                       />
                     </TableCell>
                   ))}
-                  <TableCell>
+                  {actions.length > 0 && (
+                    <TableCell>
                     <div className="flex flex-col md:flex-row gap-1.5 p-2">
                       {actions.map((action, index) => (
                         <Button key={index} href={"/"}>
@@ -51,6 +55,7 @@ export default function Table<T extends BaseEntity>({
                       ))}
                     </div>
                   </TableCell>
+                  )}
                 </TableRow>
               ))
             ) : (

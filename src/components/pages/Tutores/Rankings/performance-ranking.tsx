@@ -50,6 +50,7 @@ export default function PerformanceRanking({ id }: PerformanceRankingProps) {
             )}
             {ranking.map((item, index) => (
                 <RankingItem
+                    key={index}
                     position={index + 1}
                     content={item.full_name}
                     link={`/cursos/${id}/tutor/${item.tutor_id}`}

@@ -1,7 +1,6 @@
 import Rankings from "@/components/pages/Tutores/Rankings/ranking";
 import DadosGeraisTutores from "@/components/pages/Tutores/DadosGerais/DadosGeraisTutores";
 import Indicators from "@/components/pages/Tutores/Indicador/indicator-tutor";
-import Table from "@/components/pages/Tutores/Table/table";
 import TableComponent from "@/components/pages/Tutores/Table/Table-component";
 import NotFound from "@/components/ui/not-found";
 import { getCourses } from "@/utils/api";
