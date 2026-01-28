@@ -1,0 +1,78 @@
+import GeneralData from "@/components/pages/tutor/general-data"
+import Indicators from "@/components/pages/tutor/Indicator/indicators"
+import PageTemplate from "@/components/template/page-template"
+import ErrorMessage from "@/components/ui/error-message"
+import NotFound from "@/components/ui/not-found"
+import { api, getCourses } from "@/utils/api"
+import Link from "next/link"
+
+interface PageProps {
+    params: Promise<{
+        id_course: string
+        id_tutor: string
+    }>
+}
+
+export default async function Page({ params }: PageProps) {
+    const page_params = await params
+    const cursos = await getCourses()
+    const curso = cursos.filter(curso => curso.id == Number(page_params.id_course))[0]
+
+    let data = null
+    try {
+        const response = await api.get(`analysis/tutors/subject/${page_params.id_course}/tutor/${page_params.id_tutor}/summary`)
+        data = response.data.data
+        if (data.tutor_summary === null || data.tutor_summary === undefined) {
+            data = 0
+            throw new Error("Erro ao consumir api")
+        }
+
+        if (Object.keys(response.data.data.tutor_summary).length === 0) {
+            data = 1
+            throw new Error("Tutor não pertence a esse curso")
+        }
+
+        data = data.tutor_summary
+    } catch (err) {
+        console.error("Erro ao buscar dados gerais: ", err)
+    }
+
+    if (!curso) {
+        return (
+            <NotFound>
+                <div className="flex-1 flex justify-center items-center pt-4 pl-[240px]">
+                    <p>Curso {page_params.id_course} não encontrado! Por favor, selecione um <Link href='/tutores/curso' className="underline" >Clicando aqui!</Link>, ou tente novamente mais tarde!</p>
+                </div>
+            </NotFound>
+        )
+    }
+
+    if (data == 0) {
+        return (
+            <NotFound>
+                <ErrorMessage>
+                    Erro ao buscar dados
+                </ErrorMessage>
+            </NotFound>
+        )
+    }
+
+    if (data == 1) {
+        return (
+            <NotFound>
+                <div className="flex-1 flex justify-center items-center pt-4 pl-[240px]">
+                    <p>Tutor {page_params.id_tutor} não encontrado ou não pertence ao curso desejado! Por favor, volte para a página de tutores do curso <Link href={`/tutores/curso/${page_params.id_course}/global`} className="underline" >Clicando aqui!</Link>, ou tente novamente mais tarde!</p>
+                </div>
+            </NotFound>
+        )
+    }
+    return (
+        <PageTemplate
+            title="Tutor(a)"
+            subTitle={data.name}
+        >
+            <GeneralData tutor={data} />
+            {/* <Indicators /> */}
+        </PageTemplate>
+    );
+};
