@@ -23,8 +23,8 @@ type PercentualInfo = {
   good_percentage_response_foruns: number;
 }
 
-export default function Indicators({id}: IndicatorsProps) {
-    const [data, setData] = useState<PercentualInfo | null>(null)
+export default function Indicators({ id }: IndicatorsProps) {
+  const [data, setData] = useState<PercentualInfo | null>(null)
   const error = useError()
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Indicators({id}: IndicatorsProps) {
         {data ? (
           <div className="m-10 flex gap-2">
             <Button href='/indicadores' >Detalhes</Button>
-            <Button href={`/tutores/curso/${id}/global`}>Ver mais</Button>
+            <Button href={`/tutores/curso/${id}/details`}>Ver mais</Button>
           </div>
         ) : (<div></div>)}
       </div>
