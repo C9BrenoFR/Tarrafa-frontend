@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Loading from "@/components/ui/loading";
 import { useError } from "@/hooks/useError";
@@ -6,85 +6,106 @@ import { api } from "@/utils/api";
 import { useState, useEffect } from "react";
 
 interface DadosGeraisTutores {
-    id: number;
+  id: number;
 }
 
 interface GeneralDataTutors {
-    total_enrolled: number;
-    total_students: number;
-    avg_access_tutor: number;
+  average_logs_per_day_per_tutor: number;
+  students_per_tutor: number;
+  total_tutors: number;
 }
 
-export default function DadosGeraisTutores({id}: DadosGeraisTutores) {
-    const [data, setData] = useState<GeneralDataTutors | null>(null)
-      const error = useError()
-    
-      useEffect(() => {
-        async function fetchData() {
-          try {
-            error.clear()
-            const response = await api.get(`analysis/tutors/subject/${id}/summary`) 
-            setData(response.data.data.metrics)
-          } catch (err) {
-            error.setError("Erro ao buscar dados gerais")
-            console.error("Erro ao buscar dados gerais: ", err)
-          }
-        };
-        fetchData();
-      }, [id, error.clear, error.setError]);
+export default function DadosGeraisTutores({ id }: DadosGeraisTutores) {
+  const [data, setData] = useState<GeneralDataTutors | null>(null);
+  const error = useError();
 
-      return (
-          <div className="Box2 mt-5">
-            <div className="mb-14">
-              <div className="maincurso">
-                <div className="mt-10 ml-10 mb-5">
-                  <h1 className="text-xl font-poppins font-semibold text-left">
-                    Dados Gerais
-                  </h1>
-                  <p style={{ color: "#9291A5" }}>da disciplina</p>
-                </div>
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        error.clear();
+        const response = await api.get(`analysis/tutors/subject/${id}/summary`);
+        setData(response.data.data.subject);
+      } catch (err) {
+        error.setError("Erro ao buscar dados gerais");
+        console.error("Erro ao buscar dados gerais: ", err);
+      }
+    }
+    fetchData();
+  }, [id, error.clear, error.setError]);
+
+  return (
+    <div className="Box2 mt-5">
+      <div className="mb-14">
+        <div className="maincurso">
+          <div className="mt-10 ml-10 mb-5">
+            <h1 className="text-xl font-poppins font-semibold text-left">
+              Dados Gerais
+            </h1>
+            <p style={{ color: "#9291A5" }}>da disciplina</p>
+          </div>
+        </div>
+        <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
+      </div>
+
+      <div className="flex items-center justify-center">
+        {error.hasError ? (
+          error.renderError()
+        ) : data ? (
+          <div className="flex flex-row justify-between items-center space-x-45">
+            <div className="flex flex-row items-center">
+              <p className="text-base text-gray-600 mb-2 text-left mr-6">
+                Total de logs <br /> médios por dia por tutor
+              </p>
+              <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
+                {data.average_logs_per_day_per_tutor
+                  ? Number(data.average_logs_per_day_per_tutor).toLocaleString(
+                      "pt-BR",
+                      {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      },
+                    )
+                  : 0}
               </div>
-              <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
             </div>
-      
-            <div className="flex items-center justify-center">
-              {error.hasError ? (
-                error.renderError()
-              ) : data ? (
-                <div className="flex flex-row justify-between items-center space-x-45">
-                  <div className="flex flex-row items-center">
-                    <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                      Total de<br />tutores <br /> da disciplina
-                    </p>
-                    <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                      {data.total_enrolled ? data.total_enrolled.toLocaleString('pt-BR') : 0}
-                    </div>
-                  </div>
-      
-                  <div className="flex flex-row items-center">
-                    <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                      Quantidade de <br />alunos <br />por tutor
-                    </p>
-                    <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
-                      {data.total_students ? data.total_students.toLocaleString('pt-BR') : 0}
-                    </div>
-                  </div>
-      
-                  <div className="flex flex-row items-center">
-                    <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                      Média de <br />acessos <br />diários por tutor
-                    </p>
-                    <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
-                      {data.avg_access_tutor ? data.avg_access_tutor.toLocaleString('pt-BR') : 0}%
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="m-5">
-                  <Loading>Buscando dados</Loading>
-                </div>
-              )}
+
+            <div className="flex flex-row items-center">
+              <p className="text-base text-gray-600 mb-2 text-left mr-6">
+                Quantidade de alunos <br />
+                por tutor
+              </p>
+              <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
+                {data.students_per_tutor
+                  ? Number(data.students_per_tutor).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })
+                  : 0}
+              </div>
+            </div>
+
+            <div className="flex flex-row items-center">
+              <p className="text-base text-gray-600 mb-2 text-left mr-6">
+                Quantidade total de <br />
+                acessos <br /> tutores
+              </p>
+              <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
+                {data.total_tutors
+                  ? Number(data.total_tutors).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })
+                  : 0}
+                %
+              </div>
             </div>
           </div>
-        );
+        ) : (
+          <div className="m-5">
+            <Loading>Buscando dados</Loading>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

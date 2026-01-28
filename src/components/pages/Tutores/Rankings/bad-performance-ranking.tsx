@@ -6,56 +6,55 @@ import { api } from "@/utils/api";
 import { UserRoundSearch } from "lucide-react";
 import { useState, useEffect } from "react";
 
-
 interface PerformanceRankingProps {
-    id: number;
+  id: number;
 }
 
 type TutorRankingContent = {
-    full_name: string,
-    subject_id: number,
-    tutor_id: number,
-}
+  full_name: string;
+  subject_id: number;
+  tutor_id: number;
+};
 
 export default function BadPerformanceRanking({ id }: PerformanceRankingProps) {
-    const [ranking, setRanking] = useState<TutorRankingContent[]>([]);
-    const error = useError()
+  const [ranking, setRanking] = useState<TutorRankingContent[]>([]);
+  const error = useError();
 
-    useEffect(() => {
-        const fetch = async () => {
-            try {
-                error.clear()
-                const response = await api.get(`analysis/tutors/subject/${id}/rankings?type=at-risk`)
-                const ranking_vector = response.data.data
-                setRanking(ranking_vector)
-                if (ranking_vector.length < 1)
-                    error.setError("A turma não possui alunos o suficiente para criar um ranking")
-            } catch (err) {
-                error.setError("Erro ao buscar ranking de melhor desempenho")
-                console.error("Erro ao buscar ranking de melhor desempenho: ", err)
-            }
-        }
-        fetch()
-    }, [id, error.clear, error.setError]);
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        error.clear();
+        const response = await api.get(
+          `analysis/tutors/subject/${id}/rankings?type=at-risk`,
+        );
+        const ranking_vector = response.data.data;
+        setRanking(ranking_vector);
+        if (ranking_vector.length < 1)
+          error.setError(
+            "A turma não possui alunos o suficiente para criar um ranking",
+          );
+      } catch (err) {
+        error.setError("Erro ao buscar ranking de melhor desempenho");
+        console.error("Erro ao buscar ranking de melhor desempenho: ", err);
+      }
+    };
+    fetch();
+  }, [id, error.clear, error.setError]);
 
-    return (
-        <BoxTemplate
-            title='Ranking'
-            sub_title="Tutores menos ativos"
-        >
-            {error.hasError ? (
-                error.renderError()
-            ) : ranking.length <= 0 && (
-                <Loading>Carregando ranking</Loading>
-            )}
-            {ranking.map((item, index) => (
-                <RankingItem
-                    position={index + 1}
-                    content={item.full_name}
-                    link={`/cursos/${id}/tutor/${item.tutor_id}`}
-                    icon={UserRoundSearch}
-                />
-            ))}
-        </BoxTemplate>
-    );
+  return (
+    <BoxTemplate title="Ranking" sub_title="Tutores menos ativos">
+      {error.hasError
+        ? error.renderError()
+        : ranking.length <= 0 && <Loading>Carregando ranking</Loading>}
+      {ranking.map((item, index) => (
+        <RankingItem
+          key={index}
+          position={index + 1}
+          content={item.full_name}
+          link={`/cursos/${id}/tutor/${item.tutor_id}`}
+          icon={UserRoundSearch}
+        />
+      ))}
+    </BoxTemplate>
+  );
 }
