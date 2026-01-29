@@ -289,6 +289,87 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		detalhesColumnTutor
 	];
 
+	const accessColumns = [
+		{
+			label: "Aluno",
+			name: "tutor_id",
+			options: {
+				sticky: true,
+				headerClassName: "min-w-96",
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+			}
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Acessos na plataforma</p>
+				</div>
+			</div>),
+			name: "label_access",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label_access.toString() ?? "Não definido")}`}>
+					{row.label_access.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade máxima de dias inativos",
+			name: "maximum_inactivity_days"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de dias inativos</p>
+				</div>
+			</div>),
+			name: "maximum_inactivity_days_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.maximum_inactivity_days_label.toString() ?? "Não definido")}`}>
+					{row.maximum_inactivity_days_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade de logins realizados",
+			name: "n_login"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de logins realizados</p>
+				</div>
+			</div>),
+			name: "n_login_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_login_label.toString() ?? "Não definido")}`}>
+					{row.n_login_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade de logins realizados na turma",
+			name: "n_login_subject"
+		},
+		{
+			label: "Quantidade de logins semanais",
+			name: "n_login_weekly"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de logins semanais</p>
+				</div>
+			</div>),
+			name: "n_login_weekly_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_login_weekly_label.toString() ?? "Não definido")}`}>
+					{row.n_login_weekly_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		detalhesColumnTutor
+	];
+
 	const engajamentoColumns = [
 		{
 			label: "Aluno",
@@ -716,6 +797,8 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			return feedbackColumns;
 		case "Respostas em Fóruns":
 			return responseColumns;
+		case "Acesso à Disciplina":
+			return accessColumns;
 		default:
 			return engajamentoColumns;
 	}
