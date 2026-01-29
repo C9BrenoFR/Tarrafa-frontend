@@ -97,7 +97,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<Tooltip message={getIndicatorsInfo.responseInfo} />
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "label_forums_response",
 			cell: (row: TutorType) => (
 				console.log(row.label_forums_response.toString()),
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label_forums_response.toString() ?? "Não definido")}`}>
@@ -107,8 +107,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		},
 		{
 			label: "Média de resposta em fóruns por hora",
-			name: "mean_forums_response_hours",
-			type: "float" 
+			name: "mean_forums_response_hours"
 		},
 		{
 			label: (<div className="flex flex-row relative">
@@ -116,12 +115,62 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice da média de respostas em fóruns por hora</p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "mean_forums_response_hours_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.mean_forums_response_hours_label.toString() ?? "Não definido")}`}>
 					{row.mean_forums_response_hours_label.toString() ?? "Não definido"}
 				</div>
 			)
+		},
+		{
+			label: "Mediana de resposta em fóruns por hora",
+			name: "median_forums_response_hours",
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice da mediana de respostas em fóruns por hora</p>
+				</div>
+			</div>),
+			name: "label_feedback",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.median_forums_response_hours_label.toString() ?? "Não definido")}`}>
+					{row.median_forums_response_hours_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de Respostas Rápidas em fóruns",
+			name: "num_response_fast_forum",
+		},
+		{
+			label: "Nº de Respostas Lentas em fóruns",
+			name: "num_response_late_forum",
+		},
+		{
+			label: "Nº de Respostas com tempo normal em fóruns",
+			name: "num_response_normal_forum",
+		},
+		{
+			label: "Pontuação de acesso",
+			name: "score_access",
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de pontuação de acesso</p>
+				</div>
+			</div>),
+			name: "score_access_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.score_access_label.toString() ?? "Não definido")}`}>
+					{row.score_access_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Número total de repostas em fóruns",
+			name: "total_response_forum",
 		},
 	]
 
@@ -162,7 +211,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice de Correções</p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "n_corrections_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_corrections_label.toString() ?? "Não definido")}`}>
 					{row.n_corrections_label.toString() ?? "Não definido"}
@@ -179,7 +228,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice de Correções com feedback</p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "n_corrections_with_feedback_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_corrections_with_feedback_label.toString() ?? "Não definido")}`}>
 					{row.n_corrections_with_feedback_label.toString() ?? "Não definido"}
@@ -196,7 +245,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice de feedbacks em PDFs </p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "n_feedback_pdf_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_feedback_pdf_label.toString() ?? "Não definido")}`}>
 					{row.n_feedback_pdf_label.toString() ?? "Não definido"}
@@ -213,7 +262,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice de feedback textual</p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "n_textual_feedback_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_textual_feedback_label.toString() ?? "Não definido")}`}>
 					{row.n_textual_feedback_label.toString() ?? "Não definido"}
@@ -230,7 +279,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 					<p>Índice da procentagem de feedbacks</p>
 				</div>
 			</div>),
-			name: "label_feedback",
+			name: "percentage_feedback_label",
 			cell: (row: TutorType) => (
 				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.percentage_feedback_label.toString() ?? "Não definido")}`}>
 					{row.percentage_feedback_label.toString() ?? "Não definido"}

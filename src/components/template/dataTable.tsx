@@ -39,7 +39,10 @@ const normalizeString = (str: string | undefined | null) => {
 
 const formatCellValue = (value: any) => {
     if (typeof value === 'number') {
-        return value.toFixed(2);
+        return new Intl.NumberFormat('pt-BR', {
+            minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+            maximumFractionDigits: 2
+        }).format(value);
     }
     return value;
 };
