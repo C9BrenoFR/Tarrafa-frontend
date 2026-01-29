@@ -8,9 +8,9 @@ import { useState, useEffect } from "react";
 import Image from 'next/image';
 import { Tooltip } from "@/components/template/tooltip";
 import styles from "@/components/pages/Curso/Indicator/Indicators.module.css";
-import access from "./access.png";
-import answer from "./answer.png";
-import feedback from "./feedback.png";
+import chat from "./chat.png";
+import click from "./click.png";
+import response from "./response.png";
 import Button from "@/components/ui/button";
 
 interface IndicatorsProps {
@@ -62,15 +62,15 @@ export default function Indicators({ id }: IndicatorsProps) {
           <div className={styles.BoxCentralizarIndicadores}>
             <div className={styles.EspacarIndicadores}>
 
-              <div className="relative quadrado bg-[#FFF5A6]">
+              <div className="relative quadrado bg-[#C3D8FF]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-5 flex justify-start space-x-3">
-                    <div className="bg-[#D8D03C] rounded-full flex items-center justify-center w-8 h-8">
+                    <div className="bg-[#3C56D8] rounded-full flex items-center justify-center w-8 h-8">
                       <Image
-                        src={answer}
+                        src={chat}
                         alt="Ícone aluno-professor"
-                        width={32}
-                        height={39}
+                        width={15}
+                        height={20}
                         className="object-cover"
                       />
                     </div>
@@ -89,15 +89,15 @@ export default function Indicators({ id }: IndicatorsProps) {
                 </div>
               </div>
 
-              <div className="relative quadrado bg-[#FFD3A6]">
+              <div className="relative quadrado bg-[#D0C3FF]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-5 flex justify-start space-x-3">
-                    <div className="bg-[#D86D3C] rounded-full flex items-center justify-center w-8 h-8">
+                    <div className="bg-[#5C3CD8] rounded-full flex items-center justify-center w-8 h-8">
                       <Image
-                        src={access}
+                        src={click}
                         alt="Ícone aluno-professor"
-                        width={34}
-                        height={30}
+                        width={20}
+                        height={28}
                         className="object-cover text-white"
                       />
                     </div>
@@ -116,15 +116,15 @@ export default function Indicators({ id }: IndicatorsProps) {
                 </div>
               </div>
 
-              <div className="relative quadrado bg-[#FFD3A6]">
+              <div className="relative quadrado bg-[#FFD8E2]">
                 <div className="flex flex-col w-full justify-between ">
                   <div className="ml-5 flex justify-start space-x-3">
-                    <div className="bg-[#D86D3C] rounded-full flex items-center justify-center w-8 h-8">
+                    <div className="bg-[#D83C8C] rounded-full flex items-center justify-center w-8 h-8">
                       <Image
-                        src={feedback}
+                        src={response}
                         alt="Ícone aluno-professor"
-                        width={32}
-                        height={39}
+                        width={15}
+                        height={20}
                         className="object-cover text-white"
                       />
                     </div>

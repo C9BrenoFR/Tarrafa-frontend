@@ -15,6 +15,16 @@ interface GeneralDataTutors {
   total_tutors: number;
 }
 
+const formatValue = (value: any) => {
+    if (typeof value === 'number') {
+        return new Intl.NumberFormat('pt-BR', {
+            minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+            maximumFractionDigits: 2
+        }).format(value);
+    }
+    return value;
+};
+
 export default function DadosGeraisTutores({ id }: DadosGeraisTutores) {
   const [data, setData] = useState<GeneralDataTutors | null>(null);
   const error = useError();
@@ -41,60 +51,54 @@ export default function DadosGeraisTutores({ id }: DadosGeraisTutores) {
             <h1 className="text-xl font-poppins font-semibold text-left">
               Dados Gerais
             </h1>
-            <p style={{ color: "#9291A5" }}>da disciplina</p>
+            <p style={{ color: "#9291A5" }}>da Disciplina</p>
           </div>
         </div>
         <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 bg-white" />
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mb-14">
         {error.hasError ? (
           error.renderError()
         ) : data ? (
           <div className="flex flex-row justify-between items-center space-x-45">
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                Total de logs <br /> médios por dia por tutor
+                Total de logs <br /> 
+                médios por <br /> 
+                dia por tutor
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
                 {data.average_logs_per_day_per_tutor
-                  ? Number(data.average_logs_per_day_per_tutor).toLocaleString(
-                      "pt-BR",
-                      {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      },
-                    )
+                  ? formatValue(Number(data.average_logs_per_day_per_tutor))
                   : 0}
+
               </div>
             </div>
 
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                Quantidade de alunos <br />
+                Quantidade <br />
+                de alunos <br />  
                 por tutor
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
                 {data.students_per_tutor
-                  ? Number(data.students_per_tutor).toLocaleString("pt-BR", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })
+                  ? formatValue(Number(data.students_per_tutor))
                   : 0}
               </div>
             </div>
 
             <div className="flex flex-row items-center">
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
-                Quantidade total de <br />
-                acessos <br /> tutores
+                Quantidade <br /> 
+                total de <br />
+                acessos <br />
+                de tutores
               </p>
               <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
                 {data.total_tutors
-                  ? Number(data.total_tutors).toLocaleString("pt-BR", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })
+                  ? formatValue(Number(data.total_tutors))
                   : 0}
                 %
               </div>

@@ -9,7 +9,7 @@ export default function Page() {
     return (
         <PageTemplate
             title="Visão Geral"
-            subTitle="Da Instituição"
+            subTitle="da Instituição"
         >
             <GeneralData />
             <Indicators />

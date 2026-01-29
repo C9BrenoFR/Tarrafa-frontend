@@ -46,7 +46,7 @@ export default function Indicators() {
     <div className="Box pb-5">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
-          <h1 className="text-xl font-poppins font-semibold text-left">Indicadores Pedagócigos</h1>
+          <h1 className="text-xl font-poppins font-semibold text-left">Indicadores Pedagógicos</h1>
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
         <div className="m-10 flex gap-2">
@@ -92,7 +92,7 @@ export default function Indicators() {
                   <Image
                     src={clickIcon}
                     alt="Ícone aluno-professor"
-                    width={21}
+                    width={20}
                     height={28}
                     className="mr-0.5 object-cover"
                   />
@@ -138,7 +138,7 @@ export default function Indicators() {
           </div>
         </div>
       ) : (
-        <Loading>Carregando Dados</Loading>
+        <Loading>Carregando dados</Loading>
       )}
     </div>
   );

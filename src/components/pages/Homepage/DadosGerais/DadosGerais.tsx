@@ -69,7 +69,7 @@ export default function DadosGerais() {
             </div>
           </div>
         ) : (
-          <Loading>Carregando Dados Gerais</Loading>
+          <Loading>Carregando dados gerais</Loading>
         )}
       </div>
     </div>

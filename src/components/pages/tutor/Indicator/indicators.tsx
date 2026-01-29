@@ -47,7 +47,7 @@ export default function Indicators() {
     <div className="Box pb-5">
       <div className="maincurso">
         <div className="mt-10 ml-10 mb-5">
-          <h1 className="text-xl font-poppins font-semibold text-left">Indicadores Pedagócigos</h1>
+          <h1 className="text-xl font-poppins font-semibold text-left">Indicadores Pedagógicos</h1>
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
         <div className="m-10 flex gap-2">

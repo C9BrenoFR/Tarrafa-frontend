@@ -45,7 +45,7 @@ export default function GeneralData() {
               <p className="text-base text-gray-600 mb-2 text-left mr-6">
                 Total de<br />tutores da <br /> instituição
               </p>
-              <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base ">
+              <div className="w-20 h-12 bg-gray-100 flex items-center justify-center rounded text-base">
                 {data.total_tutors ? data.total_tutors.toLocaleString('pt-BR') : 0}
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function GeneralData() {
             </div>
           </div>
         ) : (
-          <Loading>Carregando Dados Gerais</Loading>
+          <Loading>Carregando dados gerais</Loading>
         )}
       </div>
     </div>

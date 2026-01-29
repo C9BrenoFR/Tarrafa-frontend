@@ -58,12 +58,10 @@ export default function TableComponent({ id }: Props) {
     <div className="Box2 overflow-hidden flex flex-col">
       <div className="mb-5 flex-shrink-0">
         <div className="maincurso">
-          <div className="mt-5 ml-5">
-            <h1 className="text-xl font-poppins font-semibold text-left">
-              Canais de Interação
-            </h1>
-            <p style={{ color: "#9291A5" }}>da disciplina</p>
-          </div>
+          <div className="mt-10 ml-10 mb-5">
+          <h1 className="text-xl font-poppins font-semibold text-left">Canais de Interação</h1>
+          <p style={{ color: "#9291A5" }}>da disciplina</p>
+        </div>
         </div>
       </div>
       <div className="flex-1 min-h-0 px-5 pb-5">
@@ -81,7 +79,7 @@ export default function TableComponent({ id }: Props) {
               "Canal de Interação",
               "Mensagens de alunos",
               "Mensagens de tutores",
-              "mensagens totais",
+              "Mensagens totais",
             ],
           }}
           actions={[]}

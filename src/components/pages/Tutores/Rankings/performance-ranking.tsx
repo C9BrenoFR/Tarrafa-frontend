@@ -6,7 +6,6 @@ import { api } from "@/utils/api";
 import { UserRoundSearch } from "lucide-react";
 import { useState, useEffect } from "react";
 
-
 interface PerformanceRankingProps {
     id: number;
 }

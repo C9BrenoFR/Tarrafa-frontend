@@ -20,11 +20,11 @@ export default function Table<T extends BaseEntity>({
   return (
     <div className="overflow-hidden flex flex-col h-full">
       <div className="flex-shrink-0 overflow-x-auto">
-        <table className="w-full text-black border-y border-[#dfe0e2] table-fixed">
+        <table className="w-full font-semibold text-zinc-500 border-y border-[#dfe0e2] table-fixed">
           <thead>
             <tr>
               {data_keys.headers.map((header, index) => (
-                <TableHeader key={index}>{header.toUpperCase()}</TableHeader>
+                <TableHeader key={index}>{header}</TableHeader>
               ))}
               {actions.length > 0 && (
                 <TableHeader>Ações</TableHeader>
