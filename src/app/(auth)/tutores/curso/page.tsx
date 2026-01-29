@@ -4,5 +4,5 @@ import { getCourses } from '@/utils/api';
 export default async function Page() {
   const cursos = await getCourses()
 
-  return <SelectCourse path='tutores/curso/' courses={cursos} />;
+  return <SelectCourse path='curso/' courses={cursos} />;
 }

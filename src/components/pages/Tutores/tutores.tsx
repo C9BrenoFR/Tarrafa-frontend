@@ -4,8 +4,8 @@ import DataTable from "@/components/template/dataTable";
 import ScrollableTabs from "@/components/template/indicadoresTabs";
 import SearchInput from "@/components/template/searchInput";
 import { useError } from "@/hooks/useError";
-import { Tutor as AlunoType } from "@/types/tutor";
-import type { Tab } from "@/types/tutor";
+import { Tutor as TutorType } from "@/types/tutor";
+import type { Tab } from "@/types/aluno";
 import { api } from "@/utils/api";
 import { getColumns } from "@/utils/columns";
 import { Curso as CursoType } from '@/types/curso';
@@ -24,13 +24,18 @@ const tabs: Tab[] = [
 const tabMapping: Record<Tab, string> = {
   'Respostas em Fóruns': 'response_forums',
   'Acesso à Disciplina': 'access',
-  'Feedback': 'Feedback',
+  'Feedback': 'feedback',
+  "Interação Avaliativa": "",
+  "Interação Não Avaliativa": "",
+  "Desempenho": "",
+  "Profundidade Cognitiva": "",
+  "Desistência": ""
 };
 
 export default function Tutores({ curso }: TutoresProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [alunos, setAlunos] = useState<AlunoType[]>([]);
-  const [activeTab, setActiveTab] = useState<Tab>('Feedback');
+  const [tutores, setTutores] = useState<TutorType[]>([]);
+  const [activeTab, setActiveTab] = useState<Tab>('Respostas em Fóruns');
   const error = useError()
 
   useEffect(() => {
@@ -40,10 +45,10 @@ export default function Tutores({ curso }: TutoresProps) {
         console.log("Iniciando fetch:")
         const response = await api.get(`analysis/tutors/subject/${curso.id}/${tabMapping[activeTab]}`)
         console.log(response.data.data)
-        setAlunos(response.data.data)
+        setTutores(response.data.data)
       } catch (err) {
-        error.setError("Erro ao buscar dados dos alunos")
-        console.error("Erro ao buscar dados dos alunos: ", err)
+        error.setError("Erro ao buscar dados dos tutores")
+        console.error("Erro ao buscar dados dos tutores: ", err)
       }
     }
     fetch()
@@ -81,12 +86,12 @@ export default function Tutores({ curso }: TutoresProps) {
           <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between gap-1">
               <div className="flex-1 min-w-0 mt-2">
-                {/* <ScrollableTabs
+                <ScrollableTabs
                   tabs={tabs}
                   activeTab={activeTab}
                   setTab={setActiveTab}
-                  setAlunos={setAlunos}
-                /> */}
+                  setTutores={setTutores}
+                />
               </div>
               <div className="flex-shrink-0">
                 <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Tutor" />
@@ -100,9 +105,10 @@ export default function Tutores({ curso }: TutoresProps) {
             ) : (
               <DataTable
                 rowsPerPage={10}
-                data={alunos}
+                data={tutores}
                 columns={columns}
                 searchTerm={searchTerm}
+                isTutor={true}
               />
             )}
           </div>

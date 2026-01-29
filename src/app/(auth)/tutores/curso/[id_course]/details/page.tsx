@@ -28,18 +28,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div>
-      <Tutores curso={{
-        id: 0,
-        shortname: "",
-        fullname: "",
-        period: "",
-        flagEngajamento: undefined,
-        flagMotivacao: undefined,
-        flagDesempenho: undefined,
-        flagRelAlunoProf: undefined,
-        flagProfCog: undefined,
-        flagDesistencia: undefined
-      }} />
+      <Tutores curso={curso} />
     </div>
   );
 }

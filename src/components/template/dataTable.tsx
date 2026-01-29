@@ -29,11 +29,19 @@ interface DataTableProps {
     data: any[];
     columns: Column[];
     searchTerm: string;
+    isTutor?: boolean;
 }
 
 const normalizeString = (str: string | undefined | null) => {
     if (!str) return '';
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+};
+
+const formatCellValue = (value: any) => {
+    if (typeof value === 'number') {
+        return value.toFixed(2);
+    }
+    return value;
 };
 
 const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searchTerm, }) => {
@@ -112,7 +120,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                                 >
                                     {column.cell
                                         ? column.cell(row)
-                                        : row[column.name]}
+                                        : formatCellValue(row[column.name])}
                                 </TableCell>
                             ))}
                         </TableRow>
