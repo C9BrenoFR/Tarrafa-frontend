@@ -37,12 +37,17 @@ export default function TableComponent({ id }: Props) {
     fetch();
   }, [id, error.clear, error.setError]);
 
+  const filter_forum_name = (texto: string): string => {
+    const regex = new RegExp(`[${"-"}]`, "g");
+    return texto.replace(regex, "");
+  };
+
   const new_data_base_entity = (data: Record<string, string>[]) => {
     let new_data: BaseEntity[] = [];
     data.forEach((value) => {
       const new_value: BaseEntity = {
         id: Number(value.forum_id),
-        forum_name: value.forum_name,
+        forum_name: filter_forum_name(value.forum_name),
         mensagens_alunos: value.mensagens_alunos,
         mensagens_total: value.mensagens_total,
         mensagens_tutores: value.mensagens_tutores,
@@ -59,9 +64,11 @@ export default function TableComponent({ id }: Props) {
       <div className="mb-5 flex-shrink-0">
         <div className="maincurso">
           <div className="mt-10 ml-10 mb-5">
-          <h1 className="text-xl font-poppins font-semibold text-left">Canais de Interação</h1>
-          <p style={{ color: "#9291A5" }}>da disciplina</p>
-        </div>
+            <h1 className="text-xl font-poppins font-semibold text-left">
+              Canais de Interação
+            </h1>
+            <p style={{ color: "#9291A5" }}>da disciplina</p>
+          </div>
         </div>
       </div>
       <div className="flex-1 min-h-0 px-5 pb-5">
