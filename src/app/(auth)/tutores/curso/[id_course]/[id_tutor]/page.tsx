@@ -1,4 +1,5 @@
 import GeneralData from "@/components/pages/tutor/general-data"
+import Graphs from "@/components/pages/tutor/graphs"
 import Indicators from "@/components/pages/tutor/Indicator/indicators"
 import PageTemplate from "@/components/template/page-template"
 import ErrorMessage from "@/components/ui/error-message"
@@ -77,6 +78,10 @@ export default async function Page({ params }: PageProps) {
         >
             <GeneralData tutor={data} />
             <Indicators
+                id_course={curso.id}
+                id_tutor={data.id}
+            />
+            <Graphs
                 id_course={curso.id}
                 id_tutor={data.id}
             />
