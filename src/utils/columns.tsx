@@ -172,6 +172,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Número total de repostas em fóruns",
 			name: "total_response_forum",
 		},
+		detalhesColumnTutor
 	]
 
 	const feedbackColumns = [
@@ -302,7 +303,10 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		{
 			label: (<div className="flex flex-row relative">
 				<div className="w-[90%]">
-					<p>Índice de Acessos na plataforma</p>
+					<p>Índice de Acessos à plataforma</p>
+				</div>
+				<div className="absolute inset-y-0 right-0 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.accessInfo} />
 				</div>
 			</div>),
 			name: "label_access",
