@@ -12,7 +12,6 @@ export default function NotFound({ cursos, children }: NotFoundProps) {
         <div className="flex">
             <Sidebar />
             <div className="flex-1">
-                <Header id={0} cursos={cursos} />
                 <main>
                     {children}
                 </main>

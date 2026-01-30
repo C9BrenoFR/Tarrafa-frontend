@@ -9,5 +9,13 @@ export const getIndicatorsInfo = {
 
     relacaoAlunoProfInfo: "Considera a comunicabilidade direta entre discentes e docentes através de fóruns.",
 
-    desistenciaInfo: " Indica discentes com baixas classificações gerais na agregação dos demais indicadores, comumente associado à desistência do curso."
+    desistenciaInfo: " Indica discentes com baixas classificações gerais na agregação dos demais indicadores, comumente associado à desistência do curso.",
+
+    // Tutores:
+
+    feedbackInfo: "Avalia a qualidade e a frequência dos feedbacks fornecidos pelo tutor nas atividades avaliativas, considerando correções realizadas, presença de feedback e o tipo de retorno oferecido aos estudantes (textual e/ou anotações em PDF).",
+
+    accessInfo: "Analisa a presença e regularidade de acesso do tutor à plataforma, a partir dos registros de log, indicando o nível de acompanhamento da disciplina.",
+
+    responseInfo: "Avalia a participação do tutor em fóruns, considerando o volume de respostas e o tempo médio de atendimento às mensagens dos estudantes.",
 };

@@ -18,11 +18,11 @@ export default function HomeRanking({ type }: HomeRankingProps) {
         const fetch = async () => {
             try {
                 error.clear()
-                const response = await api.get(`analysis/general/rankings?type=${type}`)
+                const response = await api.get(`analysis/tutors/general/rankings?type=${type}`)
                 const ranking_vector = response.data.data.ranking
                 setRanking(ranking_vector)
                 if (ranking_vector.length < 1)
-                    error.setError("A turma não possui alunos o suficiente para criar um ranking")
+                    error.setError("Sem tutores o suficiente para criar um ranking")
             } catch (err) {
                 error.setError("Erro ao buscar ranking desempenho")
                 console.error("Erro ao buscar ranking desempenho: ", err)
@@ -34,7 +34,7 @@ export default function HomeRanking({ type }: HomeRankingProps) {
     return (
         <BoxTemplate
             title='Ranking'
-            sub_title={type == 'best-performance' ? "Disciplinas com Melhores Desempenho" : "Disciplinas com Piores Desempenho"}
+            sub_title={type == 'best-performance' ? "Tutores com Melhores Desempenho" : "Tutores com Piores Desempenho"}
         >
             {error.hasError ? (
                 error.renderError()
@@ -45,8 +45,8 @@ export default function HomeRanking({ type }: HomeRankingProps) {
                 <RankingItem
                     key={index}
                     position={index + 1}
-                    content={item.name}
-                    link={`/cursos/${item.subject_id}`}
+                    content={item.full_name}
+                    link={`/tutores/curso/${item.subjects[0]}/${item.tutor_id}`}
                     icon={Search}
                 />
             ))}

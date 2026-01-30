@@ -3,6 +3,7 @@ import { DisciplinaType } from "../types/disciplina";
 import { FaPlus } from "react-icons/fa";
 import { Tooltip } from "@/components/template/tooltip";
 import { getIndicatorsInfo } from "./indicatorsInfo";
+import { Tutor as TutorType } from "@/types/tutor";
 import { get } from "http";
 import { Aluno as AlunoType } from "@/types/aluno";
 
@@ -17,13 +18,20 @@ export const getNivel = (flag: string) => {
 	}
 };
 
-export const getFlagCor = (flag: string) => {
+export const getFlagCor = (flag: string, reverse?: boolean) => {
 	switch (flag) {
 		case "muito_baixo": return "bg-red-100 text-red-700";
 		case "baixo": return "bg-orange-100 text-orange-700";
 		case "medio": return "bg-yellow-100 text-yellow-700";
 		case "alto": return "bg-indigo-100 text-indigo-700";
 		case "muito_alto": return "bg-emerald-100 text-emerald-700";
+
+		case "Muito baixo": return "bg-red-100 text-red-700";
+		case "Baixo": return "bg-orange-100 text-orange-700";
+		case "Médio": return "bg-yellow-100 text-yellow-700";
+		case "Alto": return "bg-indigo-100 text-indigo-700";
+		case "Muito Alto": return "bg-emerald-100 text-emerald-700";
+
 		default: return "bg-gray-100 text-gray-600";
 	}
 };
@@ -44,7 +52,7 @@ export const getFlagDesistenciaCor = (flag: boolean) =>
 	flag ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700";
 
 export const getColumns = (activeTab: string | null, cursoSelecionado: number | null) => {
-	const detalhesColumn = {
+	const detalhesColumnAlunos = {
 		label: "Detalhes",
 		name: "detalhes",
 		cell: (row: AlunoType) => (
@@ -56,6 +64,315 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</Link>
 		)
 	};
+
+	const detalhesColumnTutor = {
+		label: "Detalhes",
+		name: "detalhes",
+		cell: (row: TutorType) => (
+			<Link
+				href={`/tutores/curso/${cursoSelecionado}/${row.tutor_id}`}
+				className="cursor-pointer flex items-center justify-center w-full"
+			>
+				<FaPlus className='text-2xl text-gray-700' />
+			</Link>
+		)
+	};
+
+	const responseColumns = [
+		{
+			label: "Tutor",
+			name: "full_name",
+			options: {
+				sticky: true,
+				headerClassName: "min-w-96",
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+			}
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Respostas em fóruns</p>
+				</div>
+				<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.responseInfo} />
+				</div>
+			</div>),
+			name: "label_forums_response",
+			cell: (row: TutorType) => (
+				console.log(row.label_forums_response.toString()),
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label_forums_response.toString() ?? "Não definido")}`}>
+					{row.label_forums_response.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Média de resposta em fóruns por hora",
+			name: "mean_forums_response_hours"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice da média de respostas em fóruns por hora</p>
+				</div>
+			</div>),
+			name: "mean_forums_response_hours_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.mean_forums_response_hours_label.toString() ?? "Não definido")}`}>
+					{row.mean_forums_response_hours_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Mediana de resposta em fóruns por hora",
+			name: "median_forums_response_hours",
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice da mediana de respostas em fóruns por hora</p>
+				</div>
+			</div>),
+			name: "label_feedback",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.median_forums_response_hours_label.toString() ?? "Não definido")}`}>
+					{row.median_forums_response_hours_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de Respostas Rápidas em fóruns",
+			name: "num_response_fast_forum",
+		},
+		{
+			label: "Nº de Respostas Lentas em fóruns",
+			name: "num_response_late_forum",
+		},
+		{
+			label: "Nº de Respostas com tempo normal em fóruns",
+			name: "num_response_normal_forum",
+		},
+		{
+			label: "Pontuação de acesso",
+			name: "score_access",
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de pontuação de acesso</p>
+				</div>
+			</div>),
+			name: "score_access_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.score_access_label.toString() ?? "Não definido")}`}>
+					{row.score_access_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Número total de repostas em fóruns",
+			name: "total_response_forum",
+		},
+		detalhesColumnTutor
+	]
+
+	const feedbackColumns = [
+		{
+			label: "Tutor",
+			name: "full_name",
+			options: {
+				sticky: true,
+				headerClassName: "min-w-96",
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+			}
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Feedback</p>
+				</div>
+				<div className="absolute inset-y-0 right-2 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.feedbackInfo} />
+				</div>
+			</div>),
+			name: "label_feedback",
+			cell: (row: TutorType) => (
+				console.log(row.label_feedback.toString()),
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label_feedback.toString() ?? "Não definido")}`}>
+					{row.label_feedback.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de Correções",
+			name: "n_corrections"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Correções</p>
+				</div>
+			</div>),
+			name: "n_corrections_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_corrections_label.toString() ?? "Não definido")}`}>
+					{row.n_corrections_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de Correções com feedback",
+			name: "n_corrections_with_feedback"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Correções com feedback</p>
+				</div>
+			</div>),
+			name: "n_corrections_with_feedback_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_corrections_with_feedback_label.toString() ?? "Não definido")}`}>
+					{row.n_corrections_with_feedback_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de feedbacks em PDFs",
+			name: "n_feedback_pdf"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de feedbacks em PDFs </p>
+				</div>
+			</div>),
+			name: "n_feedback_pdf_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_feedback_pdf_label.toString() ?? "Não definido")}`}>
+					{row.n_feedback_pdf_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Nº de feedbacks textuais",
+			name: "n_textual_feedback"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de feedback textual</p>
+				</div>
+			</div>),
+			name: "n_textual_feedback_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_textual_feedback_label.toString() ?? "Não definido")}`}>
+					{row.n_textual_feedback_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Porcentagem de feedbacks",
+			name: "percentage_feedback"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice da procentagem de feedbacks</p>
+				</div>
+			</div>),
+			name: "percentage_feedback_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.percentage_feedback_label.toString() ?? "Não definido")}`}>
+					{row.percentage_feedback_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		detalhesColumnTutor
+	];
+
+	const accessColumns = [
+		{
+			label: "Tutor",
+			name: "full_name",
+			options: {
+				sticky: true,
+				headerClassName: "min-w-96",
+				cellClassName: "truncate overflow-hidden whitespace-nowrap font-medium text-left max-w-xs"
+			}
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de Acessos à plataforma</p>
+				</div>
+				<div className="absolute inset-y-0 right-0 flex items-center w-[10%] pr-1">
+					<Tooltip message={getIndicatorsInfo.accessInfo} />
+				</div>
+			</div>),
+			name: "label_access",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.label_access.toString() ?? "Não definido")}`}>
+					{row.label_access.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade máxima de dias inativos",
+			name: "maximum_inactivity_days"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de dias inativos</p>
+				</div>
+			</div>),
+			name: "maximum_inactivity_days_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.maximum_inactivity_days_label.toString() ?? "Não definido", true)}`}>
+					{row.maximum_inactivity_days_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade de logins realizados",
+			name: "n_login"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de logins realizados</p>
+				</div>
+			</div>),
+			name: "n_login_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_login_label.toString() ?? "Não definido")}`}>
+					{row.n_login_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		{
+			label: "Quantidade de logins realizados na turma",
+			name: "n_login_subject"
+		},
+		{
+			label: "Quantidade de logins semanais",
+			name: "n_login_weekly"
+		},
+		{
+			label: (<div className="flex flex-row relative">
+				<div className="w-[90%]">
+					<p>Índice de quantidade de logins semanais</p>
+				</div>
+			</div>),
+			name: "n_login_weekly_label",
+			cell: (row: TutorType) => (
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.n_login_weekly_label.toString() ?? "Não definido")}`}>
+					{row.n_login_weekly_label.toString() ?? "Não definido"}
+				</div>
+			)
+		},
+		detalhesColumnTutor
+	];
 
 	const engajamentoColumns = [
 		{
@@ -87,7 +404,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Nº de Posts em Fóruns Avaliativos",
 			name: "num_posts_required"
 		},
-		detalhesColumn
+		detalhesColumnAlunos
 	];
 
 	const desempenhoColumns = [
@@ -124,7 +441,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Comparação com a Média da Turma",
 			name: "comparative"
 		},
-		detalhesColumn
+		detalhesColumnAlunos
 	];
 
 	const motivacaoColumns = [
@@ -157,7 +474,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Nº de Participações em Fóruns Não Obrigatórios",
 			name: "num_posts_unrequired"
 		},
-		detalhesColumn
+		detalhesColumnAlunos
 	];
 
 	const profCognitivaColumns = [
@@ -200,7 +517,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			label: "Nível Médio de Profundidade Cognitiva em Tarefas",
 			name: "assign_mean_level"
 		},
-		detalhesColumn
+		detalhesColumnAlunos
 	];
 
 	// const relacaoAlunoProfColumns = [
@@ -229,7 +546,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	// 		label: "Frequência de Contato Aluno-Professor",
 	// 		name: "full_name"
 	// 	},
-	// 	detalhesColumn
+	// 	detalhesColumnAlunos
 	// ];
 
 	const desistenciaColumns = [
@@ -303,7 +620,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 		// 		</div>
 		// 	)
 		// },
-		detalhesColumn
+		detalhesColumnAlunos
 	];
 
 	const allSubjectsColumns = [
@@ -480,6 +797,12 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			return desistenciaColumns;
 		case "allSubjects":
 			return allSubjectsColumns;
+		case "Feedback":
+			return feedbackColumns;
+		case "Respostas em Fóruns":
+			return responseColumns;
+		case "Acesso à Disciplina":
+			return accessColumns;
 		default:
 			return engajamentoColumns;
 	}

@@ -29,6 +29,7 @@ interface DataTableProps {
     data: any[];
     columns: Column[];
     searchTerm: string;
+    isTutor?: boolean;
 }
 
 const normalizeString = (str: string | undefined | null) => {
@@ -36,11 +37,21 @@ const normalizeString = (str: string | undefined | null) => {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 };
 
+const formatCellValue = (value: any) => {
+    if (typeof value === 'number') {
+        return new Intl.NumberFormat('pt-BR', {
+            minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+            maximumFractionDigits: 2
+        }).format(value);
+    }
+    return value;
+};
+
 const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searchTerm, }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const filteredData = data.filter(item =>
-        normalizeString(item.nome).includes(normalizeString(searchTerm))
+        normalizeString(item.full_name).includes(normalizeString(searchTerm))
     );
 
     const totalPages = Math.ceil(filteredData.length / rowsPerPage);
@@ -112,7 +123,7 @@ const DataTable: React.FC<DataTableProps> = ({ rowsPerPage, data, columns, searc
                                 >
                                     {column.cell
                                         ? column.cell(row)
-                                        : row[column.name]}
+                                        : formatCellValue(row[column.name])}
                                 </TableCell>
                             ))}
                         </TableRow>

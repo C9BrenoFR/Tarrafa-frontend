@@ -26,7 +26,7 @@ const navItems: NavItem[] = [
   },
   {
     title: 'Painel dos Tutores',
-    href: '/Tutores',
+    href: '/tutores',
     icon: FaUserGraduate,
   },
 ];
