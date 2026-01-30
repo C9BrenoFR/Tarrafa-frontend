@@ -50,7 +50,7 @@ export default function Indicators() {
           <p style={{ color: "#9291A5" }}>calculados</p>
         </div>
         <div className="m-10 flex gap-2">
-          <Button href='/#' >Detalhes</Button>
+          {/* <Button href='/#' >Detalhes</Button> */}
           <Button href='/tutores/curso'>Ver mais</Button>
         </div>
       </div>

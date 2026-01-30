@@ -49,7 +49,7 @@ export default function Indicators({ id }: IndicatorsProps) {
         </div>
         {data ? (
           <div className="m-10 flex gap-2">
-            <Button href='/indicadores' >Detalhes</Button>
+            {/* <Button href='/indicadores' >Detalhes</Button> */}
             <Button href={`/tutores/curso/${id}/details`}>Ver mais</Button>
           </div>
         ) : (<div></div>)}
@@ -85,7 +85,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                   </div>
                 </div>
                 <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-                  <Tooltip message={getIndicatorsInfo.desempenhoInfo} />
+                  <Tooltip message={getIndicatorsInfo.responseInfo} />
                 </div>
               </div>
 
@@ -112,7 +112,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                   </div>
                 </div>
                 <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-                  <Tooltip message={getIndicatorsInfo.profCogInfo} />
+                  <Tooltip message={getIndicatorsInfo.accessInfo} />
                 </div>
               </div>
 
@@ -139,7 +139,7 @@ export default function Indicators({ id }: IndicatorsProps) {
                   </div>
                 </div>
                 <div className="absolute h-full top-0 right-0 pt-3 pr-3 text-md">
-                  <Tooltip message={getIndicatorsInfo.profCogInfo} />
+                  <Tooltip message={getIndicatorsInfo.feedbackInfo} />
                 </div>
               </div>
             </div>

@@ -81,7 +81,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const responseColumns = [
 		{
 			label: "Tutor",
-			name: "tutor_id",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -177,7 +177,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const feedbackColumns = [
 		{
 			label: "Tutor",
-			name: "tutor_id",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",
@@ -292,7 +292,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 	const accessColumns = [
 		{
 			label: "Aluno",
-			name: "tutor_id",
+			name: "full_name",
 			options: {
 				sticky: true,
 				headerClassName: "min-w-96",

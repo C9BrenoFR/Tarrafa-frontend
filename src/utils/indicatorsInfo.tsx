@@ -13,9 +13,9 @@ export const getIndicatorsInfo = {
 
     // Tutores:
 
-    feedbackInfo: "--[Indicar descrição aqui]--",
+    feedbackInfo: "Avalia a qualidade e a frequência dos feedbacks fornecidos pelo tutor nas atividades avaliativas, considerando correções realizadas, presença de feedback e o tipo de retorno oferecido aos estudantes (textual e/ou anotações em PDF).",
 
-    accessInfo: "--[Indicar descrição aqui]--",
+    accessInfo: "Analisa a presença e regularidade de acesso do tutor à plataforma, a partir dos registros de log, indicando o nível de acompanhamento da disciplina.",
 
-    responseInfo: "--[Indicar descrição aqui]--",
+    responseInfo: "Avalia a participação do tutor em fóruns, considerando o volume de respostas e o tempo médio de atendimento às mensagens dos estudantes.",
 };
