@@ -126,7 +126,7 @@ export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-xl font-bold text-[#D83C8C]">Feednack</p>
+                <p className="text-xl font-bold text-[#D83C8C]">Feedback</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
