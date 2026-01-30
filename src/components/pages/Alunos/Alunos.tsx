@@ -27,7 +27,10 @@ const tabMapping: Record<Tab, string> = {
   'Interação Não Avaliativa': 'motivation',
   'Desempenho': 'performance',
   'Profundidade Cognitiva': 'cognitive',
-  'Desistência': 'give_up'
+  'Desistência': 'give_up',
+  'Respostas em Fóruns': 'forum_responses',
+  'Acesso à Disciplina': 'subject_access',
+  'Feedback': 'feedback'
 };
 
 export default function Alunos({ curso }: AlunosProps) {
