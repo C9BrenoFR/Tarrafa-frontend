@@ -292,7 +292,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 
 	const accessColumns = [
 		{
-			label: "Aluno",
+			label: "Tutor",
 			name: "full_name",
 			options: {
 				sticky: true,
