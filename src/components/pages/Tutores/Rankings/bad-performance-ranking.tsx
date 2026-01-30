@@ -51,7 +51,7 @@ export default function BadPerformanceRanking({ id }: PerformanceRankingProps) {
           key={index}
           position={index + 1}
           content={item.full_name}
-          link={`/cursos/${id}/tutor/${item.tutor_id}`}
+          link={`/tutores/curso/${id}/${item.tutor_id}`}
           icon={UserRoundSearch}
         />
       ))}

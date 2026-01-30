@@ -18,7 +18,7 @@ export const getNivel = (flag: string) => {
 	}
 };
 
-export const getFlagCor = (flag: string) => {
+export const getFlagCor = (flag: string, reverse?: boolean) => {
 	switch (flag) {
 		case "muito_baixo": return "bg-red-100 text-red-700";
 		case "baixo": return "bg-orange-100 text-orange-700";
@@ -328,7 +328,7 @@ export const getColumns = (activeTab: string | null, cursoSelecionado: number | 
 			</div>),
 			name: "maximum_inactivity_days_label",
 			cell: (row: TutorType) => (
-				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.maximum_inactivity_days_label.toString() ?? "Não definido")}`}>
+				<div className={`max-w-27 py-1 rounded-md text-xs font-medium border text-center mx-auto ${getFlagCor(row.maximum_inactivity_days_label.toString() ?? "Não definido", true)}`}>
 					{row.maximum_inactivity_days_label.toString() ?? "Não definido"}
 				</div>
 			)
