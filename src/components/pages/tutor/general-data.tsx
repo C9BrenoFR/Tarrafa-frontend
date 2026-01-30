@@ -31,7 +31,7 @@ export default function GeneralData({ tutor }: GeneralDataProps) {
         </div>
         <div className="flex flex-col mr-4">
           <div className="flex items-center mb-4">
-            <p className="text-sm font-medium w-32">Grupo</p>
+            <p className="text-sm font-medium w-32">Polo</p>
             <p className="text-sm bg-gray-100 rounded-md py-2 px-4 flex-1">
               {tutor.tutor_groups ? tutor.tutor_groups : "Não Informado"}
             </p>

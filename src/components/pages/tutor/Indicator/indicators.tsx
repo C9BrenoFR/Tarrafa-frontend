@@ -13,28 +13,32 @@ import { api } from "@/utils/api";
 import Loading from "@/components/ui/loading";
 import Button from "@/components/ui/button";
 
-type PercentualInfo = {
-  access: {
-    good_percentage: number
+type IndicatorsInfo = {
+  indicators: {
+    access: string,
+    feedback: string,
+    response_foruns: string
   },
-  feedback: {
-    good_percentage: number
-  },
-  forum_response: {
-    good_percentage: number
-  }
+  student_id: number,
+  subject_id: number
 }
 
-export default function Indicators() {
-  const [data, setData] = useState<PercentualInfo | null>(null)
+
+interface IndicatorsProps {
+  id_course: number
+  id_tutor: number
+}
+
+export default function Indicators({ id_course, id_tutor }: IndicatorsProps) {
+  const [indicatorsData, setIndicatorsData] = useState<IndicatorsInfo | null>(null)
   const error = useError()
 
   useEffect(() => {
     async function fetch() {
       try {
         error.clear()
-        const response = await api.get(`analysis/tutors/general/indicators`)
-        setData(response.data.data)
+        const response = await api.get(`analysis/tutors/subject/${id_course}/tutor/${id_tutor}/indicators`)
+        setIndicatorsData(response.data.data)
       } catch (err) {
         error.setError("Erro ao buscar indicadores")
         console.error("Erro ao buscar indicadores: ", err)
@@ -58,12 +62,12 @@ export default function Indicators() {
 
       <div className="relative after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-[90%] after:h-[1px] after:bg-gray-200 after:shadow-[0_2px_4px_rgba(0,0,0,0.05)] bg-white" />
 
-      {data ? (
+      {indicatorsData ? (
         <div className="flex flex-row gap-6 justify-center px-10 py-8">
           <div className="relative quadrado bg-[#DCFCE7]">
             <div className="flex flex-col w-full justify-between">
               <div className="ml-5 flex justify-start space-x-3">
-                <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8">
+                <div className="bg-[#3CD856] rounded-full flex items-center justify-center w-8 h-8 min-w-8">
                   <Image
                     src={responseIcon}
                     alt="Ícone aluno-professor"
@@ -72,12 +76,11 @@ export default function Indicators() {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{data.forum_response.good_percentage}%</p>
+                <p className="text-xl font-bold text-[#3CD856]">Respostas em Fóruns</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de disciplinas</p>
-                  <p className={styles.textoPersonalizado}>com ótimo índice de<br /> resposta em fóruns</p>
+                  <p className="text-xl font-bold text-gray-900">{indicatorsData.indicators.response_foruns}</p>
                 </div>
               </div>
             </div>
@@ -98,12 +101,11 @@ export default function Indicators() {
                     className="mr-0.5 object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{data.access.good_percentage}%</p>
+                <p className="text-xl font-bold text-[#5C3CD8]">Acessos à disciplina</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de disciplinas</p>
-                  <p className={styles.textoPersonalizado}>com bom índice de<br />acesso a plataforma</p>
+                  <p className="text-xl font-bold text-gray-900">{indicatorsData.indicators.access}</p>
                 </div>
               </div>
             </div>
@@ -124,12 +126,11 @@ export default function Indicators() {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-2xl font-bold text-gray-900">{data.feedback.good_percentage}%</p>
+                <p className="text-xl font-bold text-[#D83C8C]">Feedback</p>
               </div>
               <div className="ml-17 flex text-left">
                 <div className="flex flex-col leading-snug">
-                  <p className={styles.textoPersonalizado2}>de tutores</p>
-                  <p className={styles.textoPersonalizado}>com bom índice de<br />feedback</p>
+                  <p className="text-2xl font-bold text-gray-900">{indicatorsData.indicators.feedback}</p>
                 </div>
               </div>
             </div>

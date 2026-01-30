@@ -43,6 +43,7 @@ export default function HomeRanking({ type }: HomeRankingProps) {
             )}
             {ranking.map((item, index) => (
                 <RankingItem
+                    key={index}
                     position={index + 1}
                     content={item.name}
                     link={`/cursos/${item.subject_id}`}

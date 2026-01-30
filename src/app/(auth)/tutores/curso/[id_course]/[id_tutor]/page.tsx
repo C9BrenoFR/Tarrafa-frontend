@@ -1,4 +1,5 @@
 import GeneralData from "@/components/pages/tutor/general-data"
+import Graphs from "@/components/pages/tutor/graphs"
 import Indicators from "@/components/pages/tutor/Indicator/indicators"
 import PageTemplate from "@/components/template/page-template"
 import ErrorMessage from "@/components/ui/error-message"
@@ -57,7 +58,7 @@ export default async function Page({ params }: PageProps) {
         )
     }
 
-    if (data == 1) {
+    if (data == 1 || !data) {
         return (
             <NotFound>
                 <div className="flex-1 flex justify-center items-center pt-4 pl-[240px]">
@@ -70,9 +71,20 @@ export default async function Page({ params }: PageProps) {
         <PageTemplate
             title="Tutor(a)"
             subTitle={data.name}
+            courseInfo={{
+                period: curso.period,
+                shortName: curso.shortname
+            }}
         >
             <GeneralData tutor={data} />
-            {/* <Indicators /> */}
+            <Indicators
+                id_course={curso.id}
+                id_tutor={data.id}
+            />
+            <Graphs
+                id_course={curso.id}
+                id_tutor={data.id}
+            />
         </PageTemplate>
     );
 };
